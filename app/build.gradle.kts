@@ -62,6 +62,10 @@ android {
             buildConfigField("boolean", "USE_MOCK_API", "false")
             // Release is always offline on-device inference; it has no INTERNET permission.
             buildConfigField("String", "INFERENCE_MODE", "\"local\"")
+            // Real phones are ARM; x86 LiteRT libraries (~18 MB) are only for emulators.
+            ndk {
+                abiFilters += listOf("arm64-v8a", "armeabi-v7a")
+            }
         }
     }
 

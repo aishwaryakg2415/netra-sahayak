@@ -157,4 +157,22 @@
     <string name="err_storage_error">या फोनवर तपासणी जतन करता आली नाही.</string>
     <string name="err_offline_model_unavailable">या आवृत्तीमध्ये ऑफलाइन AI तपासणी उपलब्ध नाही. कृपया इंटरनेटशी कनेक्ट करा.</string>
     <string name="err_unknown">काहीतरी चुकीचे घडले. कृपया पुन्हा प्रयत्न करा.</string>
+
+    <!-- On-device AI screening -->
+    <string name="err_model_not_installed">या ॲप आवृत्तीमध्ये ऑफलाइन AI मॉडेल इन्स्टॉल केलेले नाही, त्यामुळे स्क्रीनिंग होऊ शकत नाही. रुग्णाची माहिती आणि इतिहास अजूनही काम करतात.</string>
+    <string name="err_model_integrity">AI मॉडेल सुरक्षा तपासणीत अयशस्वी झाले आहे आणि ते वापरले जाणार नाही. कृपया ॲप पुन्हा इन्स्टॉल करा.</string>
+    <string name="err_inference_failed">AI मॉडेल या प्रतिमेचे विश्लेषण करू शकले नाही, त्यामुळे कोणताही निकाल मिळाला नाही. कृपया पुन्हा प्रयत्न करा.</string>
+    <string name="err_retake_image">हा फोटो AI स्क्रीनिंगसाठी पुरेसा चांगला नाही (%1$s). कृपया रेटिनाचा नवीन फोटो घ्या.</string>
+    <string name="err_not_fundus_image">हा रेटिनाचा (फंडस) फोटो दिसत नाही. AI स्क्रीनिंगसाठी फंडस कॅमेऱ्याने घेतलेला डोळ्याच्या मागील भागाचा फोटो आवश्यक आहे.</string>
+    <string name="quality_reason_too_dark">खूप अंधार</string>
+    <string name="quality_reason_too_bright">खूप जास्त प्रकाश</string>
+    <string name="quality_reason_blurred">अस्पष्ट</string>
+    <string name="quality_reason_glare">तीव्र चकाकी</string>
+    <string name="quality_reason_too_small">रिझोल्यूशन खूप कमी</string>
+    <string name="quality_reason_other">रेटिना स्पष्ट दिसत नाही</string>
+    <string name="rec_urgent_referral">तातडीने रेफरलची शिफारस: गंभीर डायबेटिक रेटिनोपॅथीची चिन्हे. कृपया शक्य तितक्या लवकर नेत्रतज्ज्ञांच्या भेटीची व्यवस्था करा.</string>
+    <string name="rec_referral">रेफरलची शिफारस: रेफर करण्यायोग्य डायबेटिक रेटिनोपॅथीची चिन्हे. कृपया नेत्रतज्ज्ञांकडून तपासणीची व्यवस्था करा.</string>
+    <string name="rec_human_review">AI निकाल निश्चित नाही. रुग्णाला सल्ला देण्यापूर्वी कृपया ही प्रतिमा प्रशिक्षित ग्रेडर किंवा नेत्रतज्ज्ञांकडून तपासून घ्या.</string>
+    <string name="rec_review_suffix">" AI ला खात्री नव्हती - प्रशिक्षित व्यक्तीने ही प्रतिमा तपासावी."</string>
+    <string name="source_on_device">फोनवरील AI मॉडेल (ऑफलाइन)</string>
 </resources>

@@ -163,4 +163,22 @@
 
     <string name="err_offline_model_unavailable">ஆஃப்லைன் AI பரிசோதனை இந்த பதிப்பில் இல்லை. இணையத்துடன் இணைக்கவும்.</string>
     <string name="err_unknown">ஏதோ தவறு நடந்துவிட்டது. மீண்டும் முயற்சிக்கவும்.</string>
+
+    <!-- On-device AI screening -->
+    <string name="err_model_not_installed">இந்த செயலி பதிப்பில் ஆஃப்லைன் AI மாடல் நிறுவப்படவில்லை, எனவே பரிசோதனை செய்ய முடியாது. நோயாளி விவரங்களும் வரலாறும் இன்னும் வேலை செய்யும்.</string>
+    <string name="err_model_integrity">AI மாடல் பாதுகாப்புச் சோதனையில் தோல்வியடைந்தது, அது பயன்படுத்தப்படாது. செயலியை மீண்டும் நிறுவவும்.</string>
+    <string name="err_inference_failed">AI மாடலால் இந்தப் படத்தைப் பகுப்பாய்வு செய்ய முடியவில்லை, எனவே முடிவு எதுவும் வழங்கப்படவில்லை. மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="err_retake_image">இந்தப் புகைப்படம் AI பரிசோதனைக்குப் போதுமானதாக இல்லை (%1$s). விழித்திரையின் புதிய புகைப்படத்தை எடுக்கவும்.</string>
+    <string name="err_not_fundus_image">இது விழித்திரை (ஃபண்டஸ்) புகைப்படமாகத் தெரியவில்லை. AI பரிசோதனைக்கு ஃபண்டஸ் கேமராவில் எடுக்கப்பட்ட கண்ணின் பின்பகுதிப் புகைப்படம் தேவை.</string>
+    <string name="quality_reason_too_dark">மிகவும் இருட்டாக உள்ளது</string>
+    <string name="quality_reason_too_bright">மிகவும் பிரகாசமாக உள்ளது</string>
+    <string name="quality_reason_blurred">மங்கலாக உள்ளது</string>
+    <string name="quality_reason_glare">கடுமையான ஒளிக்கூச்சம்</string>
+    <string name="quality_reason_too_small">தெளிவுத்திறன் மிகக் குறைவு</string>
+    <string name="quality_reason_other">விழித்திரை தெளிவாகத் தெரியவில்லை</string>
+    <string name="rec_urgent_referral">அவசர பரிந்துரை: தீவிர நீரிழிவு விழித்திரை நோயின் அறிகுறிகள். கூடிய விரைவில் கண் நிபுணரைச் சந்திக்க ஏற்பாடு செய்யவும்.</string>
+    <string name="rec_referral">பரிந்துரை: பரிந்துரைக்க வேண்டிய நீரிழிவு விழித்திரை நோயின் அறிகுறிகள். கண் நிபுணரிடம் பரிசோதனைக்கு ஏற்பாடு செய்யவும்.</string>
+    <string name="rec_human_review">AI முடிவு உறுதியாக இல்லை. நோயாளிக்கு ஆலோசனை வழங்கும் முன், இந்தப் படத்தைப் பயிற்சி பெற்ற மதிப்பீட்டாளர் அல்லது கண் நிபுணரிடம் சரிபார்க்கவும்.</string>
+    <string name="rec_review_suffix">" AI உறுதியாக இல்லை - பயிற்சி பெற்ற ஒருவர் இந்தப் படத்தைச் சரிபார்க்க வேண்டும்."</string>
+    <string name="source_on_device">கைபேசியில் உள்ள AI மாடல் (ஆஃப்லைன்)</string>
 </resources>

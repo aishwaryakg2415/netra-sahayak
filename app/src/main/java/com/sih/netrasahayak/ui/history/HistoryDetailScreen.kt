@@ -23,6 +23,7 @@ import com.sih.netrasahayak.R
 import com.sih.netrasahayak.database.ScreeningEntity
 import com.sih.netrasahayak.model.DrClass
 import com.sih.netrasahayak.model.Gender
+import com.sih.netrasahayak.ui.components.localizedRecommendation
 import com.sih.netrasahayak.ui.components.DisclaimerBanner
 import com.sih.netrasahayak.ui.components.ErrorView
 import com.sih.netrasahayak.ui.components.LabelledSection
@@ -56,11 +57,12 @@ fun HistoryDetailScreen(
     }
 
     val drClass = DrClass.fromApi(screening.prediction)
-    val recommendationText = if (drClass != null && (screening.recommendation.isBlank() || screening.recommendation == drClass.defaultRecommendation)) {
-        drClass.getLocalizedRecommendation()
-    } else {
-        screening.recommendation
-    }
+    val recommendationText = localizedRecommendation(
+        drClass = drClass,
+        decisionCategory = screening.decisionCategory,
+        needsReview = screening.needsReview,
+        storedText = screening.recommendation
+    )
 
     Column(
         modifier = modifier

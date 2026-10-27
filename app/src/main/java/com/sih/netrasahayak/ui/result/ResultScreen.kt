@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.sih.netrasahayak.R
 import com.sih.netrasahayak.model.ScreeningResult
+import com.sih.netrasahayak.ui.components.localizedRecommendation
 import com.sih.netrasahayak.ui.components.DisclaimerBanner
 import com.sih.netrasahayak.ui.components.PrimaryButton
 import com.sih.netrasahayak.ui.components.ResultCard
@@ -40,11 +41,12 @@ fun ResultScreen(
     modifier: Modifier = Modifier,
     savedLocally: Boolean = true
 ) {
-    val recommendationText = if (result.recommendation.isBlank() || result.recommendation == result.drClass.defaultRecommendation) {
-        result.drClass.getLocalizedRecommendation()
-    } else {
-        result.recommendation
-    }
+    val recommendationText = localizedRecommendation(
+        drClass = result.drClass,
+        decisionCategory = result.decisionCategory,
+        needsReview = result.needsReview,
+        storedText = result.recommendation
+    )
 
     Column(
         modifier = modifier

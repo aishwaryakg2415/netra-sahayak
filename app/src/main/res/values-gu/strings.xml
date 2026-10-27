@@ -191,4 +191,22 @@
     <string name="err_offline_model_unavailable">આ વર્ઝનમાં ઓફલાઇન AI તપાસ ઉપલબ્ધ નથી. કૃપા કરીને ઇન્ટરનેટ કનેક્ટ કરો.</string>
 
     <string name="err_unknown">કંઈક ખોટું થયું. કૃપા કરીને ફરી પ્રયાસ કરો.</string>
+
+    <!-- On-device AI screening -->
+    <string name="err_model_not_installed">આ ઍપ સંસ્કરણમાં ઑફલાઇન AI મૉડલ ઇન્સ્ટોલ કરેલું નથી, તેથી સ્ક્રીનિંગ થઈ શકતું નથી. દર્દીની વિગતો અને ઇતિહાસ હજુ પણ કામ કરે છે.</string>
+    <string name="err_model_integrity">AI મૉડલ સુરક્ષા તપાસમાં નિષ્ફળ ગયું છે અને તેનો ઉપયોગ કરવામાં આવશે નહીં. કૃપા કરીને ઍપ ફરીથી ઇન્સ્ટોલ કરો.</string>
+    <string name="err_inference_failed">AI મૉડલ આ છબીનું વિશ્લેષણ કરી શક્યું નહીં, તેથી કોઈ પરિણામ આપવામાં આવ્યું નથી. કૃપા કરીને ફરી પ્રયાસ કરો.</string>
+    <string name="err_retake_image">આ ફોટો AI સ્ક્રીનિંગ માટે પૂરતો સારો નથી (%1$s). કૃપા કરીને રેટિનાનો નવો ફોટો લો.</string>
+    <string name="err_not_fundus_image">આ રેટિના (ફંડસ) ફોટો લાગતો નથી. AI સ્ક્રીનિંગ માટે ફંડસ કૅમેરાથી લીધેલો આંખના પાછળના ભાગનો ફોટો જરૂરી છે.</string>
+    <string name="quality_reason_too_dark">ખૂબ અંધારું</string>
+    <string name="quality_reason_too_bright">ખૂબ વધારે પ્રકાશ</string>
+    <string name="quality_reason_blurred">ઝાંખો</string>
+    <string name="quality_reason_glare">તીવ્ર ચમક</string>
+    <string name="quality_reason_too_small">રિઝોલ્યુશન ખૂબ ઓછું</string>
+    <string name="quality_reason_other">રેટિના સ્પષ્ટ દેખાતી નથી</string>
+    <string name="rec_urgent_referral">તાત્કાલિક રેફરલની ભલામણ: ગંભીર ડાયાબિટિક રેટિનોપથીના સંકેતો. કૃપા કરીને શક્ય તેટલી વહેલી તકે આંખના નિષ્ણાતની મુલાકાતની વ્યવસ્થા કરો.</string>
+    <string name="rec_referral">રેફરલની ભલામણ: રેફર કરવા યોગ્ય ડાયાબિટિક રેટિનોપથીના સંકેતો. કૃપા કરીને આંખના નિષ્ણાત પાસે તપાસની વ્યવસ્થા કરો.</string>
+    <string name="rec_human_review">AI પરિણામ ચોક્કસ નથી. દર્દીને સલાહ આપતા પહેલાં કૃપા કરીને આ છબી તાલીમ પામેલા ગ્રેડર અથવા આંખના નિષ્ણાત પાસે તપાસાવો.</string>
+    <string name="rec_review_suffix">" AI ચોક્કસ ન હતું - તાલીમ પામેલી વ્યક્તિએ આ છબી તપાસવી જોઈએ."</string>
+    <string name="source_on_device">ફોન પરનું AI મૉડલ (ઑફલાઇન)</string>
 </resources>

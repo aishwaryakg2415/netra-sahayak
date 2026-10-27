@@ -158,4 +158,22 @@
     <string name="err_storage_error">इस फोन पर जांच सहेजी नहीं जा सकी।</string>
     <string name="err_offline_model_unavailable">इस संस्करण में ऑफ़लाइन एआई जांच उपलब्ध नहीं है। कृपया इंटरनेट से जुड़ें।</string>
     <string name="err_unknown">कुछ गलत हो गया। कृपया पुनः प्रयास करें।</string>
+
+    <!-- On-device AI screening -->
+    <string name="err_model_not_installed">इस ऐप संस्करण में ऑफ़लाइन AI मॉडल इंस्टॉल नहीं है, इसलिए स्क्रीनिंग नहीं हो सकती। मरीज़ का विवरण और इतिहास अब भी काम करते हैं।</string>
+    <string name="err_model_integrity">AI मॉडल सुरक्षा जाँच में विफल रहा और उसका उपयोग नहीं किया जाएगा। कृपया ऐप को फिर से इंस्टॉल करें।</string>
+    <string name="err_inference_failed">AI मॉडल इस तस्वीर का विश्लेषण नहीं कर सका, इसलिए कोई परिणाम नहीं दिया गया। कृपया फिर से प्रयास करें।</string>
+    <string name="err_retake_image">यह फ़ोटो AI स्क्रीनिंग के लिए पर्याप्त अच्छी नहीं है (%1$s)। कृपया रेटिना की नई फ़ोटो लें।</string>
+    <string name="err_not_fundus_image">यह रेटिना (फंडस) की फ़ोटो नहीं लगती। AI स्क्रीनिंग के लिए फंडस कैमरे से ली गई आँख के पिछले हिस्से की फ़ोटो चाहिए।</string>
+    <string name="quality_reason_too_dark">बहुत अंधेरी</string>
+    <string name="quality_reason_too_bright">बहुत ज़्यादा रोशनी</string>
+    <string name="quality_reason_blurred">धुंधली</string>
+    <string name="quality_reason_glare">तेज़ चमक</string>
+    <string name="quality_reason_too_small">रिज़ॉल्यूशन बहुत कम</string>
+    <string name="quality_reason_other">रेटिना साफ़ दिखाई नहीं दे रहा</string>
+    <string name="rec_urgent_referral">तुरंत रेफ़रल की सलाह: गंभीर डायबिटिक रेटिनोपैथी के संकेत। कृपया जल्द से जल्द नेत्र विशेषज्ञ से मिलने की व्यवस्था करें।</string>
+    <string name="rec_referral">रेफ़रल की सलाह: रेफ़र करने योग्य डायबिटिक रेटिनोपैथी के संकेत। कृपया नेत्र विशेषज्ञ से जाँच की व्यवस्था करें।</string>
+    <string name="rec_human_review">AI परिणाम निश्चित नहीं है। मरीज़ को सलाह देने से पहले कृपया इस फ़ोटो की जाँच किसी प्रशिक्षित ग्रेडर या नेत्र विशेषज्ञ से करवाएँ।</string>
+    <string name="rec_review_suffix">" AI निश्चित नहीं था - किसी प्रशिक्षित व्यक्ति को इस फ़ोटो की जाँच करनी चाहिए।"</string>
+    <string name="source_on_device">फ़ोन पर AI मॉडल (ऑफ़लाइन)</string>
 </resources>

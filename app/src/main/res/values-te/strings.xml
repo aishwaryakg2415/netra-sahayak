@@ -172,4 +172,22 @@
     <string name="err_offline_model_unavailable">ఈ వెర్షన్‌లో ఆఫ్‌లైన్ AI స్క్రీనింగ్ అందుబాటులో లేదు. దయచేసి ఇంటర్నెట్‌కు కనెక్ట్ చేయండి.</string>
 
     <string name="err_unknown">ఏదో తప్పు జరిగింది. దయచేసి మళ్లీ ప్రయత్నించండి.</string>
+
+    <!-- On-device AI screening -->
+    <string name="err_model_not_installed">ఈ యాప్ వెర్షన్‌లో ఆఫ్‌లైన్ AI మోడల్ ఇన్‌స్టాల్ కాలేదు, కాబట్టి స్క్రీనింగ్ చేయడం సాధ్యం కాదు. రోగి వివరాలు మరియు చరిత్ర ఇప్పటికీ పనిచేస్తాయి.</string>
+    <string name="err_model_integrity">AI మోడల్ భద్రతా తనిఖీలో విఫలమైంది, దానిని ఉపయోగించరు. దయచేసి యాప్‌ను మళ్లీ ఇన్‌స్టాల్ చేయండి.</string>
+    <string name="err_inference_failed">AI మోడల్ ఈ చిత్రాన్ని విశ్లేషించలేకపోయింది, కాబట్టి ఫలితం ఇవ్వలేదు. దయచేసి మళ్లీ ప్రయత్నించండి.</string>
+    <string name="err_retake_image">ఈ ఫోటో AI స్క్రీనింగ్‌కు సరిపడినంత బాగా లేదు (%1$s). దయచేసి రెటీనా యొక్క కొత్త ఫోటో తీయండి.</string>
+    <string name="err_not_fundus_image">ఇది రెటీనా (ఫండస్) ఫోటోలా కనిపించడం లేదు. AI స్క్రీనింగ్‌కు ఫండస్ కెమెరాతో తీసిన కంటి వెనుక భాగం ఫోటో అవసరం.</string>
+    <string name="quality_reason_too_dark">చాలా చీకటిగా ఉంది</string>
+    <string name="quality_reason_too_bright">చాలా ప్రకాశవంతంగా ఉంది</string>
+    <string name="quality_reason_blurred">అస్పష్టంగా ఉంది</string>
+    <string name="quality_reason_glare">తీవ్రమైన మెరుపు</string>
+    <string name="quality_reason_too_small">రిజల్యూషన్ చాలా తక్కువ</string>
+    <string name="quality_reason_other">రెటీనా స్పష్టంగా కనిపించడం లేదు</string>
+    <string name="rec_urgent_referral">అత్యవసర రెఫరల్ సిఫార్సు: తీవ్రమైన డయాబెటిక్ రెటినోపతి సంకేతాలు. దయచేసి వీలైనంత త్వరగా కంటి నిపుణుడిని కలిసే ఏర్పాటు చేయండి.</string>
+    <string name="rec_referral">రెఫరల్ సిఫార్సు: రెఫర్ చేయవలసిన డయాబెటిక్ రెటినోపతి సంకేతాలు. దయచేసి కంటి నిపుణుడితో పరీక్ష ఏర్పాటు చేయండి.</string>
+    <string name="rec_human_review">AI ఫలితం నిశ్చితంగా లేదు. రోగికి సలహా ఇచ్చే ముందు, దయచేసి ఈ చిత్రాన్ని శిక్షణ పొందిన గ్రేడర్ లేదా కంటి నిపుణుడితో సమీక్షించండి.</string>
+    <string name="rec_review_suffix">" AIకి నిశ్చయత లేదు - శిక్షణ పొందిన వ్యక్తి ఈ చిత్రాన్ని సమీక్షించాలి."</string>
+    <string name="source_on_device">ఫోన్‌లోని AI మోడల్ (ఆఫ్‌లైన్)</string>
 </resources>

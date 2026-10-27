@@ -173,6 +173,6 @@
     <string name="rec_urgent_referral">Urgent referral recommended: signs suggesting severe diabetic retinopathy. Please arrange an eye specialist visit as soon as possible.</string>
     <string name="rec_referral">Referral recommended: signs suggesting referable diabetic retinopathy. Please arrange an eye specialist examination.</string>
     <string name="rec_human_review">The AI result is uncertain. Please have this image reviewed by a trained grader or eye specialist before advising the patient.</string>
-    <string name="rec_review_suffix"> The AI was not certain - a trained person should review this image.</string>
+    <string name="rec_review_suffix">" The AI was not certain - a trained person should review this image."</string>
     <string name="source_on_device">On-device AI model (offline)</string>
 </resources>

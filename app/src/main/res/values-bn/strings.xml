@@ -183,4 +183,22 @@
     <string name="err_storage_error">এই ফোনে স্ক্রীনিং সংরক্ষণ করা যায়নি।</string>
     <string name="err_offline_model_unavailable">এই সংস্করণে অফলাইন AI স্ক্রীনিং উপলব্ধ নেই। ইন্টারনেটের সাথে সংযোগ করুন।</string>
     <string name="err_unknown">কিছু ভুল হয়েছে। আবার চেষ্টা করুন।</string>
+
+    <!-- On-device AI screening -->
+    <string name="err_model_not_installed">এই অ্যাপ সংস্করণে অফলাইন AI মডেল ইনস্টল করা নেই, তাই স্ক্রিনিং করা যাবে না। রোগীর তথ্য ও ইতিহাস এখনও কাজ করবে।</string>
+    <string name="err_model_integrity">AI মডেলটি নিরাপত্তা পরীক্ষায় ব্যর্থ হয়েছে এবং এটি ব্যবহার করা হবে না। অনুগ্রহ করে অ্যাপটি আবার ইনস্টল করুন।</string>
+    <string name="err_inference_failed">AI মডেল এই ছবিটি বিশ্লেষণ করতে পারেনি, তাই কোনো ফলাফল দেওয়া হয়নি। অনুগ্রহ করে আবার চেষ্টা করুন।</string>
+    <string name="err_retake_image">এই ছবিটি AI স্ক্রিনিংয়ের জন্য যথেষ্ট ভালো নয় (%1$s)। অনুগ্রহ করে রেটিনার একটি নতুন ছবি তুলুন।</string>
+    <string name="err_not_fundus_image">এটি রেটিনার (ফান্ডাস) ছবি বলে মনে হচ্ছে না। AI স্ক্রিনিংয়ের জন্য ফান্ডাস ক্যামেরায় তোলা চোখের পেছনের অংশের ছবি প্রয়োজন।</string>
+    <string name="quality_reason_too_dark">খুব অন্ধকার</string>
+    <string name="quality_reason_too_bright">খুব বেশি উজ্জ্বল</string>
+    <string name="quality_reason_blurred">ঝাপসা</string>
+    <string name="quality_reason_glare">তীব্র ঝলক</string>
+    <string name="quality_reason_too_small">রেজোলিউশন খুব কম</string>
+    <string name="quality_reason_other">রেটিনা স্পষ্টভাবে দেখা যাচ্ছে না</string>
+    <string name="rec_urgent_referral">জরুরি রেফারালের পরামর্শ: গুরুতর ডায়াবেটিক রেটিনোপ্যাথির লক্ষণ। অনুগ্রহ করে যত দ্রুত সম্ভব চক্ষু বিশেষজ্ঞের কাছে যাওয়ার ব্যবস্থা করুন।</string>
+    <string name="rec_referral">রেফারালের পরামর্শ: রেফার করার মতো ডায়াবেটিক রেটিনোপ্যাথির লক্ষণ। অনুগ্রহ করে চক্ষু বিশেষজ্ঞের কাছে পরীক্ষার ব্যবস্থা করুন।</string>
+    <string name="rec_human_review">AI ফলাফল নিশ্চিত নয়। রোগীকে পরামর্শ দেওয়ার আগে অনুগ্রহ করে এই ছবিটি একজন প্রশিক্ষিত গ্রেডার বা চক্ষু বিশেষজ্ঞকে দিয়ে পর্যালোচনা করান।</string>
+    <string name="rec_review_suffix">" AI নিশ্চিত ছিল না - একজন প্রশিক্ষিত ব্যক্তির এই ছবিটি পর্যালোচনা করা উচিত।"</string>
+    <string name="source_on_device">ফোনে থাকা AI মডেল (অফলাইন)</string>
 </resources>
