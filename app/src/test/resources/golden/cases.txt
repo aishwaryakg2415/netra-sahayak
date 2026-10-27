@@ -1,0 +1,5 @@
+sample_fundus
+synthetic_landscape
+synthetic_odd_size
+synthetic_dark
+flat_grey

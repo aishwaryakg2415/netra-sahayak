@@ -1,0 +1,12 @@
+{
+  "case": "synthetic_dark",
+  "width": 700,
+  "height": 700,
+  "status": "RETAKE_IMAGE",
+  "reasons": [
+    "too_dark",
+    "retina_not_found"
+  ],
+  "metrics": null,
+  "geometry": null
+}

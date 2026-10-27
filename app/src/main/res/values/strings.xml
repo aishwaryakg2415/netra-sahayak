@@ -157,4 +157,22 @@
     <string name="err_storage_error">Could not save the screening on this phone.</string>
     <string name="err_offline_model_unavailable">Offline AI screening is not available in this version. Please connect to the internet.</string>
     <string name="err_unknown">Something went wrong. Please try again.</string>
+
+    <!-- On-device AI screening -->
+    <string name="err_model_not_installed">The offline AI model is not installed in this app version, so screening cannot run. Patient details and history still work.</string>
+    <string name="err_model_integrity">The AI model failed its safety check and will not be used. Please reinstall the app.</string>
+    <string name="err_inference_failed">The AI model could not analyse this image, so no result was produced. Please try again.</string>
+    <string name="err_retake_image">This photo is not good enough for AI screening (%1$s). Please take a new retinal photo.</string>
+    <string name="err_not_fundus_image">This does not look like a retinal (fundus) photograph. AI screening needs a photo of the back of the eye taken with a fundus camera.</string>
+    <string name="quality_reason_too_dark">too dark</string>
+    <string name="quality_reason_too_bright">too bright</string>
+    <string name="quality_reason_blurred">blurred</string>
+    <string name="quality_reason_glare">strong glare</string>
+    <string name="quality_reason_too_small">resolution too low</string>
+    <string name="quality_reason_other">retina not clearly visible</string>
+    <string name="rec_urgent_referral">Urgent referral recommended: signs suggesting severe diabetic retinopathy. Please arrange an eye specialist visit as soon as possible.</string>
+    <string name="rec_referral">Referral recommended: signs suggesting referable diabetic retinopathy. Please arrange an eye specialist examination.</string>
+    <string name="rec_human_review">The AI result is uncertain. Please have this image reviewed by a trained grader or eye specialist before advising the patient.</string>
+    <string name="rec_review_suffix"> The AI was not certain - a trained person should review this image.</string>
+    <string name="source_on_device">On-device AI model (offline)</string>
 </resources>

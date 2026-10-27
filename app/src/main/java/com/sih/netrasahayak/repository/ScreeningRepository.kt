@@ -54,7 +54,16 @@ class ScreeningRepository(
                     prediction = result.drClass.apiLabel,
                     confidence = result.confidence,
                     recommendation = result.recommendation,
-                    synced = false
+                    synced = false,
+                    screeningUuid = result.screeningId,
+                    classScores = result.classScores.takeIf { it.isNotEmpty() }
+                        ?.joinToString(",") { "%.5f".format(java.util.Locale.US, it) },
+                    qualityStatus = result.qualityStatus,
+                    referable = result.referable,
+                    urgent = result.urgent,
+                    needsReview = result.needsReview,
+                    decisionCategory = result.decisionCategory,
+                    modelVersion = result.modelVersion
                 )
             )
             Outcome.Success(id)
@@ -64,8 +73,20 @@ class ScreeningRepository(
         }
     }
 
+    /** Deletes the record and the retinal image / heatmap files it owns in app-private storage. */
     suspend fun delete(id: Long) = withContext(Dispatchers.IO) {
-        runCatching { dao.deleteById(id) }
+        runCatching {
+            dao.getById(id)?.let { entity ->
+                listOfNotNull(entity.imagePath, entity.heatmapUrl).forEach { deleteOwnedFile(it) }
+            }
+            dao.deleteById(id)
+        }.onFailure { Log.w(tag, "Could not delete screening", it) }
         Unit
+    }
+
+    private fun deleteOwnedFile(path: String) {
+        val file = java.io.File(path)
+        val root = context.filesDir.canonicalPath + java.io.File.separator
+        if (file.canonicalPath.startsWith(root)) file.delete()
     }
 }

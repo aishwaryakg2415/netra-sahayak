@@ -27,6 +27,13 @@ object AppConfig {
      */
     val USE_MOCK_API: Boolean = BuildConfig.USE_MOCK_API
 
+    /**
+     * Screening engine: "local" (on-device LiteRT, offline - the default),
+     * "remote" (optional dev backend) or "mock" (UI demo only).
+     * USE_MOCK_API now only affects the Sync screen's data source.
+     */
+    val INFERENCE_MODE: String = BuildConfig.INFERENCE_MODE
+
     /** Network timeouts, in seconds. Generous because rural links are slow. */
     const val CONNECT_TIMEOUT_SECONDS = 20L
     const val READ_TIMEOUT_SECONDS = 60L

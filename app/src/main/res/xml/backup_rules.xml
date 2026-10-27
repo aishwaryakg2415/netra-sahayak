@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Android 11 and lower. Screening records and retinal images are patient data:
+     they are excluded from backups so they never leave the phone. -->
 <full-backup-content>
-    <include domain="database" path="." />
+    <exclude domain="database" path="." />
+    <exclude domain="file" path="." />
+    <exclude domain="sharedpref" path="." />
 </full-backup-content>

@@ -1,0 +1,27 @@
+{
+  "case": "sample_fundus",
+  "width": 1024,
+  "height": 1024,
+  "status": "ACCEPTED_FOR_SCREENING",
+  "reasons": [],
+  "metrics": {
+    "min_side_px": 1024,
+    "retina_fraction": 0.6966514587402344,
+    "corner_dark_fraction": 1.0,
+    "red_ratio": 2.507486096230793,
+    "mean_brightness": 76.09387708180655,
+    "saturated_fraction": 0.00546622408070009,
+    "sharpness": 89.63620466756008
+  },
+  "geometry": {
+    "work_height": 1024,
+    "work_width": 1024,
+    "top": 30,
+    "left": 30,
+    "bbox_height": 965,
+    "bbox_width": 965,
+    "side": 965,
+    "pad_top": 0,
+    "pad_left": 0
+  }
+}

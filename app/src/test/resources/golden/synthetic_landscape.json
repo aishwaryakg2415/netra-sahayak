@@ -1,0 +1,27 @@
+{
+  "case": "synthetic_landscape",
+  "width": 900,
+  "height": 600,
+  "status": "ACCEPTED_FOR_SCREENING",
+  "reasons": [],
+  "metrics": {
+    "min_side_px": 600,
+    "retina_fraction": 0.4232111111111111,
+    "corner_dark_fraction": 1.0,
+    "red_ratio": 2.231670114650748,
+    "mean_brightness": 76.55644057142365,
+    "saturated_fraction": 0.0,
+    "sharpness": 482.0064718096815
+  },
+  "geometry": {
+    "work_height": 600,
+    "work_width": 900,
+    "top": 31,
+    "left": 181,
+    "bbox_height": 539,
+    "bbox_width": 539,
+    "side": 539,
+    "pad_top": 0,
+    "pad_left": 0
+  }
+}

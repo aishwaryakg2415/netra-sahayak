@@ -1,0 +1,27 @@
+{
+  "case": "synthetic_odd_size",
+  "width": 1037,
+  "height": 1101,
+  "status": "ACCEPTED_FOR_SCREENING",
+  "reasons": [],
+  "metrics": {
+    "min_side_px": 1037,
+    "retina_fraction": 0.6005510705510706,
+    "corner_dark_fraction": 1.0,
+    "red_ratio": 2.2289976370764193,
+    "mean_brightness": 78.74490674731763,
+    "saturated_fraction": 0.0,
+    "sharpness": 198.28808539800812
+  },
+  "geometry": {
+    "work_height": 550,
+    "work_width": 518,
+    "top": 42,
+    "left": 26,
+    "bbox_height": 467,
+    "bbox_width": 467,
+    "side": 467,
+    "pad_top": 0,
+    "pad_left": 0
+  }
+}

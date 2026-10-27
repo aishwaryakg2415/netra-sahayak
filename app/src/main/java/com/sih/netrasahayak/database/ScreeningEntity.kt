@@ -31,5 +31,17 @@ data class ScreeningEntity(
     @ColumnInfo(name = "created_at") val createdAt: Long = System.currentTimeMillis(),
 
     /** false until the record has been pushed to a server. Drives the Sync screen. */
-    @ColumnInfo(name = "synced") val synced: Boolean = false
+    @ColumnInfo(name = "synced") val synced: Boolean = false,
+
+    // ---- Added in schema v2 (on-device AI). All nullable / defaulted so v1 rows migrate untouched.
+
+    @ColumnInfo(name = "screening_uuid") val screeningUuid: String? = null,
+    /** Calibrated scores for grades 0..4, comma-separated. */
+    @ColumnInfo(name = "class_scores") val classScores: String? = null,
+    @ColumnInfo(name = "quality_status") val qualityStatus: String? = null,
+    @ColumnInfo(name = "referable") val referable: Boolean? = null,
+    @ColumnInfo(name = "urgent") val urgent: Boolean? = null,
+    @ColumnInfo(name = "needs_review", defaultValue = "0") val needsReview: Boolean = false,
+    @ColumnInfo(name = "decision_category") val decisionCategory: String? = null,
+    @ColumnInfo(name = "model_version") val modelVersion: String? = null
 )

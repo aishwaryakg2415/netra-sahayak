@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Debug only: lets developers try the optional FastAPI backend (INFERENCE_MODE = "remote").
+     Release builds do not merge this file and therefore have no network access. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>

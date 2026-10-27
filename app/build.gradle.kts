@@ -29,9 +29,22 @@ android {
         // ---------------------------------------------------------------
         buildConfigField("String", "BASE_URL", "\"http://10.0.2.2:8000/\"")
 
-        // Development switch. true  -> fake results, no server needed.
-        //                    false -> real Retrofit calls to BASE_URL.
+        // Sync screen data source. true -> fake sync, false -> POST /screenings.
         buildConfigField("boolean", "USE_MOCK_API", "true")
+
+        // Screening engine: "local" = on-device LiteRT model (offline, default),
+        // "remote" = optional FastAPI backend (debug only), "mock" = UI demo.
+        buildConfigField("String", "INFERENCE_MODE", "\"local\"")
+    }
+
+    // Room schema JSON (database migrations are checked against these files).
+    ksp {
+        arg("room.schemaLocation", "$projectDir/schemas")
+    }
+
+    // The model must be stored uncompressed so it can be memory-mapped.
+    androidResources {
+        noCompress += "tflite"
     }
 
     buildTypes {
@@ -47,6 +60,8 @@ android {
             // Release builds talk to the real backend over HTTPS.
             buildConfigField("String", "BASE_URL", "\"https://your-server.example.com/\"")
             buildConfigField("boolean", "USE_MOCK_API", "false")
+            // Release is always offline on-device inference; it has no INTERNET permission.
+            buildConfigField("String", "INFERENCE_MODE", "\"local\"")
         }
     }
 
@@ -108,7 +123,15 @@ dependencies {
 
     implementation(libs.androidx.exifinterface)
 
+    // LiteRT (formerly TensorFlow Lite) - on-device DR model, CPU (XNNPACK) + optional GPU
+    implementation(libs.litert)
+    implementation(libs.litert.gpu)
+    implementation(libs.litert.gpu.api)
+
     testImplementation(libs.junit)
+    testImplementation(libs.gson)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.room.testing)
 }

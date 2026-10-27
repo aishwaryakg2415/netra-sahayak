@@ -42,6 +42,25 @@ sealed class AppError(val message: String) {
     data object OfflineModelUnavailable :
         AppError("Offline AI screening is not available in this version. Please connect to the internet.")
 
+    /** The APK was built without the model assets. Never answered with a fake result. */
+    data object ModelNotInstalled :
+        AppError("The offline AI model is not installed in this app version, so screening cannot run.")
+
+    /** Model or weights failed their SHA-256 check, or the config does not match this app. */
+    data object ModelIntegrityFailed :
+        AppError("The AI model failed its safety check and will not be used. Please reinstall the app.")
+
+    data object InferenceFailed :
+        AppError("The AI model could not analyse this image, so no result was produced. Please try again.")
+
+    /** Image-quality gate said RETAKE_IMAGE. [reasons] are ImageQualityAssessor reason codes. */
+    data class RetakeImage(val reasons: List<String>) :
+        AppError("This photo is not good enough for AI screening. Please take a new retinal photo.")
+
+    /** Image-quality gate said UNSUPPORTED_IMAGE (not plausibly a fundus photograph). */
+    data object NotFundusImage :
+        AppError("This does not look like a retinal (fundus) photograph.")
+
     data class Unknown(val details: String? = null) : AppError("Something went wrong. Please try again.")
 
     @Composable
@@ -59,6 +78,24 @@ sealed class AppError(val message: String) {
         is UploadFailed -> stringResource(R.string.err_upload_failed)
         is StorageError -> stringResource(R.string.err_storage_error)
         is OfflineModelUnavailable -> stringResource(R.string.err_offline_model_unavailable)
+        is ModelNotInstalled -> stringResource(R.string.err_model_not_installed)
+        is ModelIntegrityFailed -> stringResource(R.string.err_model_integrity)
+        is InferenceFailed -> stringResource(R.string.err_inference_failed)
+        is RetakeImage -> stringResource(
+            R.string.err_retake_image,
+            reasons.map { reasonText(it) }.distinct().joinToString(", ")
+        )
+        is NotFundusImage -> stringResource(R.string.err_not_fundus_image)
         is Unknown -> details ?: stringResource(R.string.err_unknown)
+    }
+
+    @Composable
+    private fun reasonText(code: String): String = when (code) {
+        "too_dark" -> stringResource(R.string.quality_reason_too_dark)
+        "too_bright" -> stringResource(R.string.quality_reason_too_bright)
+        "blurred" -> stringResource(R.string.quality_reason_blurred)
+        "glare" -> stringResource(R.string.quality_reason_glare)
+        "too_small" -> stringResource(R.string.quality_reason_too_small)
+        else -> stringResource(R.string.quality_reason_other)
     }
 }

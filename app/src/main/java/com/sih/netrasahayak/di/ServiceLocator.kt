@@ -8,6 +8,7 @@ import com.sih.netrasahayak.database.NetraDatabase
 import com.sih.netrasahayak.network.ConnectivityObserver
 import com.sih.netrasahayak.network.RetrofitProvider
 import com.sih.netrasahayak.repository.InferenceRepository
+import com.sih.netrasahayak.repository.LocalInferenceRepository
 import com.sih.netrasahayak.repository.MockInferenceRepository
 import com.sih.netrasahayak.repository.MockSyncDataSource
 import com.sih.netrasahayak.repository.RemoteInferenceRepository
@@ -35,23 +36,24 @@ object ServiceLocator {
     val connectivityObserver: ConnectivityObserver by lazy { ConnectivityObserver(appContext) }
 
     /**
-     * Swap between demo and production here.
+     * Which engine answers "what does the AI say about this image?".
      *
-     * AppConfig.USE_MOCK_API is a BuildConfig flag:
-     *   debug   -> true  (MockInferenceRepository)
-     *   release -> false (RemoteInferenceRepository -> FastAPI)
-     *
-     * A future offline build can return LocalInferenceRepository() instead.
+     * AppConfig.INFERENCE_MODE is a BuildConfig field (app/build.gradle.kts):
+     *   "local"  -> LocalInferenceRepository: LiteRT model bundled in the APK,
+     *               fully offline. Default for debug AND release.
+     *   "remote" -> RemoteInferenceRepository: optional FastAPI backend (debug only;
+     *               release builds have no INTERNET permission).
+     *   "mock"   -> MockInferenceRepository: UI demo, fake results. Never in release.
      */
     val inferenceRepository: InferenceRepository by lazy {
-        if (AppConfig.USE_MOCK_API) {
-            MockInferenceRepository(appContext)
-        } else {
-            RemoteInferenceRepository(
+        when (AppConfig.INFERENCE_MODE) {
+            "mock" -> MockInferenceRepository(appContext)
+            "remote" -> RemoteInferenceRepository(
                 context = appContext,
                 api = RetrofitProvider.apiService,
                 connectivity = connectivityObserver
             )
+            else -> LocalInferenceRepository(appContext)
         }
     }
 

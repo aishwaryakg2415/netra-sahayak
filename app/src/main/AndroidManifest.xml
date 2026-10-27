@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Internet is used only for AI analysis and sync. The rest of the app works offline. -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <!--
+      No INTERNET permission: AI screening runs entirely on the device.
+      Debug builds add INTERNET in src/debug/AndroidManifest.xml for the optional
+      development backend (INFERENCE_MODE = "remote"). Release builds cannot reach
+      the network at all. ACCESS_NETWORK_STATE only lets the Sync screen show status.
+    -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <!-- Requested at runtime, only when the user taps "Take Photo". -->

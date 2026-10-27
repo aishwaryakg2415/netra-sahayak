@@ -160,7 +160,7 @@ object ImageUtils {
         return sampleSize
     }
 
-    private fun readRotationDegrees(context: Context, uri: Uri): Int =
+    fun readRotationDegrees(context: Context, uri: Uri): Int =
         runCatching {
             context.contentResolver.openInputStream(uri)?.use { stream ->
                 when (
