@@ -1,0 +1,194 @@
+<resources>
+    <string name="app_name">નેત્ર સહાયક</string>
+    <string name="app_subtitle">AI-સહાયિત ડાયાબિટીક રેટિનોપેથી સ્ક્રીનીંગ</string>
+    <string name="disclaimer">માત્ર AI સ્ક્રીનીંગ સહાય. અંતિમ નિદાન લાયક આરોગ્યસંભાળ વ્યાવસાયિક દ્વારા કન્ફર્મ થવું જોઈએ.</string>
+    <string name="go_back">પાછા જાઓ</string>
+    <string name="change_language">ભાષા બદલો</string>
+    <string name="select_language">ભાષા પસંદ કરો</string>
+    <string name="cancel">રદ કરો</string>
+    <string name="ok">બરાબર</string>
+    <string name="close">બંધ કરો</string>
+
+    <!-- Navigation Titles -->
+    <string name="nav_new_screening">નવી સ્ક્રીનીંગ</string>
+    <string name="nav_retinal_image">રેટિના ઇમેજ</string>
+    <string name="nav_take_photo">ફોટો લો</string>
+    <string name="nav_image_preview">ઇમેજ પૂર્વાવલોકન</string>
+    <string name="nav_screening_result">સ્ક્રીનીંગ પરિણામ</string>
+    <string name="nav_screening_history">સ્ક્રીનીંગ ઇતિહાસ</string>
+    <string name="nav_screening_details">સ્ક્રીનીંગ વિગતો</string>
+    <string name="nav_sync_data">ડેટા સિંક કરો</string>
+
+    <!-- Home Screen -->
+    <string name="start_new_screening">નવી સ્ક્રીનીંગ શરૂ કરો</string>
+    <string name="screening_history">સ્ક્રીનીંગ ઇતિહાસ</string>
+    <string name="sync_data">ડેટા સિંક કરો</string>
+
+    <!-- Patient Details Screen -->
+    <string name="patient_details">દર્દીની વિગતો</string>
+    <string name="patient_details_subtitle">માત્ર સ્ક્રીનીંગ રેકોર્ડ માટે જરૂરી વિગતો.</string>
+    <string name="patient_id">દર્દી ID</string>
+    <string name="age_years">ઉંમર (વર્ષ)</string>
+    <string name="gender_optional">જાતિ (મરજિયાત)</string>
+    <string name="gender_female">મહિલા</string>
+    <string name="gender_male">પુરુષ</string>
+    <string name="gender_other">અન્ય</string>
+    <string name="gender_not_recorded">નોંધાયેલ નથી</string>
+    <string name="years_with_diabetes_optional">ડાયાબિટીસના વર્ષો (મરજિયાત)</string>
+    <string name="btn_continue">આગળ વધો</string>
+
+    <!-- Validation Errors -->
+    <string name="err_enter_patient_id">કૃપા કરીને દર્દી ID દાખલ કરો.</string>
+    <string name="err_patient_id_too_short">દર્દી ID ખૂબ નાનું છે.</string>
+    <string name="err_enter_patient_age">કૃપા કરીને દર્દીની ઉંમર દાખલ કરો.</string>
+    <string name="err_age_must_be_number">ઉંમર એક નંબર હોવી જોઈએ.</string>
+    <string name="err_age_range">ઉંમર %1$d અને %2$d ની વચ્ચે હોવી જોઈએ.</string>
+    <string name="err_years_must_be_number">વર્ષો એક નંબર હોવો જોઈએ.</string>
+    <string name="err_realistic_years">કૃપા કરીને વાસ્તવિક વર્ષો દાખલ કરો.</string>
+    <string name="err_years_exceed_age">દર્દીની ઉંમર કરતાં વધુ ન હોઈ શકે.</string>
+
+    <!-- Image Source Screen -->
+    <string name="provide_retinal_image">રેટિના ઇમેજ આપો</string>
+    <string name="provide_retinal_image_subtitle">નવો ફોટો લો અથવા હયાત રેટિના ઇમેજ પસંદ કરો.</string>
+    <string name="take_photo">ફોટો લો</string>
+    <string name="choose_from_gallery">ગેલેરીમાંથી પસંદ કરો</string>
+
+    <string name="fundus_camera_note">આ વર્ઝન ફોનના સામાન્ય કેમેરાનો ઉપયોગ કરે છે. સમર્પિત ફંડસ કેમેરા પાછળથી કનેક્ટ કરી શકાય છે.</string>
+
+    <!-- Camera Screen -->
+    <string name="camera_guidance">ફોનને સ્થિર રાખો અને આંખ વડે ફ્રેમ ભરો.</string>
+    <string name="capturing">ફોટો લેવાઈ રહ્યો છે...</string>
+    <string name="capture">ફોટો લો</string>
+    <string name="waiting_camera_permission">કેમેરા પરવાનગીની રાહ જોઈ રહ્યા છીએ...</string>
+
+    <string name="please_allow_camera">ફોટો લેવા માટે કૃપા કરીને કેમેરા પરવાનગી આપો.</string>
+
+    <!-- Image Preview Screen -->
+    <string name="analyzing_retinal_image">રેટિના ઇમેજનું વિશ્લેષણ થઈ રહ્યું છે...</string>
+    <string name="please_wait">કૃપા કરીને રાહ જુઓ.</string>
+
+    <string name="check_the_image">ઇમેજ તપાસો</string>
+    <string name="check_image_subtitle">વિશ્લેષણ કરતા પહેલા ખાતરી કરો કે આંખ સ્પષ્ટ અને ફોકસમાં છે.</string>
+    <string name="analyze_image">ઇમેજનું વિશ્લેષણ કરો</string>
+
+    <string name="try_again">ફરી પ્રયાસ કરો</string>
+
+    <string name="retake">ફરીથી ફોટો લો</string>
+    <string name="choose_another">બીજી પસંદ કરો</string>
+
+    <!-- Result Screen -->
+    <string name="ai_screening_result">AI સ્ક્રીનીંગ પરિણામ</string>
+    <string name="referral_recommended">નિષ્ણાતની સલાહ લેવાની ભલામણ કરવામાં આવે છે</string>
+
+    <string name="no_referral_suggested">આ સમયે કોઈ રિફરલની જરૂર નથી</string>
+
+    <string name="confidence">વિશ્વાસ સ્તર</string>
+    <string name="confidence_tooltip">AI આ સૂચન વિશે કેટલું ચોક્કસ છે.</string>
+    <string name="why_this_result">આ પરિણામ કેમ?</string>
+    <string name="why_result_subtitle">હાઇલાઇટ કરેલા વિસ્તારો દર્શાવે છે કે કયા ભાગોએ AI મોડેલના અનુમાનમાં યોગદાન આપ્યું.</string>
+
+    <string name="recommended_action">ભલામણ કરેલ પગલું</string>
+    <string name="saved_on_phone">આ ફોન પર સેવ થયેલ છે. તમે સ્ક્રીનીંગ ઇતિહાસમાંથી ફરીથી ખોલી શકો છો.</string>
+
+    <string name="done">પૂર્ણ</string>
+    <string name="result_not_available">આ સ્ક્રીનીંગ પરિણામ હવે ઉપલબ્ધ નથી.</string>
+
+    <string name="go_home">હોમ પર જાઓ</string>
+
+    <!-- Retinal Image Viewer -->
+    <string name="tab_original">મૂળ</string>
+    <string name="tab_heatmap">હીટમેપ</string>
+    <string name="tab_overlay">ઓવરલે</string>
+    <string name="image_not_available">ઇમેજ ઉપલબ્ધ નથી.</string>
+    <string name="explanation_not_provided">આ સ્ક્રીનીંગ માટે સ્પષ્ટતા ઇમેજ આપવામાં આવી ન હતી.</string>
+
+    <!-- History Screen -->
+    <string name="no_screenings_yet">હજુ સુધી કોઈ સ્ક્રીનીંગ નથી</string>
+
+    <string name="empty_history_subtitle">પૂર્ણ થયેલ સ્ક્રીનીંગ આ ફોન પર સેવ થાય છે અને ઇન્ટરનેટ વિના પણ અહીં દેખાય છે.</string>
+
+    <string name="opening_screening">સ્ક્રીનીંગ ખોલી રહ્યું છે...</string>
+    <string name="screening_not_found">આ સ્ક્રીનીંગ આ ફોન પર મળ્યું નથી.</string>
+
+    <string name="patient_label">દર્દી</string>
+    <string name="age_label">ઉંમર</string>
+    <string name="age_years_format">%1$d વર્ષ</string>
+    <string name="gender_label">જાતિ</string>
+
+    <string name="years_with_diabetes_label">ડાયાબિટીસના વર્ષો</string>
+
+    <string name="screened_on_label">તપાસ તારીખ</string>
+    <string name="open_screening">સ્ક્રીનીંગ ખોલો</string>
+
+    <!-- Sync Screen -->
+    <string name="internet_connection">ઇન્ટરનેટ કનેક્શન</string>
+    <string name="status_connected">કનેક્ટેડ</string>
+    <string name="status_not_connected">કનેક્ટેડ નથી</string>
+    <string name="pending_screenings">બાકી સ્ક્રીનીંગ</string>
+
+    <string name="pending_none">કોઈ નથી - બધું અપ-ટુ-ડેટ છે</string>
+    <string name="pending_one">1 સ્ક્રીનીંગ મોકલવાની બાકી છે</string>
+
+    <string name="pending_multiple">%1$d સ્ક્રીનીંગ મોકલવાની બાકી છે</string>
+
+    <string name="sending_screenings">સ્ક્રીનીંગ મોકલાઈ રહ્યું છે...</string>
+    <string name="sync_now">હમણાં સિંક કરો</string>
+    <string name="sync_nothing_to_send">મોકલવા માટે કંઈ નથી. બધું અપડેટ છે.</string>
+
+    <string name="sync_success">%1$d સ્ક્રીનીંગ સફળતાપૂર્વક મોકલવામાં આવ્યું.</string>
+    <string name="sync_partial">%1$d મોકલવામાં આવ્યું, %2$d મોકલી શકાયું નથી. %3$s</string>
+
+    <string name="please_try_again_later">કૃપા કરીને પછીથી ફરી પ્રયાસ કરો.</string>
+
+    <string name="offline_sync_note">સ્ક્રીનીંગ હંમેશા પહેલાં આ ફોન પર સેવ થાય છે. તમે ઇન્ટરનેટ વિના પણ કામ કરી શકો છો અને પછીથી સિંક કરી શકો છો.</string>
+
+    <!-- DR Classes -->
+    <string name="dr_no_dr_name">ડાયાબિટીક રેટિનોપેથી નથી</string>
+    <string name="dr_no_dr_short">DR નથી</string>
+
+    <string name="dr_no_dr_recommendation">કોઈ લક્ષણો મળ્યા નથી. એક વર્ષ પછી ફરીથી તપાસ કરો.</string>
+
+    <string name="dr_mild_name">હળવી ડાયાબિટીક રેટિનોપેથી</string>
+    <string name="dr_mild_short">હળવી DR</string>
+
+    <string name="dr_mild_recommendation">6 થી 12 મહિનામાં ફરીથી તપાસ કરો. બ્લડ સુગર નિયંત્રણ રાખવાની સલાહ આપો.</string>
+
+    <string name="dr_moderate_name">મધ્યમ ડાયાબિટીક રેટિનોપેથી</string>
+    <string name="dr_moderate_short">મધ્યમ DR</string>
+    <string name="dr_moderate_recommendation">આંખના સર્જન દ્વારા મૂલ્યાંકન કરવાની ભલામણ કરવામાં આવે છે.</string>
+
+    <string name="dr_severe_name">ગંભીર ડાયાબિટીક રેટિનોપેથી</string>
+
+    <string name="dr_severe_short">ગંભીર DR</string>
+
+    <string name="dr_severe_recommendation">નિષ્ણાતની સલાહ લેવાની ભલામણ છે. કૃપા કરીને ટૂંક સમયમાં આંખના નિષ્ણાતને મળો.</string>
+
+    <string name="dr_proliferative_name">પ્રોલિફેરેટિવ ડાયાબિટીક રેટિનોપેથી</string>
+
+    <string name="dr_proliferative_short">પ્રોલિફેરેટિવ DR</string>
+    <string name="dr_proliferative_recommendation">તાત્કાલિક નિષ્ણાતની મુલાકાત જરૂરી. કૃપા કરીને તરત જ આંખના નિષ્ણાતનો સંપર્ક કરો.</string>
+
+    <!-- App Errors -->
+    <string name="err_no_image_selected">કોઈ ઇમેજ પસંદ કરવામાં આવી નથી.</string>
+
+    <string name="err_camera_unavailable">કેમેરા એક્સેસ કરી શકાતો નથી.</string>
+    <string name="err_camera_permission_denied">ફોટો લેવા માટે કેમેરા પરવાનગી જરૂરી છે. કૃપા કરીને સેટિંગ્સમાં પરવાનગી આપો.</string>
+
+    <string name="err_invalid_image">આ ફાઇલ માન્ય ઇમેજ નથી. કૃપા કરીને બીજી પસંદ કરો.</string>
+
+    <string name="err_image_too_large">આ ઇમેજ ખૂબ મોટી છે. કૃપા કરીને નાની ઇમેજ વાપરો.</string>
+
+    <string name="err_no_internet">ઇન્ટરનેટ કનેક્શન નથી. AI તપાસ માટે ઇન્ટરનેટ જરૂરી છે. દર્દીની વિગતો અને ઇતિહાસ ઓફલાઇન કામ કરે છે.</string>
+
+    <string name="err_timeout">સર્વરે જવાબ આપવામાં ઘણો સમય લીધો. કૃપા કરીને ફરી પ્રયાસ કરો.</string>
+    <string name="err_server_unreachable">સર્વર સાથે કનેક્ટ કરી શકાતું નથી. કૃપા કરીને ફરી પ્રયાસ કરો.</string>
+
+    <string name="err_server_error">સર્વરે સમસ્યા દર્શાવી (ભૂલ %1$d). કૃપા કરીને ફરી પ્રયાસ કરો.</string>
+    <string name="err_invalid_response">સર્વર તરફથી અણધારી પ્રતિક્રિયા મળી. કૃપા કરીને ફરી પ્રયાસ કરો.</string>
+
+    <string name="err_upload_failed">ઇમેજ અપલોડ કરી શકાઈ નથી. કૃપા કરીને ફરી પ્રયાસ કરો.</string>
+    <string name="err_storage_error">આ ફોન પર સ્ક્રીનીંગ સેવ કરી શકાયું નથી.</string>
+    <string name="err_offline_model_unavailable">આ વર્ઝનમાં ઓફલાઇન AI તપાસ ઉપલબ્ધ નથી. કૃપા કરીને ઇન્ટરનેટ કનેક્ટ કરો.</string>
+
+    <string name="err_unknown">કંઈક ખોટું થયું. કૃપા કરીને ફરી પ્રયાસ કરો.</string>
+</resources>

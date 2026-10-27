@@ -1,0 +1,166 @@
+<resources>
+    <string name="app_name">நேத்ரா சகாயக்</string>
+    <string name="app_subtitle">AI-உதவியுடன் கூடிய நீரிழிவு விழித்திரை பரிசோதனை</string>
+    <string name="disclaimer">AI பரிசோதனை உதவி மட்டுமே. இறுதி நோயறிதலை தகுதிவாய்ந்த மருத்துவ நிபுணர் உறுதிப்படுத்த வேண்டும்.</string>
+    <string name="go_back">பின் செல்லவும்</string>
+    <string name="change_language">மொழியை மாற்றவும்</string>
+    <string name="select_language">மொழியைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="cancel">ரத்துசெய்</string>
+    <string name="ok">சரி</string>
+    <string name="close">மூடு</string>
+
+    <!-- Navigation Titles -->
+    <string name="nav_new_screening">புதிய பரிசோதனை</string>
+    <string name="nav_retinal_image">விழித்திரை படம்</string>
+    <string name="nav_take_photo">படம் எடுக்கவும்</string>
+    <string name="nav_image_preview">பட முன்னோட்டம்</string>
+    <string name="nav_screening_result">பரிசோதனை முடிவு</string>
+    <string name="nav_screening_history">பரிசோதனை வரலாறு</string>
+    <string name="nav_screening_details">பரிசோதனை விவரங்கள்</string>
+    <string name="nav_sync_data">தரவை ஒத்திசைக்கவும்</string>
+
+    <!-- Home Screen -->
+    <string name="start_new_screening">புதிய பரிசோதனையைத் தொடங்கவும்</string>
+    <string name="screening_history">பரிசோதனை வரலாறு</string>
+    <string name="sync_data">தரவை ஒத்திசைக்கவும்</string>
+
+    <!-- Patient Details Screen -->
+    <string name="patient_details">நோயாளி விவரங்கள்</string>
+    <string name="patient_details_subtitle">பரிசோதனைப் பதிவுக்குத் தேவையானவை மட்டுமே.</string>
+    <string name="patient_id">நோயாளி ID</string>
+    <string name="age_years">வயது (ஆண்டுகள்)</string>
+    <string name="gender_optional">பாலினம் (விருப்பத்தேர்வு)</string>
+    <string name="gender_female">பெண்</string>
+    <string name="gender_male">ஆண்</string>
+    <string name="gender_other">மற்றவை</string>
+    <string name="gender_not_recorded">பதிவு செய்யப்படவில்லை</string>
+    <string name="years_with_diabetes_optional">நீரிழிவு உள்ள ஆண்டுகள் (விருப்பத்தேர்வு)</string>
+    <string name="btn_continue">தொடரவும்</string>
+
+    <!-- Validation Errors -->
+    <string name="err_enter_patient_id">நோயாளி ID-ஐ உள்ளிடவும்.</string>
+    <string name="err_patient_id_too_short">நோயாளி ID மிகவும் சிறியதாக உள்ளது.</string>
+    <string name="err_enter_patient_age">நோயாளியின் வயதை உள்ளிடவும்.</string>
+
+    <string name="err_age_must_be_number">வயது ஒரு எண்ணாக இருக்க வேண்டும்.</string>
+    <string name="err_age_range">வயது %1$d முதல் %2$d வரை இருக்க வேண்டும்.</string>
+    <string name="err_years_must_be_number">ஆண்டுகள் ஒரு எண்ணாக இருக்க வேண்டும்.</string>
+    <string name="err_realistic_years">சரியான ஆண்டுகளின் எண்ணிக்கையை உள்ளிடவும்.</string>
+    <string name="err_years_exceed_age">நோயாளியின் வயதை விட அதிகமாக இருக்க முடியாது.</string>
+
+    <!-- Image Source Screen -->
+    <string name="provide_retinal_image">விழித்திரை படத்தை வழங்கவும்</string>
+    <string name="provide_retinal_image_subtitle">புதிய படத்தை எடுக்கவும் அல்லது இருக்கும் படத்தைத் தேர்ந்தெடுக்கவும்.</string>
+    <string name="take_photo">படம் எடுக்கவும்</string>
+    <string name="choose_from_gallery">கேலரியிலிருந்து தேர்ந்தெடுக்கவும்</string>
+    <string name="fundus_camera_note">இந்த பதிப்பு போனின் கேமராவைப் பயன்படுத்துகிறது. ஃபண்டஸ் கேமராவை பின்னர் இணைக்கலாம்.</string>
+
+    <!-- Camera Screen -->
+    <string name="camera_guidance">போனை அசையாமல் பிடித்து கண்ணை ஃபிரேமில் நிரப்பவும்.</string>
+    <string name="capturing">படம் எடுக்கப்படுகிறது...</string>
+    <string name="capture">படம் எடு</string>
+    <string name="waiting_camera_permission">கேமரா அனுமதிக்கு காத்திருக்கிறது...</string>
+    <string name="please_allow_camera">படம் எடுக்க கேமரா அனுமதியை வழங்கவும்.</string>
+
+    <!-- Image Preview Screen -->
+    <string name="analyzing_retinal_image">விழித்திரை படம் பகுப்பாய்வு செய்யப்படுகிறது...</string>
+    <string name="please_wait">தயவுசெய்து காத்திருக்கவும்.</string>
+    <string name="check_the_image">படத்தைச் சரிபார்க்கவும்</string>
+    <string name="check_image_subtitle">பகுப்பாய்வு செய்வதற்கு முன் கண் தெளிவாகவும் ஃபோகஸிலும் இருப்பதை உறுதிசெய்யவும்.</string>
+    <string name="analyze_image">படத்தைப் பகுப்பாய்வு செய்</string>
+    <string name="try_again">மீண்டும் முயற்சிக்கவும்</string>
+    <string name="retake">மீண்டும் எடுக்கவும்</string>
+    <string name="choose_another">வேறொன்றைத் தேர்ந்தெடுக்கவும்</string>
+
+    <!-- Result Screen -->
+    <string name="ai_screening_result">AI பரிசோதனை முடிவு</string>
+    <string name="referral_recommended">மருத்துவ ஆலோசனை பரிந்துரைக்கப்படுகிறது</string>
+    <string name="no_referral_suggested">தற்போது கூடுதல் ஆலோசனைகள் தேவையில்லை</string>
+    <string name="confidence">நம்பகத்தன்மை</string>
+    <string name="confidence_tooltip">இந்த பரிந்துரையில் AI எவ்வளவு உறுதியாக உள்ளது.</string>
+    <string name="why_this_result">இந்த முடிவு ஏன்?</string>
+    <string name="why_result_subtitle">ஹைலைட் செய்யப்பட்ட பகுதிகள் AI கணிப்புக்கு காரணமான பகுதிகளைக் காட்டுகின்றன.</string>
+    <string name="recommended_action">பரிந்துரைக்கப்பட்ட நடவடிக்கை</string>
+    <string name="saved_on_phone">இந்த போனில் சேமிக்கப்பட்டது. வரலாற்றுப் பக்கத்திலிருந்து மீண்டும் திறக்கலாம்.</string>
+    <string name="done">முடிந்தது</string>
+    <string name="result_not_available">இந்த பரிசோதனை முடிவு இப்போது கிடைக்கவில்லை.</string>
+    <string name="go_home">முகப்புக்குச் செல்</string>
+
+    <!-- Retinal Image Viewer -->
+    <string name="tab_original">அசல்</string>
+    <string name="tab_heatmap">ஹீட்மேப்</string>
+    <string name="tab_overlay">ஓவர்லே</string>
+    <string name="image_not_available">படம் கிடைக்கவில்லை.</string>
+    <string name="explanation_not_provided">இந்த பரிசோதனைக்கு விளக்கப் படம் வழங்கப்படவில்லை.</string>
+
+    <!-- History Screen -->
+    <string name="no_screenings_yet">இன்னும் பரிசோதனைகள் இல்லை</string>
+    <string name="empty_history_subtitle">முடிவடைந்த பரிசோதனைகள் போனில் சேமிக்கப்படும் மற்றும் இணையம் இல்லாமலும் இங்கு தோன்றும்.</string>
+    <string name="opening_screening">பரிசோதனை திறக்கப்படுகிறது...</string>
+    <string name="screening_not_found">இந்த பரிசோதனை போனில் காணப்படவில்லை.</string>
+    <string name="patient_label">நோயாளி</string>
+    <string name="age_label">வயது</string>
+    <string name="age_years_format">%1$d ஆண்டுகள்</string>
+    <string name="gender_label">பாலினம்</string>
+    <string name="years_with_diabetes_label">நீரிழிவு உள்ள ஆண்டுகள்</string>
+    <string name="screened_on_label">பரிசோதிக்கப்பட்ட நாள்</string>
+    <string name="open_screening">பரிசோதனையைத் திறக்கவும்</string>
+
+    <!-- Sync Screen -->
+    <string name="internet_connection">இணைய இணைப்பு</string>
+    <string name="status_connected">இணைக்கப்பட்டுள்ளது</string>
+    <string name="status_not_connected">இணைக்கப்படவில்லை</string>
+    <string name="pending_screenings">நிலுவையில் உள்ள பரிசோதனைகள்</string>
+    <string name="pending_none">எதுவுமில்லை - அனைத்தும் புதுப்பிக்கப்பட்டுள்ளன</string>
+    <string name="pending_one">1 பரிசோதனை அனுப்ப நிலுவையில் உள்ளது</string>
+    <string name="pending_multiple">%1$d பரிசோதனைகள் அனுப்ப நிலுவையில் உள்ளன</string>
+    <string name="sending_screenings">பரிசோதனைகள் அனுப்பப்படுகின்றன...</string>
+    <string name="sync_now">இப்போது ஒத்திசைக்கவும்</string>
+    <string name="sync_nothing_to_send">அனுப்ப எதுவும் இல்லை. அனைத்தும் புதுப்பிக்கப்பட்டுள்ளன.</string>
+    <string name="sync_success">%1$d பரிசோதனை வெற்றிகரமாக அனுப்பப்பட்டது.</string>
+
+    <string name="sync_partial">%1$d அனுப்பப்பட்டது, %2$d அனுப்ப முடியவில்லை. %3$s</string>
+    <string name="please_try_again_later">பின்னர் மீண்டும் முயற்சிக்கவும்.</string>
+
+    <string name="offline_sync_note">பரிசோதனைகள் எப்போதும் முதலில் இந்த போனில் சேமிக்கப்படும். இணையம் இல்லாமல் தொடர்ந்து பணியாற்றி பின்னர் ஒத்திசைக்கலாம்.</string>
+
+    <!-- DR Classes -->
+    <string name="dr_no_dr_name">நீரிழிவு விழித்திரை நோய் இல்லை</string>
+    <string name="dr_no_dr_short">DR இல்லை</string>
+    <string name="dr_no_dr_recommendation">அறிகுறிகள் எதுவும் இல்லை. ஒரு வருடத்திற்குப் பிறகு மீண்டும் பரிசோதிக்கவும்.</string>
+
+    <string name="dr_mild_name">லேசான நீரிழிவு விழித்திரை நோய்</string>
+    <string name="dr_mild_short">லேசான DR</string>
+    <string name="dr_mild_recommendation">6 முதல் 12 மாதங்களில் மீண்டும் பரிசோதிக்கவும். சர்க்கரை அளவை கட்டுப்படுத்த அறிவுறுத்தவும்.</string>
+
+    <string name="dr_moderate_name">மிதமான நீரிழிவு விழித்திரை நோய்</string>
+    <string name="dr_moderate_short">மிதமான DR</string>
+
+    <string name="dr_moderate_recommendation">கண் மருத்துவரிடம் ஆலோசனை பெறப் பரிந்துரைக்கப்படுகிறது.</string>
+
+    <string name="dr_severe_name">கடுமையான நீரிழிவு விழித்திரை நோய்</string>
+    <string name="dr_severe_short">கடுமையான DR</string>
+    <string name="dr_severe_recommendation">மருத்துவ ஆலோசனை பரிந்துரைக்கப்படுகிறது. விரைவில் கண் மருத்துவரைச் சந்திக்கவும்.</string>
+
+    <string name="dr_proliferative_name">தீவிர நீரிழிவு விழித்திரை நோய்</string>
+    <string name="dr_proliferative_short">தீவிர DR</string>
+    <string name="dr_proliferative_recommendation">அவசர மருத்துவ ஆலோசனை தேவை. உடனடியாக கண் மருத்துவரை அணுகவும்.</string>
+
+    <!-- App Errors -->
+    <string name="err_no_image_selected">படம் எதுவும் தேர்ந்தெடுக்கப்படவில்லை.</string>
+    <string name="err_camera_unavailable">கேமராவை அணுக முடியவில்லை.</string>
+    <string name="err_camera_permission_denied">படம் எடுக்க கேமரா அனுமதி தேவை. அமைப்புகளில் அனுமதிக்கவும்.</string>
+    <string name="err_invalid_image">இந்த கோப்பு செல்லுபடியாகும் படம் அல்ல. வேறு படத்தை தேர்ந்தெடுக்கவும்.</string>
+    <string name="err_image_too_large">இந்த படம் மிகவும் பெரியது. சிறிய படத்தைப் பயன்படுத்தவும்.</string>
+    <string name="err_no_internet">இணைய இணைப்பு இல்லை. AI பரிசோதனைக்கு இணையம் தேவை. நோயாளி விவரங்கள் ஆஃப்லைனில் செயல்படும்.</string>
+    <string name="err_timeout">சேவையகம் பதிலளிக்க அதிக நேரமானது. மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="err_server_unreachable">சேவையகத்துடன் இணைக்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="err_server_error">சேவையகத்தில் சிக்கல் ஏற்பட்டது (பிழை %1$d). மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="err_invalid_response">சேவையகத்திலிருந்து எதிர்பாராத பதில் வந்தது. மீண்டும் முயற்சிக்கவும்.</string>
+    <string name="err_upload_failed">படத்தைப் பதிவேற்ற முடியவில்லை. மீண்டும் முயற்சிக்கவும்.</string>
+
+    <string name="err_storage_error">இந்த போனில் சேமிக்க முடியவில்லை.</string>
+
+    <string name="err_offline_model_unavailable">ஆஃப்லைன் AI பரிசோதனை இந்த பதிப்பில் இல்லை. இணையத்துடன் இணைக்கவும்.</string>
+    <string name="err_unknown">ஏதோ தவறு நடந்துவிட்டது. மீண்டும் முயற்சிக்கவும்.</string>
+</resources>

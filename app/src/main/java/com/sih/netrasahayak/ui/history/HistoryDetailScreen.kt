@@ -17,7 +17,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.sih.netrasahayak.R
 import com.sih.netrasahayak.database.ScreeningEntity
 import com.sih.netrasahayak.model.DrClass
 import com.sih.netrasahayak.model.Gender
@@ -32,9 +34,7 @@ import com.sih.netrasahayak.ui.components.formatDateTime
 import com.sih.netrasahayak.ui.components.imageModel
 
 /**
- * One saved screening, re-opened from history. Reads only from Room, so it
- * works with no internet - except a heatmap that lives on the server, which
- * simply fails to load and leaves the ORIGINAL view usable.
+ * One saved screening, re-opened from history.
  */
 @Composable
 fun HistoryDetailScreen(
@@ -43,19 +43,24 @@ fun HistoryDetailScreen(
     modifier: Modifier = Modifier
 ) {
     if (loading) {
-        LoadingView(title = "Opening screening...", modifier = modifier)
+        LoadingView(title = stringResource(R.string.opening_screening), modifier = modifier)
         return
     }
 
     if (screening == null) {
         ErrorView(
-            message = "This screening could not be found on this phone.",
+            message = stringResource(R.string.screening_not_found),
             modifier = modifier.fillMaxSize()
         )
         return
     }
 
     val drClass = DrClass.fromApi(screening.prediction)
+    val recommendationText = if (drClass != null && (screening.recommendation.isBlank() || screening.recommendation == drClass.defaultRecommendation)) {
+        drClass.getLocalizedRecommendation()
+    } else {
+        screening.recommendation
+    }
 
     Column(
         modifier = modifier
@@ -72,7 +77,7 @@ fun HistoryDetailScreen(
         ) {
             Column(modifier = Modifier.padding(18.dp)) {
                 Text(
-                    text = "Patient",
+                    text = stringResource(R.string.patient_label),
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -85,24 +90,29 @@ fun HistoryDetailScreen(
                 Spacer(Modifier.height(18.dp))
 
                 Row(horizontalArrangement = Arrangement.spacedBy(28.dp)) {
-                    LabelledSection(label = "Age", value = "${screening.age} years")
                     LabelledSection(
-                        label = "Gender",
-                        value = Gender.fromApiValue(screening.gender)?.label ?: "Not recorded"
+                        label = stringResource(R.string.age_label),
+                        value = stringResource(R.string.age_years_format, screening.age)
+                    )
+                    LabelledSection(
+                        label = stringResource(R.string.gender_label),
+                        value = Gender.fromApiValue(screening.gender)?.getLocalizedLabel()
+                            ?: stringResource(R.string.gender_not_recorded)
                     )
                 }
 
                 Spacer(Modifier.height(16.dp))
 
                 LabelledSection(
-                    label = "Years with diabetes",
-                    value = screening.diabetesDurationYears?.let { "$it" } ?: "Not recorded"
+                    label = stringResource(R.string.years_with_diabetes_label),
+                    value = screening.diabetesDurationYears?.let { "$it" }
+                        ?: stringResource(R.string.gender_not_recorded)
                 )
 
                 Spacer(Modifier.height(16.dp))
 
                 LabelledSection(
-                    label = "Screened on",
+                    label = stringResource(R.string.screened_on_label),
                     value = formatDateTime(screening.createdAt)
                 )
             }
@@ -122,15 +132,14 @@ fun HistoryDetailScreen(
         Spacer(Modifier.height(28.dp))
 
         Text(
-            text = "Why this result?",
+            text = stringResource(R.string.why_this_result),
             style = MaterialTheme.typography.titleLarge
         )
 
         Spacer(Modifier.height(8.dp))
 
         Text(
-            text = "Highlighted regions indicate areas that contributed to the AI " +
-                "model's prediction.",
+            text = stringResource(R.string.why_result_subtitle),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -145,7 +154,7 @@ fun HistoryDetailScreen(
         Spacer(Modifier.height(32.dp))
 
         Text(
-            text = "Recommended Action",
+            text = stringResource(R.string.recommended_action),
             style = MaterialTheme.typography.titleLarge
         )
 
@@ -159,7 +168,7 @@ fun HistoryDetailScreen(
             )
         ) {
             Text(
-                text = screening.recommendation,
+                text = recommendationText,
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(18.dp)
             )

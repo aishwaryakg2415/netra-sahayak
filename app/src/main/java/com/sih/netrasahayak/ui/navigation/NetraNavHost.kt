@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavBackStackEntry
@@ -19,6 +20,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
+import com.sih.netrasahayak.R
 import com.sih.netrasahayak.model.ScreeningResult
 import com.sih.netrasahayak.ui.camera.CameraScreen
 import com.sih.netrasahayak.ui.components.ErrorView
@@ -39,11 +41,6 @@ import com.sih.netrasahayak.ui.sync.SyncViewModel
 
 /**
  * All navigation for the app.
- *
- * The screening flow lives in a nested graph so a single [ScreeningViewModel]
- * carries the patient details, the chosen image and the analysis state across
- * Patient -> Image source -> Camera/Gallery -> Preview -> Result. Leaving the
- * graph destroys that view model, so the next patient always starts clean.
  */
 @Composable
 fun NetraNavHost(
@@ -71,7 +68,7 @@ fun NetraNavHost(
             composable(Routes.PATIENT) { entry ->
                 val viewModel = entry.sharedScreeningViewModel(navController)
                 NetraScaffold(
-                    title = "New Screening",
+                    title = stringResource(R.string.nav_new_screening),
                     onBack = { navController.popBackStack() }
                 ) { padding ->
                     PatientDetailsScreen(
@@ -87,7 +84,7 @@ fun NetraNavHost(
             composable(Routes.IMAGE_SOURCE) { entry ->
                 val viewModel = entry.sharedScreeningViewModel(navController)
                 NetraScaffold(
-                    title = "Retinal Image",
+                    title = stringResource(R.string.nav_retinal_image),
                     onBack = { navController.popBackStack() }
                 ) { padding ->
                     ImageSourceScreen(
@@ -104,15 +101,13 @@ fun NetraNavHost(
             composable(Routes.CAMERA) { entry ->
                 val viewModel = entry.sharedScreeningViewModel(navController)
                 NetraScaffold(
-                    title = "Take Photo",
+                    title = stringResource(R.string.nav_take_photo),
                     onBack = { navController.popBackStack() }
                 ) { padding ->
                     CameraScreen(
                         onCaptured = { uri ->
                             viewModel.setImage(uri)
                             navController.navigate(Routes.PREVIEW) {
-                                // Drop the viewfinder (and any earlier preview) so
-                                // Back from the preview returns to the image source.
                                 popUpTo(Routes.IMAGE_SOURCE) { inclusive = false }
                                 launchSingleTop = true
                             }
@@ -126,7 +121,6 @@ fun NetraNavHost(
                 val viewModel = entry.sharedScreeningViewModel(navController)
                 val state by viewModel.uiState.collectAsStateWithLifecycle()
 
-                // Move on only once a result actually exists.
                 LaunchedEffect(state.analysis) {
                     if (state.analysis is AnalysisState.Success) {
                         navController.navigate(Routes.RESULT)
@@ -134,7 +128,7 @@ fun NetraNavHost(
                 }
 
                 NetraScaffold(
-                    title = "Image Preview",
+                    title = stringResource(R.string.nav_image_preview),
                     onBack = { navController.popBackStack() }
                 ) { padding ->
                     ImagePreviewScreen(
@@ -158,29 +152,25 @@ fun NetraNavHost(
                 val viewModel = entry.sharedScreeningViewModel(navController)
                 val state by viewModel.uiState.collectAsStateWithLifecycle()
 
-                // Hold on to the result so the screen keeps rendering while the
-                // flow is being torn down.
                 var shownResult by remember { mutableStateOf<ScreeningResult?>(null) }
                 LaunchedEffect(state.analysis) {
                     (state.analysis as? AnalysisState.Success)?.let { shownResult = it.result }
                 }
 
                 val finish = {
-                    // Popping the whole screening graph clears its ViewModel, so
-                    // the next screening starts from an empty form.
                     navController.popBackStack(Routes.HOME, inclusive = false)
                     Unit
                 }
 
                 BackHandler { finish() }
 
-                NetraScaffold(title = "Screening Result") { padding ->
+                NetraScaffold(title = stringResource(R.string.nav_screening_result)) { padding ->
                     val result = shownResult
                     if (result == null) {
                         ErrorView(
-                            message = "This screening result is no longer available.",
+                            message = stringResource(R.string.result_not_available),
                             onRetry = finish,
-                            retryText = "GO HOME",
+                            retryText = stringResource(R.string.go_home),
                             modifier = Modifier.padding(padding)
                         )
                     } else {
@@ -202,7 +192,7 @@ fun NetraNavHost(
             val screenings by viewModel.screenings.collectAsStateWithLifecycle()
 
             NetraScaffold(
-                title = "Screening History",
+                title = stringResource(R.string.nav_screening_history),
                 onBack = { navController.popBackStack() }
             ) { padding ->
                 HistoryScreen(
@@ -226,7 +216,7 @@ fun NetraNavHost(
             LaunchedEffect(id) { viewModel.load(id) }
 
             NetraScaffold(
-                title = "Screening Details",
+                title = stringResource(R.string.nav_screening_details),
                 onBack = { navController.popBackStack() }
             ) { padding ->
                 HistoryDetailScreen(
@@ -245,7 +235,7 @@ fun NetraNavHost(
             val syncState by viewModel.syncState.collectAsStateWithLifecycle()
 
             NetraScaffold(
-                title = "Sync Data",
+                title = stringResource(R.string.nav_sync_data),
                 onBack = { navController.popBackStack() }
             ) { padding ->
                 SyncScreen(

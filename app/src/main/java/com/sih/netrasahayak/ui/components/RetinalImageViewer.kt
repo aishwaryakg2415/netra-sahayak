@@ -1,5 +1,6 @@
 package com.sih.netrasahayak.ui.components
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -24,27 +25,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.sih.netrasahayak.R
 
 /** The three ways of looking at one screened eye. */
-enum class ImageViewMode(val label: String) {
-    ORIGINAL("ORIGINAL"),
-    HEATMAP("HEATMAP"),
-    OVERLAY("OVERLAY")
+enum class ImageViewMode(val label: String, @StringRes val labelRes: Int) {
+    ORIGINAL("ORIGINAL", R.string.tab_original),
+    HEATMAP("HEATMAP", R.string.tab_heatmap),
+    OVERLAY("OVERLAY", R.string.tab_overlay);
+
+    @Composable
+    fun getLocalizedLabel(): String = stringResource(labelRes)
 }
 
 /**
  * Explainable-AI viewer.
- *
- * ORIGINAL - the retinal photo as captured.
- * HEATMAP  - the Grad-CAM image produced by the backend.
- * OVERLAY  - the heatmap drawn semi-transparently on top of the original.
- *
- * Grad-CAM itself is computed in Python; Android only displays what the API
- * returns in "heatmap_url". When no heatmap is available the last two modes are
- * disabled and a short explanation is shown instead.
  */
 @Composable
 fun RetinalImageViewer(
@@ -68,7 +66,7 @@ fun RetinalImageViewer(
         ) {
             when {
                 originalModel == null -> Text(
-                    text = "Image not available.",
+                    text = stringResource(R.string.image_not_available),
                     color = Color.White,
                     style = MaterialTheme.typography.bodyLarge,
                     textAlign = TextAlign.Center
@@ -117,7 +115,7 @@ fun RetinalImageViewer(
         if (!hasHeatmap) {
             androidx.compose.foundation.layout.Spacer(Modifier.height(10.dp))
             Text(
-                text = "The explanation image was not provided for this screening.",
+                text = stringResource(R.string.explanation_not_provided),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -158,7 +156,7 @@ private fun ModeToggleRow(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = item.label,
+                    text = item.getLocalizedLabel(),
                     style = MaterialTheme.typography.labelMedium,
                     color = when {
                         isSelected -> MaterialTheme.colorScheme.onPrimary

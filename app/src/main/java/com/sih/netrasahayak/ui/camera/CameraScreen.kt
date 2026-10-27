@@ -29,14 +29,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.sih.netrasahayak.R
 import com.sih.netrasahayak.camera.ImageUtils
-import com.sih.netrasahayak.model.AppError
 import com.sih.netrasahayak.di.ServiceLocator
+import com.sih.netrasahayak.model.AppError
 import com.sih.netrasahayak.model.Outcome
 import com.sih.netrasahayak.ui.components.ErrorView
 import com.sih.netrasahayak.ui.components.LoadingView
@@ -45,12 +47,6 @@ import com.sih.netrasahayak.ui.components.ScreenPadding
 
 /**
  * Live camera preview and a single big capture button.
- *
- * The preview is driven through [com.sih.netrasahayak.camera.RetinalCameraController],
- * so swapping the phone camera for a fundus device later means providing a
- * different controller - this screen stays as it is.
- *
- * Camera permission has already been granted before this screen is reached.
  */
 @Composable
 fun CameraScreen(
@@ -63,15 +59,11 @@ fun CameraScreen(
     val controller = remember { ServiceLocator.createCameraController() }
     val previewView = remember { PreviewView(context).apply { scaleType = PreviewView.ScaleType.FILL_CENTER } }
 
-    var startError by remember { mutableStateOf<String?>(null) }
-    var captureError by remember { mutableStateOf<String?>(null) }
+    var startError by remember { mutableStateOf<AppError?>(null) }
+    var captureError by remember { mutableStateOf<AppError?>(null) }
     var isCapturing by remember { mutableStateOf(false) }
     var attempt by remember { mutableStateOf(0) }
 
-    // Normally permission was already granted on the image-source screen, but
-    // RETAKE can land here directly - so the screen checks for itself and asks
-    // once if needed. It is never requested before the user chose to use the
-    // camera.
     var hasPermission by remember {
         mutableStateOf(
             ContextCompat.checkSelfPermission(
@@ -86,7 +78,7 @@ fun CameraScreen(
         contract = ActivityResultContracts.RequestPermission()
     ) { granted ->
         hasPermission = granted
-        if (!granted) startError = AppError.CameraPermissionDenied.message
+        if (!granted) startError = AppError.CameraPermissionDenied
     }
 
     LaunchedEffect(hasPermission, permissionRequested) {
@@ -101,7 +93,7 @@ fun CameraScreen(
         startError = null
         when (val outcome = controller.start(lifecycleOwner, previewView)) {
             is Outcome.Success -> Unit
-            is Outcome.Failure -> startError = outcome.error.message
+            is Outcome.Failure -> startError = outcome.error
         }
     }
 
@@ -111,7 +103,7 @@ fun CameraScreen(
 
     if (startError != null) {
         ErrorView(
-            message = startError.orEmpty(),
+            message = startError!!.getLocalizedMessage(),
             onRetry = {
                 if (hasPermission) {
                     attempt++
@@ -127,8 +119,8 @@ fun CameraScreen(
 
     if (!hasPermission) {
         LoadingView(
-            title = "Waiting for camera permission...",
-            subtitle = "Please allow camera access to take a photo.",
+            title = stringResource(R.string.waiting_camera_permission),
+            subtitle = stringResource(R.string.please_allow_camera),
             modifier = modifier.fillMaxSize()
         )
         return
@@ -158,7 +150,7 @@ fun CameraScreen(
                 .padding(horizontal = ScreenPadding, vertical = 20.dp)
         ) {
             Text(
-                text = "Hold the phone steady and fill the frame with the eye.",
+                text = stringResource(R.string.camera_guidance),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 textAlign = TextAlign.Center,
@@ -168,7 +160,7 @@ fun CameraScreen(
             if (captureError != null) {
                 Spacer(Modifier.height(12.dp))
                 Text(
-                    text = captureError.orEmpty(),
+                    text = captureError!!.getLocalizedMessage(),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.error,
                     textAlign = TextAlign.Center,
@@ -179,7 +171,7 @@ fun CameraScreen(
             Spacer(Modifier.height(16.dp))
 
             PrimaryButton(
-                text = if (isCapturing) "CAPTURING..." else "CAPTURE",
+                text = if (isCapturing) stringResource(R.string.capturing) else stringResource(R.string.capture),
                 icon = Icons.Filled.PhotoCamera,
                 enabled = !isCapturing,
                 onClick = {
@@ -190,7 +182,7 @@ fun CameraScreen(
                         isCapturing = false
                         when (outcome) {
                             is Outcome.Success -> onCaptured(outcome.data)
-                            is Outcome.Failure -> captureError = outcome.error.message
+                            is Outcome.Failure -> captureError = outcome.error
                         }
                     }
                 }

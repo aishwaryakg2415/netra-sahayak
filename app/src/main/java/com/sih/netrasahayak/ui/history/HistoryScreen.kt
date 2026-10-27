@@ -23,7 +23,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.sih.netrasahayak.R
 import com.sih.netrasahayak.database.ScreeningEntity
 import com.sih.netrasahayak.model.DrClass
 import com.sih.netrasahayak.ui.components.EmptyHistoryView
@@ -92,7 +94,7 @@ private fun HistoryRow(record: ScreeningEntity, onClick: () -> Unit) {
                 )
                 Spacer(Modifier.height(10.dp))
                 Text(
-                    text = drClass?.shortName ?: record.prediction,
+                    text = drClass?.getLocalizedShortName() ?: record.prediction,
                     style = MaterialTheme.typography.titleMedium,
                     color = accent
                 )
@@ -106,7 +108,7 @@ private fun HistoryRow(record: ScreeningEntity, onClick: () -> Unit) {
 
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                contentDescription = "Open screening",
+                contentDescription = stringResource(R.string.open_screening),
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(36.dp)
             )

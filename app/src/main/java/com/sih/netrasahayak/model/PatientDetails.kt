@@ -1,5 +1,10 @@
 package com.sih.netrasahayak.model
 
+import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.sih.netrasahayak.R
+
 /**
  * The minimum information needed for a screening record.
  * Entered entirely offline - nothing here requires a network connection.
@@ -11,10 +16,17 @@ data class PatientDetails(
     val diabetesDurationYears: Int? = null
 )
 
-enum class Gender(val label: String, val apiValue: String) {
-    FEMALE("Female", "female"),
-    MALE("Male", "male"),
-    OTHER("Other", "other");
+enum class Gender(
+    val label: String,
+    val apiValue: String,
+    @StringRes val labelRes: Int
+) {
+    FEMALE("Female", "female", R.string.gender_female),
+    MALE("Male", "male", R.string.gender_male),
+    OTHER("Other", "other", R.string.gender_other);
+
+    @Composable
+    fun getLocalizedLabel(): String = stringResource(labelRes)
 
     companion object {
         fun fromApiValue(value: String?): Gender? =
@@ -24,12 +36,14 @@ enum class Gender(val label: String, val apiValue: String) {
 
 /** Result of validating the patient form. Used to show field-level messages. */
 data class PatientFormErrors(
-    val patientIdError: String? = null,
-    val ageError: String? = null,
-    val diabetesDurationError: String? = null
+    val patientIdErrorRes: Int? = null,
+    val ageErrorRes: Int? = null,
+    val ageMin: Int = 1,
+    val ageMax: Int = 120,
+    val diabetesDurationErrorRes: Int? = null
 ) {
     val hasErrors: Boolean
-        get() = patientIdError != null || ageError != null || diabetesDurationError != null
+        get() = patientIdErrorRes != null || ageErrorRes != null || diabetesDurationErrorRes != null
 }
 
 object PatientValidator {
@@ -42,29 +56,35 @@ object PatientValidator {
         ageText: String,
         diabetesDurationText: String
     ): PatientFormErrors {
-        val idError = when {
-            patientId.isBlank() -> "Please enter a Patient ID."
-            patientId.trim().length < 2 -> "Patient ID is too short."
+        val idErrorRes = when {
+            patientId.isBlank() -> R.string.err_enter_patient_id
+            patientId.trim().length < 2 -> R.string.err_patient_id_too_short
             else -> null
         }
 
         val age = ageText.trim().toIntOrNull()
-        val ageError = when {
-            ageText.isBlank() -> "Please enter the patient's age."
-            age == null -> "Age must be a number."
-            age < MIN_AGE || age > MAX_AGE -> "Age must be between $MIN_AGE and $MAX_AGE."
+        val ageErrorRes = when {
+            ageText.isBlank() -> R.string.err_enter_patient_age
+            age == null -> R.string.err_age_must_be_number
+            age < MIN_AGE || age > MAX_AGE -> R.string.err_age_range
             else -> null
         }
 
         val duration = diabetesDurationText.trim().toIntOrNull()
-        val durationError = when {
-            diabetesDurationText.isBlank() -> null // optional field
-            duration == null -> "Years must be a number."
-            duration < 0 || duration > MAX_AGE -> "Please enter a realistic number of years."
-            age != null && duration > age -> "Cannot be more than the patient's age."
+        val durationErrorRes = when {
+            diabetesDurationText.isBlank() -> null
+            duration == null -> R.string.err_years_must_be_number
+            duration < 0 || duration > MAX_AGE -> R.string.err_realistic_years
+            age != null && duration > age -> R.string.err_years_exceed_age
             else -> null
         }
 
-        return PatientFormErrors(idError, ageError, durationError)
+        return PatientFormErrors(
+            patientIdErrorRes = idErrorRes,
+            ageErrorRes = ageErrorRes,
+            ageMin = MIN_AGE,
+            ageMax = MAX_AGE,
+            diabetesDurationErrorRes = durationErrorRes
+        )
     }
 }

@@ -26,8 +26,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
+import com.sih.netrasahayak.R
 import com.sih.netrasahayak.camera.ImageUtils
 import com.sih.netrasahayak.model.AppError
 import com.sih.netrasahayak.ui.components.DisclaimerBanner
@@ -37,10 +39,6 @@ import kotlinx.coroutines.launch
 
 /**
  * "Provide Retinal Image" - the fork between camera and gallery.
- *
- * Camera permission is asked for ONLY when TAKE PHOTO is tapped, never on
- * screen entry. Gallery uses the system photo picker, which needs no storage
- * permission at all.
  */
 @Composable
 fun ImageSourceScreen(
@@ -50,26 +48,24 @@ fun ImageSourceScreen(
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
-    var errorMessage by remember { mutableStateOf<String?>(null) }
+    var appError by remember { mutableStateOf<AppError?>(null) }
     var checkingImage by remember { mutableStateOf(false) }
 
-    // Modern photo picker. Falls back to the document picker on older devices,
-    // and grants read access without any storage permission.
     val galleryLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.PickVisualMedia()
     ) { uri ->
         if (uri == null) {
-            errorMessage = AppError.NoImageSelected.message
+            appError = AppError.NoImageSelected
         } else {
             checkingImage = true
             scope.launch {
                 val readable = ImageUtils.isReadableImage(context, uri)
                 checkingImage = false
                 if (readable) {
-                    errorMessage = null
+                    appError = null
                     onImageSelected(uri)
                 } else {
-                    errorMessage = AppError.InvalidImage.message
+                    appError = AppError.InvalidImage
                 }
             }
         }
@@ -79,10 +75,10 @@ fun ImageSourceScreen(
         contract = ActivityResultContracts.RequestPermission()
     ) { granted ->
         if (granted) {
-            errorMessage = null
+            appError = null
             onOpenCamera()
         } else {
-            errorMessage = AppError.CameraPermissionDenied.message
+            appError = AppError.CameraPermissionDenied
         }
     }
 
@@ -94,14 +90,14 @@ fun ImageSourceScreen(
         verticalArrangement = Arrangement.Top
     ) {
         Text(
-            text = "Provide Retinal Image",
+            text = stringResource(R.string.provide_retinal_image),
             style = MaterialTheme.typography.headlineSmall
         )
 
         Spacer(Modifier.height(10.dp))
 
         Text(
-            text = "Capture a new image or select an existing retinal image.",
+            text = stringResource(R.string.provide_retinal_image_subtitle),
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -109,11 +105,11 @@ fun ImageSourceScreen(
         Spacer(Modifier.height(40.dp))
 
         PrimaryButton(
-            text = "TAKE PHOTO",
+            text = stringResource(R.string.take_photo),
             icon = Icons.Filled.PhotoCamera,
             enabled = !checkingImage,
             onClick = {
-                errorMessage = null
+                appError = null
                 val alreadyGranted = ContextCompat.checkSelfPermission(
                     context,
                     Manifest.permission.CAMERA
@@ -130,21 +126,21 @@ fun ImageSourceScreen(
         Spacer(Modifier.height(20.dp))
 
         PrimaryButton(
-            text = "CHOOSE FROM GALLERY",
+            text = stringResource(R.string.choose_from_gallery),
             icon = Icons.Filled.PhotoLibrary,
             enabled = !checkingImage,
             onClick = {
-                errorMessage = null
+                appError = null
                 galleryLauncher.launch(
                     PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
                 )
             }
         )
 
-        if (errorMessage != null) {
+        if (appError != null) {
             Spacer(Modifier.height(28.dp))
             Text(
-                text = errorMessage.orEmpty(),
+                text = appError!!.getLocalizedMessage(),
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.error
             )
@@ -153,8 +149,7 @@ fun ImageSourceScreen(
         Spacer(Modifier.height(36.dp))
 
         Text(
-            text = "This version uses the phone's normal camera. A dedicated fundus " +
-                "camera can be connected later without changing this screen.",
+            text = stringResource(R.string.fundus_camera_note),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )

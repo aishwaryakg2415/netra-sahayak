@@ -1,0 +1,175 @@
+<resources>
+    <string name="app_name">నేత్ర సహాయక్</string>
+    <string name="app_subtitle">AI-ఆధారిత డయాబెటిక్ రెటినోపతి స్క్రీనింగ్</string>
+    <string name="disclaimer">AI స్క్రీనింగ్ సహాయం మాత్రమే. తుది నిర్ధారణ అర్హత కలిగిన ఆరోగ్య సంరక్షణ నిపుణులచే ధృవీకరించబడాలి.</string>
+    <string name="go_back">వెనుకకు వెళ్లండి</string>
+    <string name="change_language">భాషను మార్చండి</string>
+    <string name="select_language">భాషను ఎంచుకోండి</string>
+    <string name="cancel">రద్దు చేయి</string>
+    <string name="ok">సరే</string>
+    <string name="close">మూసివేయి</string>
+
+    <!-- Navigation Titles -->
+    <string name="nav_new_screening">కొత్త స్క్రీనింగ్</string>
+    <string name="nav_retinal_image">రెటీనా చిత్రం</string>
+    <string name="nav_take_photo">ఫోటో తీయండి</string>
+    <string name="nav_image_preview">చిత్ర ప్రివ్యూ</string>
+    <string name="nav_screening_result">స్క్రీనింగ్ ఫలితం</string>
+    <string name="nav_screening_history">స్క్రీనింగ్ చరిత్ర</string>
+    <string name="nav_screening_details">స్క్రీనింగ్ వివరాలు</string>
+    <string name="nav_sync_data">డేటాను సింక్ చేయండి</string>
+
+    <!-- Home Screen -->
+    <string name="start_new_screening">కొత్త స్క్రీనింగ్ ప్రారంభించండి</string>
+    <string name="screening_history">స్క్రీనింగ్ చరిత్ర</string>
+    <string name="sync_data">డేటాను సింక్ చేయండి</string>
+
+    <!-- Patient Details Screen -->
+    <string name="patient_details">రోగి వివరాలు</string>
+    <string name="patient_details_subtitle">స్క్రీనింగ్ రికార్డుకు అవసరమైన వివరాలు మాత్రమే.</string>
+    <string name="patient_id">రోగి ID</string>
+    <string name="age_years">వయస్సు (సంవత్సరాలు)</string>
+    <string name="gender_optional">లింగం (ఐచ్ఛికం)</string>
+    <string name="gender_female">స్త్రీ</string>
+    <string name="gender_male">పురుషుడు</string>
+    <string name="gender_other">ఇతర</string>
+    <string name="gender_not_recorded">నమోదు కాలేదు</string>
+    <string name="years_with_diabetes_optional">మధుమేహంతో ఉన్న సంవత్సరాలు (ఐచ్ఛికం)</string>
+    <string name="btn_continue">కొనసాగించండి</string>
+
+    <!-- Validation Errors -->
+    <string name="err_enter_patient_id">దయచేసి రోగి IDని నమోదు చేయండి.</string>
+    <string name="err_patient_id_too_short">రోగి ID చాలా చిన్నదిగా ఉంది.</string>
+    <string name="err_enter_patient_age">దయచేసి రోగి వయస్సును నమోదు చేయండి.</string>
+    <string name="err_age_must_be_number">వయస్సు ఒక సంఖ్య అయి ఉండాలి.</string>
+    <string name="err_age_range">వయస్సు %1$d మరియు %2$d మధ్య ఉండాలి.</string>
+
+    <string name="err_years_must_be_number">సంవత్సరాలు ఒక సంఖ్య అయి ఉండాలి.</string>
+
+    <string name="err_realistic_years">దయచేసి సరైన సంవత్సరాల సంఖ్యను నమోదు చేయండి.</string>
+
+    <string name="err_years_exceed_age">రోగి వయస్సు కంటే ఎక్కువగా ఉండకూడదు.</string>
+
+    <!-- Image Source Screen -->
+    <string name="provide_retinal_image">రెటీనా చిత్రాన్ని అందించండి</string>
+    <string name="provide_retinal_image_subtitle">కొత్త చిత్రాన్ని తీయండి లేదా ఉన్న చిత్రాన్ని ఎంచుకోండి.</string>
+    <string name="take_photo">ఫోటో తీయండి</string>
+    <string name="choose_from_gallery">గ్యాలరీ నుండి ఎంచుకోండి</string>
+    <string name="fundus_camera_note">ఈ వెర్షన్ ఫోన్ సాధారణ కెమెరాను ఉపయోగిస్తుంది. ప్రత్యేక ఫండస్ కెమెరాను తర్వాత అనుసంధానించవచ్చు.</string>
+
+    <!-- Camera Screen -->
+    <string name="camera_guidance">ఫోన్‌ను స్థిరంగా ఉంచి కంటితో ఫ్రేమ్‌ను నింపండి.</string>
+    <string name="capturing">ఫోటో తీస్తోంది...</string>
+    <string name="capture">ఫోటో తీయి</string>
+    <string name="waiting_camera_permission">కెమెరా అనుమతి కోసం వేచి ఉంది...</string>
+    <string name="please_allow_camera">ఫోటో తీయడానికి దయచేసి కెమెరా అనుమతిని ఇవ్వండి.</string>
+
+    <!-- Image Preview Screen -->
+    <string name="analyzing_retinal_image">రెటీనా చిత్రం విశ్లేషించబడుతోంది...</string>
+    <string name="please_wait">దయచేసి వేచి ఉండండి.</string>
+    <string name="check_the_image">చిత్రాన్ని తనిఖీ చేయండి</string>
+    <string name="check_image_subtitle">విశ్లేషించే ముందు కన్ను స్పష్టంగా ఉందో లేదో నిర్ధారించుకోండి.</string>
+    <string name="analyze_image">చిత్రాన్ని విశ్లేషించండి</string>
+    <string name="try_again">మళ్లీ ప్రయత్నించండి</string>
+    <string name="retake">మళ్లీ తీయండి</string>
+    <string name="choose_another">మరొకటి ఎంచుకోండి</string>
+
+    <!-- Result Screen -->
+    <string name="ai_screening_result">AI స్క్రీనింగ్ ఫలితం</string>
+    <string name="referral_recommended">నిపుణుల సంప్రదింపు సిఫార్సు చేయబడింది</string>
+    <string name="no_referral_suggested">ప్రస్తుతం ఎటువంటి రిఫరల్ అవసరం లేదు</string>
+    <string name="confidence">నమ్మకం స్థాయి</string>
+
+    <string name="confidence_tooltip">ఈ స్క్రీనింగ్ సూచన గురించి AI ఎంత నమ్మకంగా ఉందో చూపుతుంది.</string>
+    <string name="why_this_result">ఈ ఫలితం ఎందుకు?</string>
+    <string name="why_result_subtitle">హైలైట్ చేసిన ప్రాంతాలు AI అంచనాకు దోహదపడిన భాగాలను చూపుతాయి.</string>
+    <string name="recommended_action">సిఫార్సు చేసిన చర్య</string>
+    <string name="saved_on_phone">ఈ ఫోన్‌లో సేవ్ చేయబడింది. స్క్రీనింగ్ చరిత్ర నుండి మళ్లీ తెరవవచ్చు.</string>
+    <string name="done">పూర్తయింది</string>
+    <string name="result_not_available">ఈ స్క్రీనింగ్ ఫలితం అందుబాటులో లేదు.</string>
+    <string name="go_home">హోమ్‌కి వెళ్లండి</string>
+
+    <!-- Retinal Image Viewer -->
+    <string name="tab_original">అసలు</string>
+    <string name="tab_heatmap">హిట్‌మ్యాప్</string>
+    <string name="tab_overlay">ఓవర్‌లే</string>
+    <string name="image_not_available">చిత్రం అందుబాటులో లేదు.</string>
+
+    <string name="explanation_not_provided">ఈ స్క్రీనింగ్ కోసం వివరణ చిత్రం అందించబడలేదు.</string>
+
+    <!-- History Screen -->
+    <string name="no_screenings_yet">ఇంకా స్క్రీనింగ్‌లు లేవు</string>
+    <string name="empty_history_subtitle">పూర్తయిన స్క్రీనింగ్‌లు ఈ ఫోన్‌లో సేవ్ చేయబడతాయి మరియు ఇంటర్నెట్ లేకపోయినా ఇక్కడ కనిపిస్తాయి.</string>
+    <string name="opening_screening">స్క్రీనింగ్ తెరుస్తోంది...</string>
+    <string name="screening_not_found">ఈ స్క్రీనింగ్ ఈ ఫోన్‌లో కనుగొనబడలేదు.</string>
+    <string name="patient_label">రోగి</string>
+    <string name="age_label">వయస్సు</string>
+    <string name="age_years_format">%1$d సంవత్సరాలు</string>
+    <string name="gender_label">లింగం</string>
+    <string name="years_with_diabetes_label">మధుమేహంతో ఉన్న సంవత్సరాలు</string>
+    <string name="screened_on_label">స్క్రీనింగ్ చేసిన తేదీ</string>
+    <string name="open_screening">స్క్రీనింగ్ తెరవండి</string>
+
+    <!-- Sync Screen -->
+    <string name="internet_connection">ఇంటర్నెట్ కనెక్షన్</string>
+    <string name="status_connected">కనెక్ట్ చేయబడింది</string>
+    <string name="status_not_connected">కనెక్ట్ కాబడలేదు</string>
+    <string name="pending_screenings">పెండింగ్ స్క్రీనింగ్‌లు</string>
+    <string name="pending_none">ఏమీ లేవు - అన్నీ తాజాగా ఉన్నాయి</string>
+    <string name="pending_one">1 స్క్రీనింగ్ పంపడానికి పెండింగ్‌లో ఉంది</string>
+    <string name="pending_multiple">%1$d స్క్రీనింగ్‌లు పంపడానికి పెండింగ్‌లో ఉన్నాయి</string>
+    <string name="sending_screenings">స్క్రీనింగ్‌లు పంపుతోంది...</string>
+    <string name="sync_now">ఇప్పుడే సింక్ చేయండి</string>
+    <string name="sync_nothing_to_send">పంపడానికి ఏమీ లేదు. అన్నీ నవీకరించబడ్డాయి.</string>
+
+    <string name="sync_success">%1$d స్క్రీనింగ్ విజయవంతంగా పంపబడింది.</string>
+    <string name="sync_partial">%1$d పంపబడింది, %2$d పంపలేకపోయాము. %3$s</string>
+    <string name="please_try_again_later">దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి.</string>
+    <string name="offline_sync_note">స్క్రీనింగ్‌లు ఎల్లప్పుడూ మొదట ఈ ఫోన్‌లో సేవ్ చేయబడతాయి. మీరు ఇంటర్నెట్ లేకుండా పని చేయవచ్చు మరియు తర్వాత సింక్ చేయవచ్చు.</string>
+
+    <!-- DR Classes -->
+    <string name="dr_no_dr_name">డయాబెటిక్ రెటినోపతి లేదు</string>
+    <string name="dr_no_dr_short">DR లేదు</string>
+    <string name="dr_no_dr_recommendation">లక్షణాలు కనుగొనబడలేదు. ఒక సంవత్సరం తర్వాత మళ్లీ స్క్రీనింగ్ చేయండి.</string>
+
+    <string name="dr_mild_name">తేలికపాటి డయాబెటిక్ రెటినోపతి</string>
+    <string name="dr_mild_short">తేలికపాటి DR</string>
+    <string name="dr_mild_recommendation">6 నుండి 12 నెలల్లో మళ్లీ స్క్రీనింగ్ చేయండి. బ్లడ్ షుగర్ నియంత్రణను సూచించండి.</string>
+
+    <string name="dr_moderate_name">మితమైన డయాబెటిక్ రెటినోపతి</string>
+    <string name="dr_moderate_short">మితమైన DR</string>
+    <string name="dr_moderate_recommendation">కంటి వైద్యునిచే క్లినికల్ పరిశీలన సిఫార్సు చేయబడింది.</string>
+
+    <string name="dr_severe_name">తీవ్రమైన డయాబెటిక్ రెటినోపతి</string>
+    <string name="dr_severe_short">తీవ్రమైన DR</string>
+    <string name="dr_severe_recommendation">రిఫరల్ సిఫార్సు చేయబడింది. దయచేసి త్వరలో కంటి నిపుణుడిని సంప్రదించండి.</string>
+
+    <string name="dr_proliferative_name">ప్రోలిఫరేటివ్ డయాబెటిక్ రెటినోపతి</string>
+    <string name="dr_proliferative_short">ప్రోలిఫరేటివ్ DR</string>
+
+    <string name="dr_proliferative_recommendation">అత్యవసర రిఫరల్ సిఫార్సు చేయబడింది. దయచేసి వెంటనే కంటి నిపుణుడిని సంప్రదించండి.</string>
+
+    <!-- App Errors -->
+    <string name="err_no_image_selected">చిత్రం ఏదీ ఎంచుకోలేదు.</string>
+
+    <string name="err_camera_unavailable">కెమెరాను యాక్సెస్ చేయలేకపోతున్నాము.</string>
+    <string name="err_camera_permission_denied">ఫోటో తీయడానికి కెమెరా అనుమతి అవసరం. దయచేసి సెట్టింగ్‌లలో అనుమతించండి.</string>
+    <string name="err_invalid_image">ఈ ఫైల్ చెల్లుబాటు అయ్యే చిత్రం కాదు. దయచేసి మరొకటి ఎంచుకోండి.</string>
+    <string name="err_image_too_large">ఈ చిత్రం చాలా పెద్దదిగా ఉంది. దయచేసి చిన్న చిత్రాన్ని ఉపయోగించండి.</string>
+
+    <string name="err_no_internet">ఇంటర్నెట్ కనెక్షన్ లేదు. AI స్క్రీనింగ్‌కు ఇంటర్నెట్ అవసరం. రోగి వివరాలు మరియు చరిత్ర ఆఫ్‌లైన్‌లో పనిచేస్తాయి.</string>
+    <string name="err_timeout">సర్వర్ స్పందించడానికి చాలా సమయం తీసుకుంది. దయచేసి మళ్లీ ప్రయత్నించండి.</string>
+    <string name="err_server_unreachable">సర్వర్‌కు కనెక్ట్ కాలేకపోయాము. దయచేసి మళ్లీ ప్రయత్నించండి.</string>
+
+    <string name="err_server_error">సర్వర్‌లో సమస్య ఏర్పడింది (లోపం %1$d). దయచేసి మళ్లీ ప్రయత్నించండి.</string>
+
+    <string name="err_invalid_response">సర్వర్ నుండి అనూహ్య ప్రతిస్పందన వచ్చింది. దయచేసి మళ్లీ ప్రయత్నించండి.</string>
+
+    <string name="err_upload_failed">చిత్రాన్ని అప్‌లోడ్ చేయలేకపోయాము. దయచేసి మళ్లీ ప్రయత్నించండి.</string>
+
+    <string name="err_storage_error">ఈ ఫోన్‌లో స్క్రీనింగ్‌ను సేవ్ చేయలేకపోయాము.</string>
+
+    <string name="err_offline_model_unavailable">ఈ వెర్షన్‌లో ఆఫ్‌లైన్ AI స్క్రీనింగ్ అందుబాటులో లేదు. దయచేసి ఇంటర్నెట్‌కు కనెక్ట్ చేయండి.</string>
+
+    <string name="err_unknown">ఏదో తప్పు జరిగింది. దయచేసి మళ్లీ ప్రయత్నించండి.</string>
+</resources>

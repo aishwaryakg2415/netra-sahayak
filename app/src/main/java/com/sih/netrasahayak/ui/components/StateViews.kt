@@ -17,16 +17,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.sih.netrasahayak.R
 
 /** Full-screen "please wait" state. Used while the image is being analysed. */
 @Composable
 fun LoadingView(
     title: String,
-    subtitle: String = "Please wait.",
+    subtitle: String? = null,
     modifier: Modifier = Modifier
 ) {
+    val displaySubtitle = subtitle ?: stringResource(R.string.please_wait)
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -47,7 +51,7 @@ fun LoadingView(
         )
         androidx.compose.foundation.layout.Spacer(Modifier.size(8.dp))
         Text(
-            text = subtitle,
+            text = displaySubtitle,
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center
@@ -64,8 +68,10 @@ fun ErrorView(
     message: String,
     modifier: Modifier = Modifier,
     onRetry: (() -> Unit)? = null,
-    retryText: String = "TRY AGAIN"
+    retryText: String? = null
 ) {
+    val displayRetryText = retryText ?: stringResource(R.string.try_again)
+
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -87,7 +93,7 @@ fun ErrorView(
         )
         if (onRetry != null) {
             androidx.compose.foundation.layout.Spacer(Modifier.size(24.dp))
-            PrimaryButton(text = retryText, onClick = onRetry, icon = Icons.Filled.Refresh)
+            PrimaryButton(text = displayRetryText, onClick = onRetry, icon = Icons.Filled.Refresh)
         }
     }
 }
@@ -110,14 +116,13 @@ fun EmptyHistoryView(modifier: Modifier = Modifier) {
         )
         androidx.compose.foundation.layout.Spacer(Modifier.size(20.dp))
         Text(
-            text = "No screenings yet",
+            text = stringResource(R.string.no_screenings_yet),
             style = MaterialTheme.typography.titleLarge,
             textAlign = TextAlign.Center
         )
         androidx.compose.foundation.layout.Spacer(Modifier.size(8.dp))
         Text(
-            text = "Completed screenings are saved on this phone and appear here, " +
-                "even without internet.",
+            text = stringResource(R.string.empty_history_subtitle),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center

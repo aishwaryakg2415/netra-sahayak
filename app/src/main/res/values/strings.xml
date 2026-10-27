@@ -2,4 +2,159 @@
     <string name="app_name">Netra Sahayak</string>
     <string name="app_subtitle">AI-Assisted Diabetic Retinopathy Screening</string>
     <string name="disclaimer">AI screening support only. Final diagnosis must be confirmed by a qualified healthcare professional.</string>
+    <string name="go_back">Go back</string>
+    <string name="change_language">Change Language</string>
+    <string name="select_language">Select Language</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="close">Close</string>
+
+    <!-- Navigation Titles -->
+    <string name="nav_new_screening">New Screening</string>
+    <string name="nav_retinal_image">Retinal Image</string>
+    <string name="nav_take_photo">Take Photo</string>
+    <string name="nav_image_preview">Image Preview</string>
+    <string name="nav_screening_result">Screening Result</string>
+    <string name="nav_screening_history">Screening History</string>
+    <string name="nav_screening_details">Screening Details</string>
+    <string name="nav_sync_data">Sync Data</string>
+
+    <!-- Home Screen -->
+    <string name="start_new_screening">START NEW SCREENING</string>
+    <string name="screening_history">SCREENING HISTORY</string>
+    <string name="sync_data">SYNC DATA</string>
+
+    <!-- Patient Details Screen -->
+    <string name="patient_details">Patient Details</string>
+    <string name="patient_details_subtitle">Only what is needed for the screening record.</string>
+    <string name="patient_id">Patient ID</string>
+    <string name="age_years">Age (years)</string>
+    <string name="gender_optional">Gender (optional)</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_other">Other</string>
+    <string name="gender_not_recorded">Not recorded</string>
+    <string name="years_with_diabetes_optional">Years with diabetes (optional)</string>
+    <string name="btn_continue">CONTINUE</string>
+
+    <!-- Validation Errors -->
+    <string name="err_enter_patient_id">Please enter a Patient ID.</string>
+    <string name="err_patient_id_too_short">Patient ID is too short.</string>
+    <string name="err_enter_patient_age">Please enter the patient\'s age.</string>
+    <string name="err_age_must_be_number">Age must be a number.</string>
+    <string name="err_age_range">Age must be between %1$d and %2$d.</string>
+    <string name="err_years_must_be_number">Years must be a number.</string>
+    <string name="err_realistic_years">Please enter a realistic number of years.</string>
+    <string name="err_years_exceed_age">Cannot be more than the patient\'s age.</string>
+
+    <!-- Image Source Screen -->
+    <string name="provide_retinal_image">Provide Retinal Image</string>
+    <string name="provide_retinal_image_subtitle">Capture a new image or select an existing retinal image.</string>
+    <string name="take_photo">TAKE PHOTO</string>
+    <string name="choose_from_gallery">CHOOSE FROM GALLERY</string>
+    <string name="fundus_camera_note">This version uses the phone\'s normal camera. A dedicated fundus camera can be connected later without changing this screen.</string>
+
+    <!-- Camera Screen -->
+    <string name="camera_guidance">Hold the phone steady and fill the frame with the eye.</string>
+    <string name="capturing">CAPTURING...</string>
+    <string name="capture">CAPTURE</string>
+    <string name="waiting_camera_permission">Waiting for camera permission...</string>
+    <string name="please_allow_camera">Please allow camera access to take a photo.</string>
+
+    <!-- Image Preview Screen -->
+    <string name="analyzing_retinal_image">Analyzing retinal image...</string>
+    <string name="please_wait">Please wait.</string>
+    <string name="check_the_image">Check the Image</string>
+    <string name="check_image_subtitle">Make sure the eye is clear and in focus before analysing.</string>
+    <string name="analyze_image">ANALYZE IMAGE</string>
+    <string name="try_again">TRY AGAIN</string>
+    <string name="retake">RETAKE</string>
+    <string name="choose_another">CHOOSE ANOTHER</string>
+
+    <!-- Result Screen -->
+    <string name="ai_screening_result">AI Screening Result</string>
+    <string name="referral_recommended">Referral recommended</string>
+    <string name="no_referral_suggested">No referral suggested at this time</string>
+    <string name="confidence">Confidence</string>
+    <string name="confidence_tooltip">How sure the AI is about this screening suggestion.</string>
+    <string name="why_this_result">Why this result?</string>
+    <string name="why_result_subtitle">Highlighted regions indicate areas that contributed to the AI model\'s prediction.</string>
+    <string name="recommended_action">Recommended Action</string>
+    <string name="saved_on_phone">Saved on this phone. You can open it again from Screening History.</string>
+    <string name="done">DONE</string>
+    <string name="result_not_available">This screening result is no longer available.</string>
+    <string name="go_home">GO HOME</string>
+
+    <!-- Retinal Image Viewer -->
+    <string name="tab_original">ORIGINAL</string>
+    <string name="tab_heatmap">HEATMAP</string>
+    <string name="tab_overlay">OVERLAY</string>
+    <string name="image_not_available">Image not available.</string>
+    <string name="explanation_not_provided">The explanation image was not provided for this screening.</string>
+
+    <!-- History Screen -->
+    <string name="no_screenings_yet">No screenings yet</string>
+    <string name="empty_history_subtitle">Completed screenings are saved on this phone and appear here, even without internet.</string>
+    <string name="opening_screening">Opening screening...</string>
+    <string name="screening_not_found">This screening could not be found on this phone.</string>
+    <string name="patient_label">Patient</string>
+    <string name="age_label">Age</string>
+    <string name="age_years_format">%1$d years</string>
+    <string name="gender_label">Gender</string>
+    <string name="years_with_diabetes_label">Years with diabetes</string>
+    <string name="screened_on_label">Screened on</string>
+    <string name="open_screening">Open screening</string>
+
+    <!-- Sync Screen -->
+    <string name="internet_connection">Internet connection</string>
+    <string name="status_connected">Connected</string>
+    <string name="status_not_connected">Not connected</string>
+    <string name="pending_screenings">Pending screenings</string>
+    <string name="pending_none">None - everything is up to date</string>
+    <string name="pending_one">1 screening waiting to be sent</string>
+    <string name="pending_multiple">%1$d screenings waiting to be sent</string>
+    <string name="sending_screenings">Sending screenings...</string>
+    <string name="sync_now">SYNC NOW</string>
+    <string name="sync_nothing_to_send">Nothing to send. All screenings are already up to date.</string>
+    <string name="sync_success">Sent %1$d screening(s) successfully.</string>
+    <string name="sync_partial">Sent %1$d, could not send %2$d. %3$s</string>
+    <string name="please_try_again_later">Please try again later.</string>
+    <string name="offline_sync_note">Screenings are always saved on this phone first. You can keep working without internet and sync later.</string>
+
+    <!-- DR Classes -->
+    <string name="dr_no_dr_name">No Diabetic Retinopathy</string>
+    <string name="dr_no_dr_short">No DR</string>
+    <string name="dr_no_dr_recommendation">No signs found. Repeat screening after one year.</string>
+
+    <string name="dr_mild_name">Mild Diabetic Retinopathy</string>
+    <string name="dr_mild_short">Mild DR</string>
+    <string name="dr_mild_recommendation">Repeat screening in 6 to 12 months. Advise blood sugar control.</string>
+
+    <string name="dr_moderate_name">Moderate Diabetic Retinopathy</string>
+    <string name="dr_moderate_short">Moderate DR</string>
+    <string name="dr_moderate_recommendation">Clinical evaluation by an ophthalmologist is recommended.</string>
+
+    <string name="dr_severe_name">Severe Diabetic Retinopathy</string>
+    <string name="dr_severe_short">Severe DR</string>
+    <string name="dr_severe_recommendation">Referral recommended. Please arrange an eye specialist visit soon.</string>
+
+    <string name="dr_proliferative_name">Proliferative Diabetic Retinopathy</string>
+    <string name="dr_proliferative_short">Proliferative DR</string>
+    <string name="dr_proliferative_recommendation">Urgent referral recommended. Please arrange an eye specialist visit.</string>
+
+    <!-- App Errors -->
+    <string name="err_no_image_selected">No image selected.</string>
+    <string name="err_camera_unavailable">Unable to access camera.</string>
+    <string name="err_camera_permission_denied">Camera permission is needed to take a photo. Please allow it in Settings.</string>
+    <string name="err_invalid_image">This file is not a valid image. Please choose another.</string>
+    <string name="err_image_too_large">This image is too large to process. Please use a smaller image.</string>
+    <string name="err_no_internet">No internet connection. Screening needs internet. Patient details and history still work offline.</string>
+    <string name="err_timeout">The screening server took too long to respond. Please try again.</string>
+    <string name="err_server_unreachable">Unable to connect to the screening server. Please try again.</string>
+    <string name="err_server_error">The screening server reported a problem (error %1$d). Please try again.</string>
+    <string name="err_invalid_response">The screening server sent an unexpected reply. Please try again.</string>
+    <string name="err_upload_failed">Could not upload the image. Please try again.</string>
+    <string name="err_storage_error">Could not save the screening on this phone.</string>
+    <string name="err_offline_model_unavailable">Offline AI screening is not available in this version. Please connect to the internet.</string>
+    <string name="err_unknown">Something went wrong. Please try again.</string>
 </resources>

@@ -1,0 +1,186 @@
+<resources>
+    <string name="app_name">নেত্র সহায়ক</string>
+    <string name="app_subtitle">এআই-সহায়তা প্রাপ্ত ডায়াবেটিক রেটিনোপ্যাথি স্ক্রীনিং</string>
+    <string name="disclaimer">শুধুমাত্র AI স্ক্রীনিং সহায়তা। চূড়ান্ত ডায়াগনোসিস যোগ্য স্বাস্থ্যসেবা পেশাদার দ্বারা নিশ্চিত করতে হবে।</string>
+    <string name="go_back">ফিরে যান</string>
+    <string name="change_language">ভাষা পরিবর্তন করুন</string>
+    <string name="select_language">ভাষা নির্বাচন করুন</string>
+    <string name="cancel">বাতিল</string>
+    <string name="ok">ঠিক আছে</string>
+    <string name="close">বন্ধ করুন</string>
+
+    <!-- Navigation Titles -->
+    <string name="nav_new_screening">নতুন স্ক্রীনিং</string>
+    <string name="nav_retinal_image">রেটিনা ছবি</string>
+    <string name="nav_take_photo">ছবি তুলুন</string>
+    <string name="nav_image_preview">ছবি প্রিভিউ</string>
+    <string name="nav_screening_result">স্ক্রীনিং ফলাফল</string>
+    <string name="nav_screening_history">স্ক্রীনিং ইতিহাস</string>
+    <string name="nav_screening_details">স্ক্রীনিং বিবরণ</string>
+    <string name="nav_sync_data">ডাটা সিঙ্ক করুন</string>
+
+    <!-- Home Screen -->
+    <string name="start_new_screening">নতুন স্ক্রীনিং শুরু করুন</string>
+    <string name="screening_history">স্ক্রীনিং ইতিহাস</string>
+    <string name="sync_data">ডাটা সিঙ্ক করুন</string>
+
+    <!-- Patient Details Screen -->
+    <string name="patient_details">রোগীর বিবরণ</string>
+    <string name="patient_details_subtitle">শুধুমাত্র স্ক্রীনিং রেকর্ডের জন্য প্রয়োজনীয় তথ্য।</string>
+    <string name="patient_id">রোগীর আইডি</string>
+    <string name="age_years">বয়স (বছর)</string>
+    <string name="gender_optional">লিঙ্গ (ঐচ্ছিক)</string>
+    <string name="gender_female">মহিলা</string>
+    <string name="gender_male">পুরুষ</string>
+    <string name="gender_other">অন্যান্য</string>
+    <string name="gender_not_recorded">রেকর্ড করা হয়নি</string>
+    <string name="years_with_diabetes_optional">ডায়াবেটিসের বছর (ঐচ্ছিক)</string>
+
+    <string name="btn_continue">এগিয়ে যান</string>
+
+    <!-- Validation Errors -->
+    <string name="err_enter_patient_id">রোগীর আইডি লিখুন।</string>
+
+    <string name="err_patient_id_too_short">রোগীর আইডি অত্যন্ত ছোট।</string>
+    <string name="err_enter_patient_age">রোগীর বয়স লিখুন।</string>
+    <string name="err_age_must_be_number">বয়স একটি সংখ্যা হতে হবে।</string>
+    <string name="err_age_range">বয়স %1$d থেকে %2$d এর মধ্যে হতে হবে।</string>
+    <string name="err_years_must_be_number">বছর একটি সংখ্যা হতে হবে।</string>
+    <string name="err_realistic_years">সঠিক বছর সংখ্যা লিখুন।</string>
+
+    <string name="err_years_exceed_age">রোগীর বয়সের চেয়ে বেশি হতে পারে না।</string>
+
+    <!-- Image Source Screen -->
+    <string name="provide_retinal_image">রেটিনা ছবি প্রদান করুন</string>
+    <string name="provide_retinal_image_subtitle">নতুন ছবি তুলুন বা একটি বিদ্যমান রেটিনা ছবি নির্বাচন করুন।</string>
+    <string name="take_photo">ছবি তুলুন</string>
+    <string name="choose_from_gallery">গ্যালারি থেকে বেছে নিন</string>
+    <string name="fundus_camera_note">এই সংস্করণটি ফোনের সাধারণ ক্যামেরা ব্যবহার করে। একটি ডেডিকেটেড ফান্ডাস ক্যামেরা পরে যুক্ত করা যেতে পারে।</string>
+
+    <!-- Camera Screen -->
+    <string name="camera_guidance">ফোনটি স্থির রাখুন এবং চোখ দিয়ে ফ্রেমটি পূরণ করুন।</string>
+
+    <string name="capturing">ছবি তোলা হচ্ছে...</string>
+    <string name="capture">ছবি তুলুন</string>
+    <string name="waiting_camera_permission">ক্যামেরা অনুমতির জন্য অপেক্ষা করা হচ্ছে...</string>
+    <string name="please_allow_camera">ছবি তোলার জন্য ক্যামেরা অনুমতি দিন।</string>
+
+    <!-- Image Preview Screen -->
+    <string name="analyzing_retinal_image">রেটিনা ছবি বিশ্লেষণ করা হচ্ছে...</string>
+    <string name="please_wait">অনুগ্রহ করে অপেক্ষা করুন।</string>
+    <string name="check_the_image">ছবি পরীক্ষা করুন</string>
+    <string name="check_image_subtitle">বিশ্লেষণ করার আগে চোখ স্পষ্ট এবং ফোকাসে আছে কিনা নিশ্চিত করুন।</string>
+    <string name="analyze_image">ছবি বিশ্লেষণ করুন</string>
+    <string name="try_again">আবার চেষ্টা করুন</string>
+    <string name="retake">পুনরায় তুলুন</string>
+    <string name="choose_another">অন্যটি বেছে নিন</string>
+
+    <!-- Result Screen -->
+    <string name="ai_screening_result">এআই স্ক্রীনিং ফলাফল</string>
+
+    <string name="referral_recommended">বিশেষজ্ঞের পরামর্শ বাঞ্ছনীয়</string>
+    <string name="no_referral_suggested">এই মুহূর্তে কোনো রেফারেলের প্রয়োজন নেই</string>
+
+    <string name="confidence">আত্মবিশ্বাসের মাত্রা</string>
+    <string name="confidence_tooltip">এআই এই পরামর্শ সম্পর্কে কতটা নিশ্চিত।</string>
+    <string name="why_this_result">এই ফলাফল কেন?</string>
+    <string name="why_result_subtitle">হাইলাইট করা এলাকাগুলি নির্দেশ করে যে কোন অংশগুলি এআই মডেলে অবদান রেখেছে।</string>
+
+    <string name="recommended_action">সুপারিশকৃত পদক্ষেপ</string>
+    <string name="saved_on_phone">এই ফোনে সংরক্ষিত। আপনি ইতিহাস থেকে এটি আবার খুলতে পারেন।</string>
+
+    <string name="done">সম্পন্ন</string>
+
+    <string name="result_not_available">এই স্ক্রীনিং ফলাফল আর উপলব্ধ নেই।</string>
+    <string name="go_home">হোমে যান</string>
+
+    <!-- Retinal Image Viewer -->
+    <string name="tab_original">মূল</string>
+    <string name="tab_heatmap">হিটম্যাপ</string>
+
+    <string name="tab_overlay">ওভারলে</string>
+    <string name="image_not_available">ছবি পাওয়া যায়নি।</string>
+    <string name="explanation_not_provided">এই স্ক্রীনিংয়ের জন্য কোনো ব্যাখ্যামূলক ছবি দেওয়া হয়নি।</string>
+
+    <!-- History Screen -->
+    <string name="no_screenings_yet">এখনও কোনো স্ক্রীনিং নেই</string>
+    <string name="empty_history_subtitle">সম্পন্ন স্ক্রীনিংগুলি এই ফোনে সংরক্ষিত হয় এবং ইন্টারনেট ছাড়াই এখানে দেখায়।</string>
+    <string name="opening_screening">স্ক্রীনিং খোলা হচ্ছে...</string>
+    <string name="screening_not_found">এই স্ক্রীনিংটি এই ফোনে পাওয়া যায়নি।</string>
+    <string name="patient_label">রোগী</string>
+    <string name="age_label">বয়স</string>
+    <string name="age_years_format">%1$d বছর</string>
+    <string name="gender_label">লিঙ্গ</string>
+    <string name="years_with_diabetes_label">ডায়াবেটিসের বছর</string>
+
+    <string name="screened_on_label">স্ক্রীনিংয়ের তারিখ</string>
+    <string name="open_screening">স্ক্রীনিং খুলুন</string>
+
+    <!-- Sync Screen -->
+    <string name="internet_connection">ইন্টারনেট সংযোগ</string>
+
+    <string name="status_connected">সংযুক্ত</string>
+    <string name="status_not_connected">সংযুক্ত নয়</string>
+    <string name="pending_screenings">বকেয়া স্ক্রীনিং</string>
+    <string name="pending_none">কিছুই নেই - সব আপডেট করা আছে</string>
+    <string name="pending_one">1টি স্ক্রীনিং পাঠানোর জন্য বাকি</string>
+
+    <string name="pending_multiple">%1$dটি স্ক্রীনিং পাঠানোর জন্য বাকি</string>
+
+    <string name="sending_screenings">স্ক্রীনিং পাঠানো হচ্ছে...</string>
+    <string name="sync_now">এখনই সিঙ্ক করুন</string>
+    <string name="sync_nothing_to_send">পাঠানোর কিছু নেই। সমস্ত আপডেট করা আছে।</string>
+    <string name="sync_success">%1$dটি স্ক্রীনিং সফলভাবে পাঠানো হয়েছে।</string>
+    <string name="sync_partial">%1$dটি পাঠানো হয়েছে, %2$dটি পাঠানো যায়নি। %3$s</string>
+    <string name="please_try_again_later">পরে আবার চেষ্টা করুন।</string>
+
+    <string name="offline_sync_note">স্ক্রীনিং সর্বদা প্রথমে এই ফোনে সংরক্ষিত হয়। আপনি ইন্টারনেট ছাড়াই কাজ চালিয়ে যেতে পারেন।</string>
+
+    <!-- DR Classes -->
+    <string name="dr_no_dr_name">ডায়াবেটিক রেটিনোপ্যাথি নেই</string>
+    <string name="dr_no_dr_short">DR নেই</string>
+
+    <string name="dr_no_dr_recommendation">কোনো লক্ষণ পাওয়া যায়নি। এক বছর পর আবার স্ক্রীনিং করুন।</string>
+
+    <string name="dr_mild_name">মৃদু ডায়াবেটিক রেটিনোপ্যাথি</string>
+    <string name="dr_mild_short">মৃদু DR</string>
+    <string name="dr_mild_recommendation">6 থেকে 12 মাসের মধ্যে পুনরায় পরীক্ষা করুন। ব্লাড সুগার নিয়ন্ত্রণের পরামর্শ দিন।</string>
+
+    <string name="dr_moderate_name">মাঝারি ডায়াবেটিক রেটিনোপ্যাথি</string>
+    <string name="dr_moderate_short">মাঝারি DR</string>
+
+    <string name="dr_moderate_recommendation">চক্ষু বিশেষজ্ঞ দ্বারা ক্লিনিকাল মূল্যায়নের পরামর্শ দেওয়া হয়।</string>
+
+    <string name="dr_severe_name">গুরুতর ডায়াবেটিক রেটিনোপ্যাথি</string>
+
+    <string name="dr_severe_short">গুরুতর DR</string>
+
+    <string name="dr_severe_recommendation">বিশেষজ্ঞের কাছে যাওয়ার পরামর্শ দেওয়া হচ্ছে। শীঘ্রই চোখের ডাক্তারের সাথে দেখা করুন।</string>
+
+    <string name="dr_proliferative_name">প্রোলিফারেটিভ ডায়াবেটিক রেটিনোপ্যাথি</string>
+
+    <string name="dr_proliferative_short">প্রোলিফারেটিভ DR</string>
+
+    <string name="dr_proliferative_recommendation">জরুরী রেফারেল পরামর্শ দেওয়া হচ্ছে। অবিলম্বে চোখের ডাক্তারের সাথে যোগাযোগ করুন।</string>
+
+    <!-- App Errors -->
+    <string name="err_no_image_selected">কোনো ছবি নির্বাচন করা হয়নি।</string>
+    <string name="err_camera_unavailable">ক্যামেরা ব্যবহার করা যাচ্ছে না।</string>
+    <string name="err_camera_permission_denied">ছবি তোলার জন্য ক্যামেরা অনুমতি প্রয়োজন। অনুগ্রহ করে সেটিংসে অনুমতি দিন।</string>
+    <string name="err_invalid_image">এই ফাইলটি একটি বৈধ ছবি নয়। অন্য একটি বেছে নিন।</string>
+
+    <string name="err_image_too_large">এই ছবিটি অনেক বড়। একটি ছোট ছবি ব্যবহার করুন।</string>
+
+    <string name="err_no_internet">ইন্টারনেট সংযোগ নেই। এআই স্ক্রীনিংয়ের জন্য ইন্টারনেট প্রয়োজন। রোগীর তথ্য অফলাইনে কাজ করে।</string>
+    <string name="err_timeout">সার্ভার উত্তর দিতে অনেক সময় নিয়েছে। আবার চেষ্টা করুন।</string>
+
+    <string name="err_server_unreachable">সার্ভারের সাথে সংযোগ করা যাচ্ছে না। আবার চেষ্টা করুন।</string>
+    <string name="err_server_error">সার্ভারে সমস্যা হয়েছে (ত্রুটি %1$d)। আবার চেষ্টা করুন।</string>
+    <string name="err_invalid_response">সার্ভার থেকে অপ্রত্যাশিত প্রতিক্রিয়া এসেছে। আবার চেষ্টা করুন।</string>
+
+    <string name="err_upload_failed">ছবি আপলোড করা যায়নি। আবার চেষ্টা করুন।</string>
+
+    <string name="err_storage_error">এই ফোনে স্ক্রীনিং সংরক্ষণ করা যায়নি।</string>
+    <string name="err_offline_model_unavailable">এই সংস্করণে অফলাইন AI স্ক্রীনিং উপলব্ধ নেই। ইন্টারনেটের সাথে সংযোগ করুন।</string>
+    <string name="err_unknown">কিছু ভুল হয়েছে। আবার চেষ্টা করুন।</string>
+</resources>

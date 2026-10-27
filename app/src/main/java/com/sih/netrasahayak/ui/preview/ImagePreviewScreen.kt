@@ -16,7 +16,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.sih.netrasahayak.R
 import com.sih.netrasahayak.ui.components.ImagePreviewCard
 import com.sih.netrasahayak.ui.components.LoadingView
 import com.sih.netrasahayak.ui.components.PrimaryButton
@@ -26,10 +28,6 @@ import com.sih.netrasahayak.ui.screening.AnalysisState
 
 /**
  * Shows the captured or selected image and waits for an explicit decision.
- *
- * Nothing is uploaded until ANALYZE IMAGE is pressed. While a request is
- * running the buttons are replaced by a loading state, so the same image can
- * never be submitted twice.
  */
 @Composable
 fun ImagePreviewScreen(
@@ -42,8 +40,8 @@ fun ImagePreviewScreen(
 ) {
     if (analysis is AnalysisState.Analyzing) {
         LoadingView(
-            title = "Analyzing retinal image...",
-            subtitle = "Please wait.",
+            title = stringResource(R.string.analyzing_retinal_image),
+            subtitle = stringResource(R.string.please_wait),
             modifier = modifier
         )
         return
@@ -56,14 +54,14 @@ fun ImagePreviewScreen(
             .padding(horizontal = ScreenPadding, vertical = 20.dp)
     ) {
         Text(
-            text = "Check the Image",
+            text = stringResource(R.string.check_the_image),
             style = MaterialTheme.typography.headlineSmall
         )
 
         Spacer(Modifier.height(8.dp))
 
         Text(
-            text = "Make sure the eye is clear and in focus before analysing.",
+            text = stringResource(R.string.check_image_subtitle),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -75,7 +73,7 @@ fun ImagePreviewScreen(
         if (analysis is AnalysisState.Error) {
             Spacer(Modifier.height(20.dp))
             Text(
-                text = analysis.error.message,
+                text = analysis.error.getLocalizedMessage(),
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.error
             )
@@ -84,7 +82,7 @@ fun ImagePreviewScreen(
         Spacer(Modifier.height(28.dp))
 
         PrimaryButton(
-            text = if (analysis is AnalysisState.Error) "TRY AGAIN" else "ANALYZE IMAGE",
+            text = if (analysis is AnalysisState.Error) stringResource(R.string.try_again) else stringResource(R.string.analyze_image),
             icon = Icons.Filled.Science,
             enabled = imageUri != null,
             onClick = onAnalyze
@@ -93,7 +91,7 @@ fun ImagePreviewScreen(
         Spacer(Modifier.height(16.dp))
 
         SecondaryButton(
-            text = "RETAKE",
+            text = stringResource(R.string.retake),
             icon = Icons.Filled.PhotoCamera,
             onClick = onRetake
         )
@@ -101,7 +99,7 @@ fun ImagePreviewScreen(
         Spacer(Modifier.height(16.dp))
 
         SecondaryButton(
-            text = "CHOOSE ANOTHER",
+            text = stringResource(R.string.choose_another),
             icon = Icons.Filled.PhotoLibrary,
             onClick = onChooseAnother
         )

@@ -16,7 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.sih.netrasahayak.R
 
 /**
  * "Confidence: 91%" plus a thick bar. Large enough to read at arm's length.
@@ -40,7 +42,7 @@ fun ConfidenceIndicator(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Confidence",
+                text = stringResource(R.string.confidence),
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
@@ -85,7 +87,7 @@ fun ConfidenceIndicator(
         androidx.compose.foundation.layout.Spacer(Modifier.height(8.dp))
 
         Text(
-            text = "How sure the AI is about this screening suggestion.",
+            text = stringResource(R.string.confidence_tooltip),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(end = 4.dp)

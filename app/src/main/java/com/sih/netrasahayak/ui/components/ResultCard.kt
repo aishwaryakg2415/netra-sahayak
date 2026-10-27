@@ -18,7 +18,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.sih.netrasahayak.R
 import com.sih.netrasahayak.model.DrClass
 import com.sih.netrasahayak.ui.theme.accentColor
 import com.sih.netrasahayak.ui.theme.containerColor
@@ -34,9 +36,10 @@ fun ResultCard(
     drClass: DrClass,
     confidence: Float,
     modifier: Modifier = Modifier,
-    title: String = "AI Screening Result"
+    title: String? = null
 ) {
     val accent = drClass.accentColor()
+    val displayTitle = title ?: stringResource(R.string.ai_screening_result)
 
     Card(
         modifier = modifier.fillMaxWidth(),
@@ -46,7 +49,7 @@ fun ResultCard(
         Column(modifier = Modifier.padding(20.dp)) {
 
             Text(
-                text = title,
+                text = displayTitle,
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -54,7 +57,7 @@ fun ResultCard(
             androidx.compose.foundation.layout.Spacer(Modifier.height(6.dp))
 
             Text(
-                text = drClass.displayName,
+                text = drClass.getLocalizedDisplayName(),
                 style = MaterialTheme.typography.headlineMedium,
                 color = accent
             )
@@ -75,8 +78,8 @@ fun ResultCard(
                 )
                 androidx.compose.foundation.layout.Spacer(Modifier.size(10.dp))
                 Text(
-                    text = if (drClass.referralSuggested) "Referral recommended"
-                    else "No referral suggested at this time",
+                    text = if (drClass.referralSuggested) stringResource(R.string.referral_recommended)
+                    else stringResource(R.string.no_referral_suggested),
                     style = MaterialTheme.typography.titleMedium,
                     color = accent
                 )

@@ -8,6 +8,7 @@ plugins {
 android {
     namespace = "com.sih.netrasahayak"
     compileSdk = 34
+    buildToolsVersion = "34.0.0"
 
     defaultConfig {
         applicationId = "com.sih.netrasahayak"
@@ -69,6 +70,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)

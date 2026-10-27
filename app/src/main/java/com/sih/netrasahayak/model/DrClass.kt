@@ -1,73 +1,90 @@
 package com.sih.netrasahayak.model
 
+import androidx.annotation.StringRes
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.sih.netrasahayak.R
+
 /**
  * The five diabetic-retinopathy grades the screening model can report.
- *
- * [apiLabel] is what the FastAPI backend is expected to send in the
- * "prediction" field. Parsing is deliberately forgiving (see [fromApi]) so a
- * small wording change on the backend does not break the app.
  */
 enum class DrClass(
     val apiLabel: String,
     val displayName: String,
     val shortName: String,
-    /** 0 = no disease ... 4 = most advanced. Used for colour and ordering only. */
     val severity: Int,
-    /** Plain-language advice shown when the backend does not send its own. */
-    val defaultRecommendation: String
+    val defaultRecommendation: String,
+    @StringRes val nameRes: Int,
+    @StringRes val shortNameRes: Int,
+    @StringRes val recommendationRes: Int
 ) {
     NO_DR(
         apiLabel = "No Diabetic Retinopathy",
         displayName = "No Diabetic Retinopathy",
         shortName = "No DR",
         severity = 0,
-        defaultRecommendation = "No signs found. Repeat screening after one year."
+        defaultRecommendation = "No signs found. Repeat screening after one year.",
+        nameRes = R.string.dr_no_dr_name,
+        shortNameRes = R.string.dr_no_dr_short,
+        recommendationRes = R.string.dr_no_dr_recommendation
     ),
     MILD(
         apiLabel = "Mild Diabetic Retinopathy",
         displayName = "Mild Diabetic Retinopathy",
         shortName = "Mild DR",
         severity = 1,
-        defaultRecommendation = "Repeat screening in 6 to 12 months. Advise blood sugar control."
+        defaultRecommendation = "Repeat screening in 6 to 12 months. Advise blood sugar control.",
+        nameRes = R.string.dr_mild_name,
+        shortNameRes = R.string.dr_mild_short,
+        recommendationRes = R.string.dr_mild_recommendation
     ),
     MODERATE(
         apiLabel = "Moderate Diabetic Retinopathy",
         displayName = "Moderate Diabetic Retinopathy",
         shortName = "Moderate DR",
         severity = 2,
-        defaultRecommendation = "Clinical evaluation by an ophthalmologist is recommended."
+        defaultRecommendation = "Clinical evaluation by an ophthalmologist is recommended.",
+        nameRes = R.string.dr_moderate_name,
+        shortNameRes = R.string.dr_moderate_short,
+        recommendationRes = R.string.dr_moderate_recommendation
     ),
     SEVERE(
         apiLabel = "Severe Diabetic Retinopathy",
         displayName = "Severe Diabetic Retinopathy",
         shortName = "Severe DR",
         severity = 3,
-        defaultRecommendation = "Referral recommended. Please arrange an eye specialist visit soon."
+        defaultRecommendation = "Referral recommended. Please arrange an eye specialist visit soon.",
+        nameRes = R.string.dr_severe_name,
+        shortNameRes = R.string.dr_severe_short,
+        recommendationRes = R.string.dr_severe_recommendation
     ),
     PROLIFERATIVE(
         apiLabel = "Proliferative Diabetic Retinopathy",
         displayName = "Proliferative Diabetic Retinopathy",
         shortName = "Proliferative DR",
         severity = 4,
-        defaultRecommendation = "Urgent referral recommended. Please arrange an eye specialist visit."
+        defaultRecommendation = "Urgent referral recommended. Please arrange an eye specialist visit.",
+        nameRes = R.string.dr_proliferative_name,
+        shortNameRes = R.string.dr_proliferative_short,
+        recommendationRes = R.string.dr_proliferative_recommendation
     );
 
-    /** True when the screening suggests the patient should see a specialist. */
     val referralSuggested: Boolean get() = severity >= 2
 
-    companion object {
+    @Composable
+    fun getLocalizedDisplayName(): String = stringResource(nameRes)
 
-        /**
-         * Maps a raw backend string onto a known grade.
-         * Accepts "Moderate Diabetic Retinopathy", "moderate_dr", "Moderate DR",
-         * "2" and similar. Returns null when nothing matches, which the caller
-         * treats as an invalid API response.
-         */
+    @Composable
+    fun getLocalizedShortName(): String = stringResource(shortNameRes)
+
+    @Composable
+    fun getLocalizedRecommendation(): String = stringResource(recommendationRes)
+
+    companion object {
         fun fromApi(raw: String?): DrClass? {
             if (raw.isNullOrBlank()) return null
             val text = raw.trim().lowercase().replace('_', ' ').replace('-', ' ')
 
-            // A bare severity index is also accepted ("0".."4").
             text.toIntOrNull()?.let { index ->
                 return entries.firstOrNull { it.severity == index }
             }

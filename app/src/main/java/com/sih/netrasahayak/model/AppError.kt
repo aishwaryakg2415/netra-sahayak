@@ -1,5 +1,9 @@
 package com.sih.netrasahayak.model
 
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.sih.netrasahayak.R
+
 /**
  * Every failure the user can see is one of these. Raw exceptions and stack
  * traces are never shown - only [message].
@@ -39,4 +43,22 @@ sealed class AppError(val message: String) {
         AppError("Offline AI screening is not available in this version. Please connect to the internet.")
 
     data class Unknown(val details: String? = null) : AppError("Something went wrong. Please try again.")
+
+    @Composable
+    fun getLocalizedMessage(): String = when (this) {
+        is NoImageSelected -> stringResource(R.string.err_no_image_selected)
+        is CameraUnavailable -> stringResource(R.string.err_camera_unavailable)
+        is CameraPermissionDenied -> stringResource(R.string.err_camera_permission_denied)
+        is InvalidImage -> stringResource(R.string.err_invalid_image)
+        is ImageTooLarge -> stringResource(R.string.err_image_too_large)
+        is NoInternet -> stringResource(R.string.err_no_internet)
+        is Timeout -> stringResource(R.string.err_timeout)
+        is ServerUnreachable -> stringResource(R.string.err_server_unreachable)
+        is ServerError -> stringResource(R.string.err_server_error, code)
+        is InvalidResponse -> stringResource(R.string.err_invalid_response)
+        is UploadFailed -> stringResource(R.string.err_upload_failed)
+        is StorageError -> stringResource(R.string.err_storage_error)
+        is OfflineModelUnavailable -> stringResource(R.string.err_offline_model_unavailable)
+        is Unknown -> details ?: stringResource(R.string.err_unknown)
+    }
 }

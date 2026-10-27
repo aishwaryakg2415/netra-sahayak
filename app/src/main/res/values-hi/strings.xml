@@ -1,0 +1,161 @@
+<resources>
+    <string name="app_name">नेत्र सहायक</string>
+    <string name="app_subtitle">एआई-सहायता प्राप्त डायबिटिक रेटिनोपैथी जांच</string>
+    <string name="disclaimer">केवल एआई स्क्रीनिंग सहायता। अंतिम निदान की पुष्टि योग्य स्वास्थ्य देखभाल पेशेवर द्वारा की जानी चाहिए।</string>
+    <string name="go_back">वापस जाएं</string>
+    <string name="change_language">भाषा बदलें</string>
+    <string name="select_language">भाषा चुनें</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="ok">ठीक है</string>
+    <string name="close">बंद करें</string>
+
+    <!-- Navigation Titles -->
+    <string name="nav_new_screening">नई जांच</string>
+    <string name="nav_retinal_image">रेटना की छवि</string>
+    <string name="nav_take_photo">फोटो लें</string>
+    <string name="nav_image_preview">छवि पूर्वावलोकन</string>
+    <string name="nav_screening_result">जांच परिणाम</string>
+    <string name="nav_screening_history">जांच इतिहास</string>
+    <string name="nav_screening_details">जांच विवरण</string>
+    <string name="nav_sync_data">डेटा सिंक करें</string>
+
+    <!-- Home Screen -->
+    <string name="start_new_screening">नई जांच शुरू करें</string>
+    <string name="screening_history">जांच इतिहास</string>
+    <string name="sync_data">डेटा सिंक करें</string>
+
+    <!-- Patient Details Screen -->
+    <string name="patient_details">रोगी का विवरण</string>
+    <string name="patient_details_subtitle">केवल जांच रिकॉर्ड के लिए आवश्यक जानकारी।</string>
+    <string name="patient_id">रोगी आईडी</string>
+    <string name="age_years">आयु (वर्ष)</string>
+    <string name="gender_optional">लिंग (वैकल्पिक)</string>
+    <string name="gender_female">महिला</string>
+    <string name="gender_male">पुरुष</string>
+    <string name="gender_other">अन्य</string>
+    <string name="gender_not_recorded">दर्ज नहीं</string>
+    <string name="years_with_diabetes_optional">डायबिटीज के वर्ष (वैकल्पिक)</string>
+    <string name="btn_continue">आगे बढ़ें</string>
+
+    <!-- Validation Errors -->
+    <string name="err_enter_patient_id">कृपया रोगी आईडी दर्ज करें।</string>
+    <string name="err_patient_id_too_short">रोगी आईडी बहुत छोटी है।</string>
+    <string name="err_enter_patient_age">कृपया रोगी की आयु दर्ज करें।</string>
+    <string name="err_age_must_be_number">आयु एक संख्या होनी चाहिए।</string>
+    <string name="err_age_range">आयु %1$d और %2$d के बीच होनी चाहिए।</string>
+    <string name="err_years_must_be_number">वर्ष एक संख्या होनी चाहिए।</string>
+    <string name="err_realistic_years">कृपया एक वास्तविक वर्ष संख्या दर्ज करें।</string>
+    <string name="err_years_exceed_age">रोगी की आयु से अधिक नहीं हो सकता।</string>
+
+    <!-- Image Source Screen -->
+    <string name="provide_retinal_image">रेटिना छवि प्रदान करें</string>
+    <string name="provide_retinal_image_subtitle">एक नई छवि खींचें या एक मौजूदा रेटिना छवि चुनें।</string>
+    <string name="take_photo">फोटो लें</string>
+    <string name="choose_from_gallery">गैलरी से चुनें</string>
+    <string name="fundus_camera_note">यह संस्करण फोन के सामान्य कैमरे का उपयोग करता है। एक समर्पित फंडस कैमरा बाद में जोड़ा जा सकता है।</string>
+
+    <!-- Camera Screen -->
+    <string name="camera_guidance">फोन को स्थिर रखें और आंख से फ्रेम भरें।</string>
+    <string name="capturing">फोटो ली जा रही है...</string>
+    <string name="capture">फोटो लें</string>
+    <string name="waiting_camera_permission">कैमरा अनुमति की प्रतीक्षा की जा रही है...</string>
+    <string name="please_allow_camera">कृपया फोटो लेने के लिए कैमरा एक्सेस की अनुमति दें।</string>
+
+    <!-- Image Preview Screen -->
+    <string name="analyzing_retinal_image">रेटिना छवि का विश्लेषण किया जा रहा है...</string>
+    <string name="please_wait">कृपया प्रतीक्षा करें।</string>
+
+    <string name="check_the_image">छवि की जांच करें</string>
+    <string name="check_image_subtitle">विश्लेषण करने से पहले सुनिश्चित करें कि आंख स्पष्ट और फोकस में है।</string>
+    <string name="analyze_image">छवि का विश्लेषण करें</string>
+    <string name="try_again">पुनः प्रयास करें</string>
+    <string name="retake">दोबारा फोटो लें</string>
+    <string name="choose_another">दूसरी चुनें</string>
+
+    <!-- Result Screen -->
+    <string name="ai_screening_result">एआई जांच परिणाम</string>
+    <string name="referral_recommended">विशेषज्ञ से परामर्श की सलाह दी जाती है</string>
+    <string name="no_referral_suggested">इस समय किसी रेफरल की आवश्यकता नहीं है</string>
+    <string name="confidence">विश्वास स्तर</string>
+    <string name="confidence_tooltip">एआई इस जांच सुझाव के बारे में कितना आश्वस्त है।</string>
+    <string name="why_this_result">यह परिणाम क्यों?</string>
+    <string name="why_result_subtitle">उजागर क्षेत्र उन हिस्सों को दर्शाते हैं जिन्होंने एआई मॉडल के पूर्वानुमान में योगदान दिया।</string>
+    <string name="recommended_action">अनुशंसित कार्रवाई</string>
+    <string name="saved_on_phone">इस फोन पर सहेजा गया। आप इसे जांच इतिहास से दोबारा खोल सकते हैं।</string>
+    <string name="done">संपन्न</string>
+    <string name="result_not_available">यह जांच परिणाम अब उपलब्ध नहीं है।</string>
+    <string name="go_home">होम पर जाएं</string>
+
+    <!-- Retinal Image Viewer -->
+    <string name="tab_original">मूल</string>
+    <string name="tab_heatmap">हीटमैप</string>
+    <string name="tab_overlay">ओवरले</string>
+    <string name="image_not_available">छवि उपलब्ध नहीं है।</string>
+    <string name="explanation_not_provided">इस जांच के लिए व्याख्या छवि प्रदान नहीं की गई थी।</string>
+
+    <!-- History Screen -->
+    <string name="no_screenings_yet">अभी तक कोई जांच नहीं हुई है</string>
+    <string name="empty_history_subtitle">पूर्ण जांच इस फोन में सहेजी जाती हैं और बिना इंटरनेट के भी यहां दिखाई देती हैं।</string>
+    <string name="opening_screening">जांच खोली जा रही है...</string>
+    <string name="screening_not_found">यह जांच इस फोन पर नहीं मिली।</string>
+    <string name="patient_label">रोगी</string>
+    <string name="age_label">आयु</string>
+    <string name="age_years_format">%1$d वर्ष</string>
+    <string name="gender_label">लिंग</string>
+    <string name="years_with_diabetes_label">डायबिटीज के वर्ष</string>
+    <string name="screened_on_label">जांच की तारीख</string>
+    <string name="open_screening">जांच खोलें</string>
+
+    <!-- Sync Screen -->
+    <string name="internet_connection">इंटरनेट कनेक्शन</string>
+    <string name="status_connected">कनेक्टेड</string>
+    <string name="status_not_connected">कनेक्टेड नहीं है</string>
+    <string name="pending_screenings">लंबित जांच</string>
+    <string name="pending_none">कोई नहीं - सब कुछ अद्यतन है</string>
+    <string name="pending_one">1 जांच भेजने के लिए लंबित है</string>
+    <string name="pending_multiple">%1$d जांच भेजने के लिए लंबित हैं</string>
+    <string name="sending_screenings">जांच भेजी जा रही है...</string>
+    <string name="sync_now">अभी सिंक करें</string>
+    <string name="sync_nothing_to_send">भेजने के लिए कुछ नहीं है। सभी जांच पहले से ही अपडेट हैं।</string>
+    <string name="sync_success">%1$d जांच सफलतापूर्वक भेजी गई।</string>
+    <string name="sync_partial">%1$d भेजी गई, %2$d नहीं भेजी जा सकी। %3$s</string>
+    <string name="please_try_again_later">कृपया बाद में पुनः प्रयास करें।</string>
+    <string name="offline_sync_note">जांच हमेशा पहले इस फोन पर सहेजी जाती है। आप बिना इंटरनेट के काम जारी रख सकते हैं और बाद में सिंक कर सकते हैं।</string>
+
+    <!-- DR Classes -->
+    <string name="dr_no_dr_name">डायबिटिक रेटिनोपैथी नहीं है</string>
+    <string name="dr_no_dr_short">कोई DR नहीं</string>
+    <string name="dr_no_dr_recommendation">कोई लक्षण नहीं मिले। एक साल बाद जांच दोहराएं।</string>
+
+    <string name="dr_mild_name">हल्की डायबिटिक रेटिनोपैथी</string>
+    <string name="dr_mild_short">हल्की DR</string>
+    <string name="dr_mild_recommendation">6 से 12 महीनों में जांच दोहराएं। ब्लड शुगर नियंत्रण की सलाह दें।</string>
+
+    <string name="dr_moderate_name">मध्यम डायबिटिक रेटिनोपैथी</string>
+    <string name="dr_moderate_short">मध्यम DR</string>
+    <string name="dr_moderate_recommendation">नेत्र रोग विशेषज्ञ द्वारा नैदानिक मूल्यांकन की सिफारिश की जाती है।</string>
+
+    <string name="dr_severe_name">गंभीर डायबिटिक रेटिनोपैथी</string>
+    <string name="dr_severe_short">गंभीर DR</string>
+    <string name="dr_severe_recommendation">रेफरल अनुशंसित। कृपया जल्द ही नेत्र विशेषज्ञ से मिलें।</string>
+
+    <string name="dr_proliferative_name">प्रोलिफ़ेरेटिव डायबिटिक रेटिनोपैथी</string>
+    <string name="dr_proliferative_short">प्रोलिफ़ेरेटिव DR</string>
+    <string name="dr_proliferative_recommendation">तत्काल रेफरल अनुशंसित। कृपया तुरंत नेत्र विशेषज्ञ से संपर्क करें।</string>
+
+    <!-- App Errors -->
+    <string name="err_no_image_selected">कोई छवि नहीं चुनी गई।</string>
+    <string name="err_camera_unavailable">कैमरा एक्सेस करने में असमर्थ।</string>
+    <string name="err_camera_permission_denied">फोटो लेने के लिए कैमरा अनुमति आवश्यक है। कृपया सेटिंग्स में अनुमति दें।</string>
+    <string name="err_invalid_image">यह फ़ाइल एक मान्य छवि नहीं है। कृपया दूसरी चुनें।</string>
+    <string name="err_image_too_large">यह छवि बहुत बड़ी है। कृपया छोटी छवि का उपयोग करें।</string>
+    <string name="err_no_internet">इंटरनेट कनेक्शन नहीं है। एआई जांच के लिए इंटरनेट आवश्यक है। रोगी का विवरण और इतिहास ऑफ़लाइन काम करते हैं।</string>
+    <string name="err_timeout">सर्वर ने उत्तर देने में बहुत अधिक समय लिया। कृपया पुनः प्रयास करें।</string>
+    <string name="err_server_unreachable">सर्वर से जुड़ने में असमर्थ। कृपया पुनः प्रयास करें।</string>
+    <string name="err_server_error">सर्वर ने एक समस्या दर्ज की (त्रुटि %1$d)। कृपया पुनः प्रयास करें।</string>
+    <string name="err_invalid_response">सर्वर से अप्रत्याशित उत्तर मिला। कृपया पुनः प्रयास करें।</string>
+    <string name="err_upload_failed">छवि अपलोड नहीं की जा सकी। कृपया पुनः प्रयास करें।</string>
+    <string name="err_storage_error">इस फोन पर जांच सहेजी नहीं जा सकी।</string>
+    <string name="err_offline_model_unavailable">इस संस्करण में ऑफ़लाइन एआई जांच उपलब्ध नहीं है। कृपया इंटरनेट से जुड़ें।</string>
+    <string name="err_unknown">कुछ गलत हो गया। कृपया पुनः प्रयास करें।</string>
+</resources>

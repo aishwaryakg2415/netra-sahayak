@@ -18,7 +18,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.sih.netrasahayak.R
 import com.sih.netrasahayak.model.ScreeningResult
 import com.sih.netrasahayak.ui.components.DisclaimerBanner
 import com.sih.netrasahayak.ui.components.PrimaryButton
@@ -29,8 +31,6 @@ import com.sih.netrasahayak.ui.components.imageModel
 
 /**
  * The screening suggestion, its explanation, and what to do next.
- *
- * Wording is screening language throughout - never "diagnosis".
  */
 @Composable
 fun ResultScreen(
@@ -40,6 +40,12 @@ fun ResultScreen(
     modifier: Modifier = Modifier,
     savedLocally: Boolean = true
 ) {
+    val recommendationText = if (result.recommendation.isBlank() || result.recommendation == result.drClass.defaultRecommendation) {
+        result.drClass.getLocalizedRecommendation()
+    } else {
+        result.recommendation
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -51,15 +57,14 @@ fun ResultScreen(
         Spacer(Modifier.height(28.dp))
 
         Text(
-            text = "Why this result?",
+            text = stringResource(R.string.why_this_result),
             style = MaterialTheme.typography.titleLarge
         )
 
         Spacer(Modifier.height(8.dp))
 
         Text(
-            text = "Highlighted regions indicate areas that contributed to the AI " +
-                "model's prediction.",
+            text = stringResource(R.string.why_result_subtitle),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -74,7 +79,7 @@ fun ResultScreen(
         Spacer(Modifier.height(32.dp))
 
         Text(
-            text = "Recommended Action",
+            text = stringResource(R.string.recommended_action),
             style = MaterialTheme.typography.titleLarge
         )
 
@@ -88,7 +93,7 @@ fun ResultScreen(
             )
         ) {
             Text(
-                text = result.recommendation,
+                text = recommendationText,
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(18.dp)
             )
@@ -101,7 +106,7 @@ fun ResultScreen(
         if (savedLocally) {
             Spacer(Modifier.height(16.dp))
             Text(
-                text = "Saved on this phone. You can open it again from Screening History.",
+                text = stringResource(R.string.saved_on_phone),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -110,7 +115,7 @@ fun ResultScreen(
         Spacer(Modifier.height(28.dp))
 
         PrimaryButton(
-            text = "DONE",
+            text = stringResource(R.string.done),
             icon = Icons.Filled.Done,
             onClick = onDone
         )

@@ -24,16 +24,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.sih.netrasahayak.R
 import com.sih.netrasahayak.ui.components.PrimaryButton
 import com.sih.netrasahayak.ui.components.ScreenPadding
 
 /**
  * Offline-first sync.
- *
- * Screenings are always saved on the phone first. This screen simply reports
- * how many of them have not yet reached a server and lets the worker push them
- * when a connection is available.
  */
 @Composable
 fun SyncScreen(
@@ -51,8 +49,8 @@ fun SyncScreen(
     ) {
         StatusCard(
             icon = if (isOnline) Icons.Filled.CloudDone else Icons.Filled.CloudOff,
-            label = "Internet connection",
-            value = if (isOnline) "Connected" else "Not connected",
+            label = stringResource(R.string.internet_connection),
+            value = if (isOnline) stringResource(R.string.status_connected) else stringResource(R.string.status_not_connected),
             highlight = isOnline
         )
 
@@ -60,11 +58,11 @@ fun SyncScreen(
 
         StatusCard(
             icon = Icons.Filled.CloudSync,
-            label = "Pending screenings",
+            label = stringResource(R.string.pending_screenings),
             value = when (pendingCount) {
-                0 -> "None - everything is up to date"
-                1 -> "1 screening waiting to be sent"
-                else -> "$pendingCount screenings waiting to be sent"
+                0 -> stringResource(R.string.pending_none)
+                1 -> stringResource(R.string.pending_one)
+                else -> stringResource(R.string.pending_multiple, pendingCount)
             },
             highlight = pendingCount == 0
         )
@@ -80,13 +78,13 @@ fun SyncScreen(
                 )
                 Spacer(Modifier.size(16.dp))
                 Text(
-                    text = "Sending screenings...",
+                    text = stringResource(R.string.sending_screenings),
                     style = MaterialTheme.typography.titleMedium
                 )
             }
         } else {
             PrimaryButton(
-                text = "SYNC NOW",
+                text = stringResource(R.string.sync_now),
                 icon = Icons.Filled.CloudSync,
                 enabled = pendingCount > 0,
                 onClick = onSyncNow
@@ -98,16 +96,20 @@ fun SyncScreen(
                 val summary = syncState.summary
                 when {
                     summary.uploaded == 0 && summary.failed == 0 ->
-                        "Nothing to send. All screenings are already up to date."
+                        stringResource(R.string.sync_nothing_to_send)
                     summary.failed == 0 ->
-                        "Sent ${summary.uploaded} screening(s) successfully."
+                        stringResource(R.string.sync_success, summary.uploaded)
                     else ->
-                        "Sent ${summary.uploaded}, could not send ${summary.failed}. " +
-                            (summary.error?.message ?: "Please try again later.")
+                        stringResource(
+                            R.string.sync_partial,
+                            summary.uploaded,
+                            summary.failed,
+                            summary.error?.getLocalizedMessage() ?: stringResource(R.string.please_try_again_later)
+                        )
                 }
             }
 
-            is SyncState.Failed -> syncState.error.message
+            is SyncState.Failed -> syncState.error.getLocalizedMessage()
             else -> null
         }
 
@@ -124,8 +126,7 @@ fun SyncScreen(
         Spacer(Modifier.height(36.dp))
 
         Text(
-            text = "Screenings are always saved on this phone first. You can keep " +
-                "working without internet and sync later.",
+            text = stringResource(R.string.offline_sync_note),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
