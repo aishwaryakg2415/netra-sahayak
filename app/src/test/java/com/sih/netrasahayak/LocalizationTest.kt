@@ -20,7 +20,7 @@ class LocalizationTest {
         stringPattern.findAll(File(res, "$dir/strings.xml").readText())
             .associate { it.groupValues[1] to it.groupValues[2] }
 
-    private val locales = listOf("hi", "mr", "ta", "te", "bn", "gu", "es")
+    private val locales = listOf("hi", "mr", "ta", "te", "bn", "gu", "kn", "es")
 
     @Test
     fun everyLocaleTranslatesEveryString() {

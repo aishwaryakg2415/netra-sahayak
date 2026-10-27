@@ -7,5 +7,6 @@
     <locale android:name="te"/>
     <locale android:name="bn"/>
     <locale android:name="gu"/>
+    <locale android:name="kn"/>
     <locale android:name="es"/>
 </locale-config>

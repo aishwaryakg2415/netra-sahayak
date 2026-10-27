@@ -68,8 +68,8 @@ model exists and the app reports "AI model not installed" instead of producing r
 3. **No patient identifiers** exist in APTOS, DDR or IDRiD, so patient-level leakage
    control applies only to EyePACS. Near-duplicate removal reduces the risk for the others.
 4. **Data licences** are mostly research-only. See `docs/DATASETS_AND_PROVENANCE.md`.
-5. **Translations need native review.** All 8 languages (English, Hindi, Marathi, Tamil,
-   Telugu, Bengali, Gujarati, Spanish) translate every string, including the AI errors,
+5. **Translations need native review.** All 9 languages (English, Hindi, Marathi, Tamil,
+   Telugu, Bengali, Gujarati, Kannada, Spanish) translate every string, including the AI errors,
    image-quality reasons and referral advice. `LocalizationTest` enforces complete
    coverage and matching placeholders. The AI strings were machine-written, though, and a
    native speaker with clinical vocabulary should review them before field use. Referral

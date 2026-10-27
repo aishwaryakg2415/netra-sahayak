@@ -1,0 +1,178 @@
+<resources>
+    <string name="app_name">ನೇತ್ರ ಸಹಾಯಕ</string>
+    <string name="app_subtitle">AI-ನೆರವಿನ ಡಯಾಬಿಟಿಕ್ ರೆಟಿನೋಪತಿ ತಪಾಸಣೆ</string>
+    <string name="disclaimer">ಇದು AI ತಪಾಸಣೆಯ ಸಹಾಯ ಮಾತ್ರ. ಅಂತಿಮ ರೋಗನಿರ್ಣಯವನ್ನು ಅರ್ಹ ಆರೋಗ್ಯ ವೃತ್ತಿಪರರು ದೃಢೀಕರಿಸಬೇಕು.</string>
+    <string name="go_back">ಹಿಂದಕ್ಕೆ ಹೋಗಿ</string>
+    <string name="change_language">ಭಾಷೆ ಬದಲಾಯಿಸಿ</string>
+    <string name="select_language">ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="cancel">ರದ್ದುಮಾಡಿ</string>
+    <string name="ok">ಸರಿ</string>
+    <string name="close">ಮುಚ್ಚಿ</string>
+
+    <!-- Navigation Titles -->
+    <string name="nav_new_screening">ಹೊಸ ತಪಾಸಣೆ</string>
+    <string name="nav_retinal_image">ರೆಟಿನಾ ಚಿತ್ರ</string>
+    <string name="nav_take_photo">ಫೋಟೋ ತೆಗೆಯಿರಿ</string>
+    <string name="nav_image_preview">ಚಿತ್ರದ ಮುನ್ನೋಟ</string>
+    <string name="nav_screening_result">ತಪಾಸಣೆಯ ಫಲಿತಾಂಶ</string>
+    <string name="nav_screening_history">ತಪಾಸಣೆಯ ಇತಿಹಾಸ</string>
+    <string name="nav_screening_details">ತಪಾಸಣೆಯ ವಿವರಗಳು</string>
+    <string name="nav_sync_data">ಡೇಟಾ ಸಿಂಕ್</string>
+
+    <!-- Home Screen -->
+    <string name="start_new_screening">ಹೊಸ ತಪಾಸಣೆ ಪ್ರಾರಂಭಿಸಿ</string>
+    <string name="screening_history">ತಪಾಸಣೆಯ ಇತಿಹಾಸ</string>
+    <string name="sync_data">ಡೇಟಾ ಸಿಂಕ್ ಮಾಡಿ</string>
+
+    <!-- Patient Details Screen -->
+    <string name="patient_details">ರೋಗಿಯ ವಿವರಗಳು</string>
+    <string name="patient_details_subtitle">ತಪಾಸಣೆಯ ದಾಖಲೆಗೆ ಅಗತ್ಯವಿರುವ ಮಾಹಿತಿ ಮಾತ್ರ.</string>
+    <string name="patient_id">ರೋಗಿಯ ಗುರುತಿನ ಸಂಖ್ಯೆ</string>
+    <string name="age_years">ವಯಸ್ಸು (ವರ್ಷಗಳು)</string>
+    <string name="gender_optional">ಲಿಂಗ (ಐಚ್ಛಿಕ)</string>
+    <string name="gender_female">ಸ್ತ್ರೀ</string>
+    <string name="gender_male">ಪುರುಷ</string>
+    <string name="gender_other">ಇತರೆ</string>
+    <string name="gender_not_recorded">ದಾಖಲಿಸಿಲ್ಲ</string>
+    <string name="years_with_diabetes_optional">ಮಧುಮೇಹ ಇರುವ ವರ್ಷಗಳು (ಐಚ್ಛಿಕ)</string>
+    <string name="btn_continue">ಮುಂದುವರಿಸಿ</string>
+
+    <!-- Validation Errors -->
+    <string name="err_enter_patient_id">ದಯವಿಟ್ಟು ರೋಗಿಯ ಗುರುತಿನ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ.</string>
+    <string name="err_patient_id_too_short">ರೋಗಿಯ ಗುರುತಿನ ಸಂಖ್ಯೆ ತುಂಬಾ ಚಿಕ್ಕದಾಗಿದೆ.</string>
+    <string name="err_enter_patient_age">ದಯವಿಟ್ಟು ರೋಗಿಯ ವಯಸ್ಸನ್ನು ನಮೂದಿಸಿ.</string>
+    <string name="err_age_must_be_number">ವಯಸ್ಸು ಒಂದು ಸಂಖ್ಯೆಯಾಗಿರಬೇಕು.</string>
+    <string name="err_age_range">ವಯಸ್ಸು %1$d ಮತ್ತು %2$d ರ ನಡುವೆ ಇರಬೇಕು.</string>
+    <string name="err_years_must_be_number">ವರ್ಷಗಳು ಒಂದು ಸಂಖ್ಯೆಯಾಗಿರಬೇಕು.</string>
+    <string name="err_realistic_years">ದಯವಿಟ್ಟು ವಾಸ್ತವಿಕ ವರ್ಷಗಳ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ.</string>
+    <string name="err_years_exceed_age">ರೋಗಿಯ ವಯಸ್ಸಿಗಿಂತ ಹೆಚ್ಚಾಗಿರಬಾರದು.</string>
+
+    <!-- Image Source Screen -->
+    <string name="provide_retinal_image">ರೆಟಿನಾ ಚಿತ್ರವನ್ನು ಒದಗಿಸಿ</string>
+    <string name="provide_retinal_image_subtitle">ಹೊಸ ಚಿತ್ರವನ್ನು ತೆಗೆಯಿರಿ ಅಥವಾ ಈಗಾಗಲೇ ಇರುವ ರೆಟಿನಾ ಚಿತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ.</string>
+    <string name="take_photo">ಫೋಟೋ ತೆಗೆಯಿರಿ</string>
+    <string name="choose_from_gallery">ಗ್ಯಾಲರಿಯಿಂದ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="fundus_camera_note">ಈ ಆವೃತ್ತಿಯು ಫೋನಿನ ಸಾಮಾನ್ಯ ಕ್ಯಾಮೆರಾವನ್ನು ಬಳಸುತ್ತದೆ. ಈ ಪರದೆಯನ್ನು ಬದಲಾಯಿಸದೆ ನಂತರ ಪ್ರತ್ಯೇಕ ಫಂಡಸ್ ಕ್ಯಾಮೆರಾವನ್ನು ಸಂಪರ್ಕಿಸಬಹುದು.</string>
+
+    <!-- Camera Screen -->
+    <string name="camera_guidance">ಫೋನನ್ನು ಸ್ಥಿರವಾಗಿ ಹಿಡಿದು, ಕಣ್ಣು ಚೌಕಟ್ಟನ್ನು ತುಂಬುವಂತೆ ಮಾಡಿ.</string>
+    <string name="capturing">ಸೆರೆಹಿಡಿಯಲಾಗುತ್ತಿದೆ...</string>
+    <string name="capture">ಸೆರೆಹಿಡಿಯಿರಿ</string>
+    <string name="waiting_camera_permission">ಕ್ಯಾಮೆರಾ ಅನುಮತಿಗಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ...</string>
+    <string name="please_allow_camera">ಫೋಟೋ ತೆಗೆಯಲು ದಯವಿಟ್ಟು ಕ್ಯಾಮೆರಾ ಪ್ರವೇಶಕ್ಕೆ ಅನುಮತಿ ನೀಡಿ.</string>
+
+    <!-- Image Preview Screen -->
+    <string name="analyzing_retinal_image">ರೆಟಿನಾ ಚಿತ್ರವನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ...</string>
+    <string name="please_wait">ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ.</string>
+    <string name="check_the_image">ಚಿತ್ರವನ್ನು ಪರಿಶೀಲಿಸಿ</string>
+    <string name="check_image_subtitle">ವಿಶ್ಲೇಷಿಸುವ ಮೊದಲು ಕಣ್ಣು ಸ್ಪಷ್ಟವಾಗಿ ಮತ್ತು ಫೋಕಸ್‌ನಲ್ಲಿ ಇದೆಯೇ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.</string>
+    <string name="analyze_image">ಚಿತ್ರವನ್ನು ವಿಶ್ಲೇಷಿಸಿ</string>
+    <string name="try_again">ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ</string>
+    <string name="retake">ಮತ್ತೆ ತೆಗೆಯಿರಿ</string>
+    <string name="choose_another">ಬೇರೆ ಆಯ್ಕೆಮಾಡಿ</string>
+
+    <!-- Result Screen -->
+    <string name="ai_screening_result">AI ತಪಾಸಣೆಯ ಫಲಿತಾಂಶ</string>
+    <string name="referral_recommended">ರೆಫರಲ್ ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ</string>
+    <string name="no_referral_suggested">ಈ ಸಮಯದಲ್ಲಿ ರೆಫರಲ್ ಸೂಚಿಸಲಾಗಿಲ್ಲ</string>
+    <string name="confidence">ವಿಶ್ವಾಸ</string>
+    <string name="confidence_tooltip">ಈ ತಪಾಸಣೆಯ ಸಲಹೆಯ ಬಗ್ಗೆ AI ಎಷ್ಟು ಖಚಿತವಾಗಿದೆ.</string>
+    <string name="why_this_result">ಈ ಫಲಿತಾಂಶ ಏಕೆ?</string>
+    <string name="why_result_subtitle">ಹೈಲೈಟ್ ಮಾಡಿದ ಭಾಗಗಳು AI ಮಾದರಿಯ ಊಹೆಗೆ ಕಾರಣವಾದ ಪ್ರದೇಶಗಳನ್ನು ತೋರಿಸುತ್ತವೆ.</string>
+    <string name="recommended_action">ಶಿಫಾರಸು ಮಾಡಿದ ಕ್ರಮ</string>
+    <string name="saved_on_phone">ಈ ಫೋನಿನಲ್ಲಿ ಉಳಿಸಲಾಗಿದೆ. ತಪಾಸಣೆಯ ಇತಿಹಾಸದಿಂದ ಇದನ್ನು ಮತ್ತೆ ತೆರೆಯಬಹುದು.</string>
+    <string name="done">ಮುಗಿದಿದೆ</string>
+    <string name="result_not_available">ಈ ತಪಾಸಣೆಯ ಫಲಿತಾಂಶ ಈಗ ಲಭ್ಯವಿಲ್ಲ.</string>
+    <string name="go_home">ಮುಖಪುಟಕ್ಕೆ ಹೋಗಿ</string>
+
+    <!-- Retinal Image Viewer -->
+    <string name="tab_original">ಮೂಲ</string>
+    <string name="tab_heatmap">ಹೀಟ್‌ಮ್ಯಾಪ್</string>
+    <string name="tab_overlay">ಓವರ್‌ಲೇ</string>
+    <string name="image_not_available">ಚಿತ್ರ ಲಭ್ಯವಿಲ್ಲ.</string>
+    <string name="explanation_not_provided">ಈ ತಪಾಸಣೆಗೆ ವಿವರಣಾ ಚಿತ್ರವನ್ನು ಒದಗಿಸಲಾಗಿಲ್ಲ.</string>
+
+    <!-- History Screen -->
+    <string name="no_screenings_yet">ಇನ್ನೂ ಯಾವುದೇ ತಪಾಸಣೆಗಳಿಲ್ಲ</string>
+    <string name="empty_history_subtitle">ಪೂರ್ಣಗೊಂಡ ತಪಾಸಣೆಗಳನ್ನು ಈ ಫೋನಿನಲ್ಲಿ ಉಳಿಸಲಾಗುತ್ತದೆ ಮತ್ತು ಇಂಟರ್ನೆಟ್ ಇಲ್ಲದಿದ್ದರೂ ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ.</string>
+    <string name="opening_screening">ತಪಾಸಣೆಯನ್ನು ತೆರೆಯಲಾಗುತ್ತಿದೆ...</string>
+    <string name="screening_not_found">ಈ ತಪಾಸಣೆ ಈ ಫೋನಿನಲ್ಲಿ ಕಂಡುಬಂದಿಲ್ಲ.</string>
+    <string name="patient_label">ರೋಗಿ</string>
+    <string name="age_label">ವಯಸ್ಸು</string>
+    <string name="age_years_format">%1$d ವರ್ಷಗಳು</string>
+    <string name="gender_label">ಲಿಂಗ</string>
+    <string name="years_with_diabetes_label">ಮಧುಮೇಹ ಇರುವ ವರ್ಷಗಳು</string>
+    <string name="screened_on_label">ತಪಾಸಣೆಯ ದಿನಾಂಕ</string>
+    <string name="open_screening">ತಪಾಸಣೆಯನ್ನು ತೆರೆಯಿರಿ</string>
+
+    <!-- Sync Screen -->
+    <string name="internet_connection">ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕ</string>
+    <string name="status_connected">ಸಂಪರ್ಕಗೊಂಡಿದೆ</string>
+    <string name="status_not_connected">ಸಂಪರ್ಕವಿಲ್ಲ</string>
+    <string name="pending_screenings">ಬಾಕಿ ಇರುವ ತಪಾಸಣೆಗಳು</string>
+    <string name="pending_none">ಯಾವುದೂ ಇಲ್ಲ - ಎಲ್ಲವೂ ನವೀಕೃತವಾಗಿದೆ</string>
+    <string name="pending_one">1 ತಪಾಸಣೆ ಕಳುಹಿಸಲು ಕಾಯುತ್ತಿದೆ</string>
+    <string name="pending_multiple">%1$d ತಪಾಸಣೆಗಳು ಕಳುಹಿಸಲು ಕಾಯುತ್ತಿವೆ</string>
+    <string name="sending_screenings">ತಪಾಸಣೆಗಳನ್ನು ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ...</string>
+    <string name="sync_now">ಈಗ ಸಿಂಕ್ ಮಾಡಿ</string>
+    <string name="sync_nothing_to_send">ಕಳುಹಿಸಲು ಏನೂ ಇಲ್ಲ. ಎಲ್ಲಾ ತಪಾಸಣೆಗಳು ಈಗಾಗಲೇ ನವೀಕೃತವಾಗಿವೆ.</string>
+    <string name="sync_success">%1$d ತಪಾಸಣೆ(ಗಳನ್ನು) ಯಶಸ್ವಿಯಾಗಿ ಕಳುಹಿಸಲಾಗಿದೆ.</string>
+    <string name="sync_partial">%1$d ಕಳುಹಿಸಲಾಗಿದೆ, %2$d ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. %3$s</string>
+    <string name="please_try_again_later">ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="offline_sync_note">ತಪಾಸಣೆಗಳನ್ನು ಯಾವಾಗಲೂ ಮೊದಲು ಈ ಫೋನಿನಲ್ಲಿ ಉಳಿಸಲಾಗುತ್ತದೆ. ಇಂಟರ್ನೆಟ್ ಇಲ್ಲದೆ ಕೆಲಸ ಮುಂದುವರಿಸಿ ನಂತರ ಸಿಂಕ್ ಮಾಡಬಹುದು.</string>
+
+    <!-- DR Classes -->
+    <string name="dr_no_dr_name">ಡಯಾಬಿಟಿಕ್ ರೆಟಿನೋಪತಿ ಇಲ್ಲ</string>
+    <string name="dr_no_dr_short">DR ಇಲ್ಲ</string>
+    <string name="dr_no_dr_recommendation">ಯಾವುದೇ ಲಕ್ಷಣಗಳು ಕಂಡುಬಂದಿಲ್ಲ. ಒಂದು ವರ್ಷದ ನಂತರ ಮತ್ತೆ ತಪಾಸಣೆ ಮಾಡಿ.</string>
+
+    <string name="dr_mild_name">ಸೌಮ್ಯ ಡಯಾಬಿಟಿಕ್ ರೆಟಿನೋಪತಿ</string>
+    <string name="dr_mild_short">ಸೌಮ್ಯ DR</string>
+    <string name="dr_mild_recommendation">6 ರಿಂದ 12 ತಿಂಗಳಲ್ಲಿ ಮತ್ತೆ ತಪಾಸಣೆ ಮಾಡಿ. ರಕ್ತದ ಸಕ್ಕರೆ ನಿಯಂತ್ರಣಕ್ಕೆ ಸಲಹೆ ನೀಡಿ.</string>
+
+    <string name="dr_moderate_name">ಮಧ್ಯಮ ಡಯಾಬಿಟಿಕ್ ರೆಟಿನೋಪತಿ</string>
+    <string name="dr_moderate_short">ಮಧ್ಯಮ DR</string>
+    <string name="dr_moderate_recommendation">ನೇತ್ರ ತಜ್ಞರಿಂದ ಕ್ಲಿನಿಕಲ್ ಪರೀಕ್ಷೆಯನ್ನು ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ.</string>
+
+    <string name="dr_severe_name">ತೀವ್ರ ಡಯಾಬಿಟಿಕ್ ರೆಟಿನೋಪತಿ</string>
+    <string name="dr_severe_short">ತೀವ್ರ DR</string>
+    <string name="dr_severe_recommendation">ರೆಫರಲ್ ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ. ದಯವಿಟ್ಟು ಶೀಘ್ರದಲ್ಲೇ ನೇತ್ರ ತಜ್ಞರ ಭೇಟಿಯನ್ನು ಏರ್ಪಡಿಸಿ.</string>
+
+    <string name="dr_proliferative_name">ಪ್ರೊಲಿಫರೇಟಿವ್ ಡಯಾಬಿಟಿಕ್ ರೆಟಿನೋಪತಿ</string>
+    <string name="dr_proliferative_short">ಪ್ರೊಲಿಫರೇಟಿವ್ DR</string>
+    <string name="dr_proliferative_recommendation">ತುರ್ತು ರೆಫರಲ್ ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ. ದಯವಿಟ್ಟು ನೇತ್ರ ತಜ್ಞರ ಭೇಟಿಯನ್ನು ಏರ್ಪಡಿಸಿ.</string>
+
+    <!-- App Errors -->
+    <string name="err_no_image_selected">ಯಾವುದೇ ಚಿತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿಲ್ಲ.</string>
+    <string name="err_camera_unavailable">ಕ್ಯಾಮೆರಾವನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ.</string>
+    <string name="err_camera_permission_denied">ಫೋಟೋ ತೆಗೆಯಲು ಕ್ಯಾಮೆರಾ ಅನುಮತಿ ಬೇಕು. ದಯವಿಟ್ಟು ಸೆಟ್ಟಿಂಗ್ಸ್‌ನಲ್ಲಿ ಅನುಮತಿ ನೀಡಿ.</string>
+    <string name="err_invalid_image">ಈ ಫೈಲ್ ಮಾನ್ಯವಾದ ಚಿತ್ರವಲ್ಲ. ದಯವಿಟ್ಟು ಬೇರೊಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ.</string>
+    <string name="err_image_too_large">ಈ ಚಿತ್ರವು ಪ್ರಕ್ರಿಯೆಗೊಳಿಸಲು ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ. ದಯವಿಟ್ಟು ಚಿಕ್ಕ ಚಿತ್ರವನ್ನು ಬಳಸಿ.</string>
+    <string name="err_no_internet">ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವಿಲ್ಲ. ತಪಾಸಣೆಗೆ ಇಂಟರ್ನೆಟ್ ಬೇಕು. ರೋಗಿಯ ವಿವರಗಳು ಮತ್ತು ಇತಿಹಾಸ ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿಯೂ ಕೆಲಸ ಮಾಡುತ್ತವೆ.</string>
+    <string name="err_timeout">ತಪಾಸಣಾ ಸರ್ವರ್ ಪ್ರತಿಕ್ರಿಯಿಸಲು ತುಂಬಾ ಸಮಯ ತೆಗೆದುಕೊಂಡಿತು. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="err_server_unreachable">ತಪಾಸಣಾ ಸರ್ವರ್‌ಗೆ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗುತ್ತಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="err_server_error">ತಪಾಸಣಾ ಸರ್ವರ್ ಸಮಸ್ಯೆಯನ್ನು ವರದಿ ಮಾಡಿದೆ (ದೋಷ %1$d). ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="err_invalid_response">ತಪಾಸಣಾ ಸರ್ವರ್ ಅನಿರೀಕ್ಷಿತ ಉತ್ತರ ಕಳುಹಿಸಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="err_upload_failed">ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="err_storage_error">ಈ ಫೋನಿನಲ್ಲಿ ತಪಾಸಣೆಯನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ.</string>
+    <string name="err_offline_model_unavailable">ಈ ಆವೃತ್ತಿಯಲ್ಲಿ ಆಫ್‌ಲೈನ್ AI ತಪಾಸಣೆ ಲಭ್ಯವಿಲ್ಲ. ದಯವಿಟ್ಟು ಇಂಟರ್ನೆಟ್‌ಗೆ ಸಂಪರ್ಕಿಸಿ.</string>
+    <string name="err_unknown">ಏನೋ ತಪ್ಪಾಗಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+
+    <!-- On-device AI screening -->
+    <string name="err_model_not_installed">ಈ ಆ್ಯಪ್ ಆವೃತ್ತಿಯಲ್ಲಿ ಆಫ್‌ಲೈನ್ AI ಮಾದರಿಯನ್ನು ಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ, ಆದ್ದರಿಂದ ತಪಾಸಣೆ ನಡೆಸಲು ಸಾಧ್ಯವಿಲ್ಲ. ರೋಗಿಯ ವಿವರಗಳು ಮತ್ತು ಇತಿಹಾಸ ಇನ್ನೂ ಕೆಲಸ ಮಾಡುತ್ತವೆ.</string>
+    <string name="err_model_integrity">AI ಮಾದರಿಯು ಸುರಕ್ಷತಾ ಪರಿಶೀಲನೆಯಲ್ಲಿ ವಿಫಲವಾಗಿದೆ ಮತ್ತು ಅದನ್ನು ಬಳಸಲಾಗುವುದಿಲ್ಲ. ದಯವಿಟ್ಟು ಆ್ಯಪ್ ಅನ್ನು ಮರುಸ್ಥಾಪಿಸಿ.</string>
+    <string name="err_inference_failed">AI ಮಾದರಿಗೆ ಈ ಚಿತ್ರವನ್ನು ವಿಶ್ಲೇಷಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ, ಆದ್ದರಿಂದ ಯಾವುದೇ ಫಲಿತಾಂಶ ನೀಡಲಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</string>
+    <string name="err_retake_image">ಈ ಫೋಟೋ AI ತಪಾಸಣೆಗೆ ಸಾಕಷ್ಟು ಉತ್ತಮವಾಗಿಲ್ಲ (%1$s). ದಯವಿಟ್ಟು ರೆಟಿನಾದ ಹೊಸ ಫೋಟೋ ತೆಗೆಯಿರಿ.</string>
+    <string name="err_not_fundus_image">ಇದು ರೆಟಿನಾ (ಫಂಡಸ್) ಫೋಟೋದಂತೆ ಕಾಣುತ್ತಿಲ್ಲ. AI ತಪಾಸಣೆಗೆ ಫಂಡಸ್ ಕ್ಯಾಮೆರಾದಿಂದ ತೆಗೆದ ಕಣ್ಣಿನ ಹಿಂಭಾಗದ ಫೋಟೋ ಬೇಕು.</string>
+    <string name="quality_reason_too_dark">ತುಂಬಾ ಕತ್ತಲೆಯಾಗಿದೆ</string>
+    <string name="quality_reason_too_bright">ತುಂಬಾ ಪ್ರಕಾಶಮಾನವಾಗಿದೆ</string>
+    <string name="quality_reason_blurred">ಮಸುಕಾಗಿದೆ</string>
+    <string name="quality_reason_glare">ತೀವ್ರ ಹೊಳಪು</string>
+    <string name="quality_reason_too_small">ರೆಸಲ್ಯೂಶನ್ ತುಂಬಾ ಕಡಿಮೆ</string>
+    <string name="quality_reason_other">ರೆಟಿನಾ ಸ್ಪಷ್ಟವಾಗಿ ಕಾಣುತ್ತಿಲ್ಲ</string>
+    <string name="rec_urgent_referral">ತುರ್ತು ರೆಫರಲ್ ಶಿಫಾರಸು: ತೀವ್ರ ಡಯಾಬಿಟಿಕ್ ರೆಟಿನೋಪತಿಯ ಲಕ್ಷಣಗಳು. ದಯವಿಟ್ಟು ಸಾಧ್ಯವಾದಷ್ಟು ಬೇಗ ನೇತ್ರ ತಜ್ಞರ ಭೇಟಿಯನ್ನು ಏರ್ಪಡಿಸಿ.</string>
+    <string name="rec_referral">ರೆಫರಲ್ ಶಿಫಾರಸು: ರೆಫರ್ ಮಾಡಬೇಕಾದ ಡಯಾಬಿಟಿಕ್ ರೆಟಿನೋಪತಿಯ ಲಕ್ಷಣಗಳು. ದಯವಿಟ್ಟು ನೇತ್ರ ತಜ್ಞರಿಂದ ಪರೀಕ್ಷೆಯನ್ನು ಏರ್ಪಡಿಸಿ.</string>
+    <string name="rec_human_review">AI ಫಲಿತಾಂಶ ಖಚಿತವಾಗಿಲ್ಲ. ರೋಗಿಗೆ ಸಲಹೆ ನೀಡುವ ಮೊದಲು ದಯವಿಟ್ಟು ಈ ಚಿತ್ರವನ್ನು ತರಬೇತಿ ಪಡೆದ ಗ್ರೇಡರ್ ಅಥವಾ ನೇತ್ರ ತಜ್ಞರಿಂದ ಪರಿಶೀಲಿಸಿ.</string>
+    <string name="rec_review_suffix">" AI ಖಚಿತವಾಗಿರಲಿಲ್ಲ - ತರಬೇತಿ ಪಡೆದ ವ್ಯಕ್ತಿ ಈ ಚಿತ್ರವನ್ನು ಪರಿಶೀಲಿಸಬೇಕು."</string>
+    <string name="source_on_device">ಫೋನಿನಲ್ಲಿರುವ AI ಮಾದರಿ (ಆಫ್‌ಲೈನ್)</string>
+</resources>

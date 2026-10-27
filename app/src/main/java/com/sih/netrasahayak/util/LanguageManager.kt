@@ -19,6 +19,7 @@ object LanguageManager {
         AppLanguage("te", "Telugu", "తెలుగు"),
         AppLanguage("bn", "Bengali", "বাংলা"),
         AppLanguage("gu", "Gujarati", "ગુજરાતી"),
+        AppLanguage("kn", "Kannada", "ಕನ್ನಡ"),
         AppLanguage("es", "Spanish", "Español"),
     )
 
