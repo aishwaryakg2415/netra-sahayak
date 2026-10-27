@@ -26,7 +26,8 @@ import numpy as np
 from . import quality as Q
 from .calibration import fit_temperature
 from .datasets import UNGRADABLE, Record, discover_roots, load_all
-from .metrics import CLASS_NAMES, full_report, referable_score, softmax, threshold_for_sensitivity
+from .metrics import (CLASS_NAMES, expected_calibration_error, full_report, referable_score, softmax,
+                      threshold_for_sensitivity)
 from .preprocess import OUT_SIZE, load_rgb, preprocess
 from .referral import decide
 from .splits import dhash, grouped_stratified_split, near_duplicate_pairs
@@ -127,7 +128,7 @@ def assign_splits(records: list[Record], cache_rows: list[dict]) -> list[str]:
 
 def remove_leakage(records, cache_rows, split) -> dict:
     idx = [i for i, row in enumerate(cache_rows) if row["dhash"] is not None]
-    pairs = near_duplicate_pairs([cache_rows[i]["dhash"] for i in idx], max_distance=3)
+    pairs = near_duplicate_pairs([cache_rows[i]["dhash"] for i in idx])
     dropped = 0
     cross_eval = 0
     for a, b in pairs:
@@ -148,6 +149,26 @@ def remove_leakage(records, cache_rows, split) -> dict:
 
 
 # ------------------------------------------------------------------ helpers
+
+def choose_temperature(logits: np.ndarray, y: np.ndarray, seed: int = SEED) -> tuple[float, dict]:
+    """Temperature scaling is kept only if it improves ECE out-of-fold.
+
+    2-fold cross-fitting on the validation split: fit T on one half, measure ECE
+    on the other half, both ways. If the average ECE does not improve, T = 1.
+    """
+    rng = np.random.default_rng(seed)
+    idx = rng.permutation(len(y))
+    folds = [idx[: len(y) // 2], idx[len(y) // 2:]]
+    before, after = [], []
+    for a, b in ((0, 1), (1, 0)):
+        t = fit_temperature(logits[folds[a]], y[folds[a]])
+        before.append(expected_calibration_error(softmax(logits[folds[b]]), y[folds[b]]))
+        after.append(expected_calibration_error(softmax(logits[folds[b]], t), y[folds[b]]))
+    improves = float(np.mean(after)) < float(np.mean(before))
+    T = fit_temperature(logits, y) if improves else 1.0
+    return T, {"out_of_fold_ece_uncalibrated": float(np.mean(before)),
+               "out_of_fold_ece_calibrated": float(np.mean(after)), "applied": improves}
+
 
 def sha256(path: str) -> str:
     h = hashlib.sha256()
@@ -266,7 +287,7 @@ def main(argv=None) -> None:
         w.writerow(["dataset", "source_path", "label", "patient_id", "source_split", "split", "quality_status", "dhash"])
         for r, row, s, g in zip(records, cache_rows, split, gate):
             w.writerow([r.dataset, r.path.replace(args.input, "<input>"), r.label, r.patient_id, r.source_split, s, g,
-                        "" if row["dhash"] is None else f"{row['dhash']:016x}"])
+                        "" if row["dhash"] is None else f"{row['dhash']:064x}"])
 
     train_p, train_y, _ = subset(records, cache_rows, split, "train")
     val_p, val_y, val_idx = subset(records, cache_rows, split, "val")
@@ -293,26 +314,29 @@ def main(argv=None) -> None:
         runs.append(info)
 
     comparison = []
+    test_subsets = {s: subset(records, cache_rows, split, s) for s in eval_sets}
     for info in runs:
-        val_logits = M.predict_logits(info, info["best_weights"], val_p)
-        T = fit_temperature(val_logits, val_y)
+        all_logits = M.predict_many(info, info["best_weights"], [val_p] + [test_subsets[s][0] for s in eval_sets])
+        val_logits = all_logits[0]
+        T, calib = choose_temperature(val_logits, val_y)
         p_val = softmax(val_logits, T)
         ref_thr = threshold_for_sensitivity(val_y >= REFERABLE_MIN_GRADE, referable_score(p_val), TARGET_REFERABLE_SENSITIVITY)
         urg_thr = threshold_for_sensitivity(val_y >= 3, p_val[:, 3:].sum(1), TARGET_URGENT_SENSITIVITY)
         res = {"name": info["name"], "arch": info["arch"], "loss": info["loss"], "temperature": T,
+               "calibration_check": calib,
                "referable_threshold": ref_thr, "urgent_threshold": urg_thr,
                "train_hours": info["train_seconds"] / 3600,
                "val_uncalibrated": full_report(softmax(val_logits), val_y, ref_thr),
                "val": full_report(p_val, val_y, ref_thr), "tests": {}}
         np.savez_compressed(os.path.join(args.out, "runs", info["name"], "val_logits.npz"), logits=val_logits, y=val_y)
-        for s in eval_sets:
-            p, y, _ = subset(records, cache_rows, split, s)
-            lg = M.predict_logits(info, info["best_weights"], p)
+        for s, lg in zip(eval_sets, all_logits[1:]):
+            p, y, idxs = test_subsets[s]
             np.savez_compressed(os.path.join(args.out, "runs", info["name"], f"{s}_logits.npz"), logits=lg, y=y)
             res["tests"][s] = full_report(softmax(lg, T), y, ref_thr)
-            pa, ya, _ = subset(records, cache_rows, split, s, gate=gate)
-            if len(pa):
-                res["tests"][s + "_gate_accepted"] = full_report(softmax(M.predict_logits(info, info["best_weights"], pa), T), ya, ref_thr)
+            # The app only grades images its quality gate accepts; report that subset too.
+            accepted = np.array([gate[i] == Q.ACCEPTED for i in idxs], dtype=bool)
+            if accepted.any():
+                res["tests"][s + "_gate_accepted"] = full_report(softmax(lg[accepted], T), y[accepted], ref_thr)
         comparison.append(res)
         log(f"{info['name']}: val QWK {res['val']['qwk']:.4f}, val acc {res['val']['accuracy']:.4f}, "
             f"ECE {res['val_uncalibrated']['ece']:.4f}->{res['val']['ece']:.4f}, T={T:.3f}")
@@ -367,11 +391,13 @@ def main(argv=None) -> None:
     fp32 = quant["fp32"]
     ok = [n for n, e in quant.items()
           if e["val_subset_qwk"] >= fp32["val_subset_qwk"] - 0.01
-          and (e["val_subset_referable_sensitivity"] or 0) >= (fp32["val_subset_referable_sensitivity"] or 0) - 0.01]
+          and (e["val_subset_referable_sensitivity"] or 0) >= (fp32["val_subset_referable_sensitivity"] or 0) - 0.01
+          and e.get("argmax_agreement_vs_fp32", 1.0) >= 0.98]
     deploy = min(ok, key=lambda n: quant[n]["size_mb"])
-    log(f"deployment variant: {deploy} (smallest within 0.01 QWK and referable sensitivity of FP32)")
+    log(f"deployment variant: {deploy} (smallest within 0.01 QWK / referable sensitivity of FP32, >=98% agreement)")
     dump({"variants": quant, "selected": deploy,
-          "rule": "smallest variant with val-subset QWK and referable sensitivity within 0.01 of FP32"},
+          "rule": "smallest variant with val-subset QWK and referable sensitivity within 0.01 of FP32 "
+                  "and >= 98% argmax agreement with FP32"},
          os.path.join(reports, "quantization.json"))
 
     # 6. explanation check: CAM from the exported model vs textbook Grad-CAM

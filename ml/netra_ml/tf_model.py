@@ -168,13 +168,23 @@ def train(exp: dict, train_items, val_items, out_dir: str, log, seed: int = 42) 
 
 
 def predict_logits(exp: dict, weights_path: str, paths, batch_size: int = 32) -> np.ndarray:
+    return predict_many(exp, weights_path, [paths], batch_size)[0]
+
+
+def predict_many(exp: dict, weights_path: str, path_lists, batch_size: int = 32) -> list[np.ndarray]:
+    """Builds the model once (one XLA compile) and predicts several image lists."""
     keras.mixed_precision.set_global_policy("float32")
     model, _, _ = build(exp["arch"], exp["size"], weights=None)
     model.load_weights(weights_path)
-    ds = make_dataset(paths, np.zeros(len(paths), np.int32), exp["size"], batch_size, training=False)
-    out = model.predict(ds, verbose=0).astype(np.float64)
+    outs = []
+    for paths in path_lists:
+        if len(paths) == 0:
+            outs.append(np.zeros((0, NUM_CLASSES)))
+            continue
+        ds = make_dataset(paths, np.zeros(len(paths), np.int32), exp["size"], batch_size, training=False)
+        outs.append(model.predict(ds, verbose=0).astype(np.float64))
     keras.backend.clear_session()
-    return out
+    return outs
 
 
 # --------------------------------------------------------------- export
@@ -187,19 +197,18 @@ def export_tflite(exp: dict, weights_path: str, out_dir: str, representative_pat
     model.load_weights(weights_path)
     size = exp["size"]
 
-    class Serving(tf.Module):
-        def __init__(self, net):
-            super().__init__()
-            self.net = net
+    # Keras 3 models must be exported through keras.export.ExportArchive;
+    # tf.saved_model.save cannot traverse them.
+    def serve(image):
+        logits, features = explain(image, training=False)
+        return {"logits": logits, "features": features}
 
-        @tf.function(input_signature=[tf.TensorSpec([1, size, size, 3], tf.float32, name="image")])
-        def serve(self, image):
-            logits, features = self.net(image, training=False)
-            return {"logits": logits, "features": features}
-
-    module = Serving(explain)
     saved = os.path.join(out_dir, "saved_model")
-    tf.saved_model.save(module, saved, signatures={"serving_default": module.serve})
+    archive = keras.export.ExportArchive()
+    archive.track(explain)
+    archive.add_endpoint(name="serving_default", fn=serve,
+                         input_signature=[tf.TensorSpec([1, size, size, 3], tf.float32, name="image")])
+    archive.write_out(saved)
 
     def rep_data():
         for p in representative_paths:

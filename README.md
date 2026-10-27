@@ -1,16 +1,52 @@
-# Netra Sahayak — Android Frontend
+# Netra Sahayak — Offline AI Diabetic Retinopathy Screening
 
 **AI-Assisted Diabetic Retinopathy Screening**
 
 > AI screening support only. Final diagnosis must be confirmed by a qualified healthcare professional.
 
 An Android app for ASHA / rural health workers. It collects minimal patient details, captures or
-selects a retinal image, sends it to a FastAPI + EfficientNet backend for screening, and shows the
-suggestion together with a Grad-CAM explanation. Every screening is stored on the phone, so history
-works with no internet.
+selects a retinal image, checks the image quality, grades diabetic retinopathy **on the phone** with
+a bundled LiteRT model, explains the result with a class-activation heatmap, and gives a transparent
+referral suggestion. Screening needs **no internet**: release builds do not even have the INTERNET
+permission. Every screening is stored on the phone.
 
-The AI model is **not** part of this project — it is built separately in Python. This app is
-already wired for it.
+> **Not clinically validated.** The model is a research/hackathon prototype trained on public
+> datasets with research-only terms. Its referral thresholds are provisional and have not been
+> reviewed by an ophthalmologist. See [docs/MODEL_CARD.md](docs/MODEL_CARD.md).
+
+## 0. On-device AI at a glance
+
+```mermaid
+flowchart LR
+    A[Camera / gallery] --> B[RetinalImageDecoder<br/>EXIF-upright RGB]
+    B --> C{ImageQualityAssessor}
+    C -- RETAKE / UNSUPPORTED --> X[Plain error, no grade]
+    C -- ACCEPTED --> D[RetinaPreprocessor<br/>crop + 384 px]
+    D --> E[LiteRT model<br/>logits + feature maps]
+    E --> F[Temperature-scaled<br/>softmax]
+    F --> G[ReferralPolicy<br/>transparent rules]
+    E --> H[Class activation map<br/>= Grad-CAM for GAP head]
+    G --> I[ScreeningResult]
+    H --> I
+    I --> J[(Room, app-private files)]
+    I --> K[Existing result screen]
+    subgraph Training - Kaggle GPU, never on the phone
+      T1[APTOS + EyePACS + DDR] --> T2[Grouped splits + dedup] --> T3[Train / compare / calibrate] --> T4[Export FP32/FP16/INT8, pick by measurement]
+      T5[DDR test, IDRiD, Messidor-2] --> T6[External evaluation]
+    end
+    T4 -. model_config.json + .tflite + SHA-256 .-> E
+```
+
+| Where | What |
+|---|---|
+| `app/src/main/java/com/sih/netrasahayak/ml/` | Kotlin: decoder, quality gate, preprocessing, LiteRT classifier, CAM, referral rules, model config |
+| `repository/LocalInferenceRepository.kt` | The offline screening pipeline the UI calls |
+| `ml/` | Python: datasets, training, evaluation, calibration, export, tests ([ml/README.md](ml/README.md)) |
+| `docs/` | [Model card](docs/MODEL_CARD.md), [datasets & provenance](docs/DATASETS_AND_PROVENANCE.md), [deployment](docs/DEPLOYMENT.md) |
+| `IMPLEMENTATION_STATUS.md` | What is implemented, tested, trained, evaluated and verified — and what is not |
+
+The original FastAPI path (sections 4–7, 11) still exists as an optional **debug-only** mode
+(`INFERENCE_MODE = "remote"`).
 
 ---
 
@@ -390,11 +426,12 @@ Until then it fails with a clear message rather than pretending to work.
 
 ## 12. Offline behaviour
 
-Works with **no internet**: home, patient details, camera, gallery, image preview, screening
-history (list + detail with the stored image), and the Sync screen's status.
+Everything works with **no internet**, including AI screening, the explanation heatmap and history:
+the model ships inside the APK and the heatmap is computed and stored on the phone. Release builds
+have no INTERNET permission. `tools/verify_offline.sh` runs the real inference tests on a device in
+airplane mode.
 
-Needs internet: only the analysis request itself (and loading a heatmap that lives on the server).
-The app never blocks navigation because the phone is offline — it says so and carries on.
+(Only the optional debug-only `remote` mode and the proposed Sync upload need a connection.)
 
 Results are written to Room immediately after the server replies, marked `synced = false`. The Sync
 screen shows the connection state and how many records are waiting, and **SYNC NOW** pushes them
@@ -422,12 +459,13 @@ Duplicate submissions are prevented in `ScreeningViewModel.analyze()` and `SyncV
    demos are repeatable — it carries no clinical information whatsoever.
 3. **`POST /screenings` (sync) is a proposed contract.** No backend implements it yet; with
    `USE_MOCK_API = false` the Sync screen will report a server error until it exists.
-4. **TFLite offline inference is an integration point only** — not implemented.
+4. **On-device model is a research prototype.** See the model card for measured performance,
+   data licences and what has *not* been validated (clinical use, phone-camera images, Indian
+   population-specific performance).
 5. **Gallery URI lifetime.** A picked `content://` URI is valid for the current process. If Android
    kills the app while the preview is open, re-pick the image. Once analysed, the image is copied
    into app storage and is permanent.
-6. **Heatmaps from the server are not cached offline** — only their URL is stored. A history item
-   opened without internet shows the original image; the heatmap views need a connection.
-   (Mock-mode heatmaps are local files and always available.)
+6. **Heatmaps** from the on-device model are local files and always available offline. (Heatmaps
+   from the optional debug backend are not cached — only their URL is stored.)
 7. **Portrait only, light theme only** — deliberate, for consistency and daylight readability.
 8. **No authentication.** Out of scope for the MVP, as specified.

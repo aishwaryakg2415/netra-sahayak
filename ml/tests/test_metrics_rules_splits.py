@@ -104,8 +104,28 @@ def test_grouped_split_never_splits_a_patient():
 
 def test_near_duplicates_found():
     hashes = [0x0123456789ABCDEF, 0x0123456789ABCDEE, 0xFEDCBA9876543210, 0x0123456789ABCDE8]
-    pairs = near_duplicate_pairs(hashes, max_distance=3)
+    pairs = near_duplicate_pairs(hashes, max_distance=3, bits=64)
     assert (0, 1) in pairs and (0, 3) in pairs and all(2 not in p for p in pairs)
+
+
+def test_dhash_separates_different_eyes_but_matches_recompressed_copy():
+    import io
+    from PIL import Image
+    from netra_ml.golden import synthetic_fundus
+    from netra_ml.preprocess import preprocess
+    from netra_ml.splits import NEAR_DUPLICATE_BITS, dhash
+
+    def gray(rgb):
+        return (preprocess(rgb).image.astype(np.uint16).sum(axis=2) // 3).astype(np.uint8)
+
+    a = synthetic_fundus(700, 700, seed=11)
+    buf = io.BytesIO()
+    Image.fromarray(a).save(buf, format="JPEG", quality=80)
+    a_jpeg = np.asarray(Image.open(io.BytesIO(buf.getvalue())).convert("RGB"))
+    b = synthetic_fundus(700, 700, seed=12)
+    ha, hj, hb = dhash(gray(a)), dhash(gray(a_jpeg)), dhash(gray(b))
+    assert bin(ha ^ hj).count("1") <= NEAR_DUPLICATE_BITS
+    assert bin(ha ^ hb).count("1") > 3 * NEAR_DUPLICATE_BITS
 
 
 def test_dataset_loaders_read_annotation_files(tmp_path):

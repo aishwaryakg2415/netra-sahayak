@@ -7,11 +7,24 @@ from collections import defaultdict
 import numpy as np
 
 
-def dhash(gray: np.ndarray, size: int = 8) -> int:
-    """64-bit difference hash of a greyscale image (any size)."""
+HASH_BITS = 256
+NEAR_DUPLICATE_BITS = 10
+
+
+def dhash(gray: np.ndarray, size: int = 16) -> int:
+    """256-bit difference hash of the central retina.
+
+    Fundus photos all share the same layout (black corners, bright disc), so a
+    small whole-image hash makes unrelated eyes look identical. Hashing only the
+    central 60 % at 16x16 after contrast stretching captures vessel structure.
+    """
     from PIL import Image
 
-    small = np.asarray(Image.fromarray(gray).resize((size + 1, size), Image.BILINEAR), dtype=np.int16)
+    h, w = gray.shape
+    crop = gray[int(0.2 * h):int(0.8 * h), int(0.2 * w):int(0.8 * w)].astype(np.float64)
+    lo, hi = np.percentile(crop, 2), np.percentile(crop, 98)
+    crop = np.clip((crop - lo) / max(hi - lo, 1.0) * 255.0, 0, 255).astype(np.uint8)
+    small = np.asarray(Image.fromarray(crop).resize((size + 1, size), Image.BILINEAR), dtype=np.int16)
     bits = (small[:, 1:] > small[:, :-1]).flatten()
     value = 0
     for b in bits:
@@ -19,17 +32,21 @@ def dhash(gray: np.ndarray, size: int = 8) -> int:
     return value
 
 
-def near_duplicate_pairs(hashes: list[int], max_distance: int = 3) -> list[tuple[int, int]]:
-    """Index pairs whose 64-bit hashes differ in <= max_distance bits.
+def near_duplicate_pairs(hashes: list[int], max_distance: int = NEAR_DUPLICATE_BITS,
+                         bits: int = HASH_BITS) -> list[tuple[int, int]]:
+    """Index pairs whose hashes differ in <= max_distance bits.
 
-    Uses the pigeonhole principle: with 4 bands of 16 bits and max_distance <= 3,
-    every near-duplicate pair agrees exactly on at least one band.
+    Pigeonhole banding: with max_distance + 1 bands, any pair within
+    max_distance bits agrees exactly on at least one band.
     """
-    assert max_distance <= 3
+    bands = max_distance + 1
+    width = bits // bands
+    assert width >= 8, "too many bands for the hash size"
+    mask = (1 << width) - 1
     buckets: dict[tuple[int, int], list[int]] = defaultdict(list)
     for i, h in enumerate(hashes):
-        for band in range(4):
-            buckets[(band, (h >> (16 * band)) & 0xFFFF)].append(i)
+        for band in range(bands):
+            buckets[(band, (h >> (width * band)) & mask)].append(i)
     pairs = set()
     for members in buckets.values():
         if len(members) < 2 or len(members) > 2000:

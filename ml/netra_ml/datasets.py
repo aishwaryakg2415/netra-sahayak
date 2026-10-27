@@ -58,6 +58,10 @@ def discover_roots(search_root: str, max_depth: int = 5) -> dict[str, str]:
             elif marker_file in names:
                 if key == "aptos2019" and not os.path.isdir(os.path.join(dirpath, "train_images")):
                     continue
+                # The grades-only dataset also has a messidor_data.csv; the image
+                # dataset is the one with the messidor-2/ image folder next to it.
+                if key == "messidor2_images" and not os.path.isdir(os.path.join(dirpath, "messidor-2")):
+                    continue
                 found[key] = dirpath
         # Skip image folders: they are huge and contain no markers.
         dirnames[:] = [d for d in dirnames if not d.lower().startswith(("train_images", "test_images", "resized_train", "imagenes", "preprocess"))]
@@ -132,15 +136,19 @@ def load_messidor2(images_root: str, grades_root: str | None) -> list[Record]:
     else:
         rows = _read_csv(os.path.join(images_root, "messidor_data.csv"))
         id_key, grade_key = "id_code", "diagnosis"
+    # The grade file says e.g. "IM000012.jpg" while the mirror stores the image
+    # under another extension/case, so match on the lower-case file stem.
+    try:
+        by_stem = {os.path.splitext(f)[0].lower(): f for f in os.listdir(img_dir)}
+    except OSError:
+        by_stem = {}
     out = []
     for row in rows:
         name = row[id_key]
         gradable = str(row.get("adjudicated_gradable", "1")).strip() in ("1", "1.0", "True")
         raw = str(row.get(grade_key, "")).strip()
         label = int(float(raw)) if raw and gradable else UNGRADABLE
-        path = os.path.join(img_dir, name)
-        if not os.path.isfile(path):
-            path = os.path.join(img_dir, os.path.splitext(name)[0] + ".png")
+        path = os.path.join(img_dir, by_stem.get(os.path.splitext(name)[0].lower(), name))
         exam = "_".join(name.split("_")[:2])
         out.append(Record("messidor2", path, label, f"messidor2:{exam}", ""))
     return out
@@ -158,7 +166,20 @@ def load_all(roots: dict[str, str]) -> dict[str, list[Record]]:
         data["idrid"] = load_idrid(roots["idrid"])
     if "messidor2_images" in roots:
         data["messidor2"] = load_messidor2(roots["messidor2_images"], roots.get("messidor2_grades"))
-    return {k: [r for r in v if os.path.isfile(r.path)] for k, v in data.items()}
+    # One directory listing per folder instead of one stat() per image: on
+    # network-mounted storage (Kaggle) 50k isfile() calls take ~30 minutes.
+    listings: dict[str, set[str]] = {}
+
+    def exists(path: str) -> bool:
+        d, f = os.path.split(path)
+        if d not in listings:
+            try:
+                listings[d] = set(os.listdir(d))
+            except OSError:
+                listings[d] = set()
+        return f in listings[d]
+
+    return {k: [r for r in v if exists(r.path)] for k, v in data.items()}
 
 
 def _read_csv(path: str) -> list[dict]:
