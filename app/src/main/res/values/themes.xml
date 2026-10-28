@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.NetraSahayak" parent="android:Theme.Material.Light.NoActionBar">
+    <!-- AppCompat parent is required: MainActivity is an AppCompatActivity (needed for the
+         in-app language picker), and AppCompat crashes at launch with a platform theme. -->
+    <style name="Theme.NetraSahayak" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">#00695C</item>
         <item name="android:windowBackground">#FFFBFF</item>
     </style>
