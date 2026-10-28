@@ -1,0 +1,5 @@
+# Model artefacts and test buffers must be byte-exact (SHA-256 checked at load time).
+*.tflite binary
+*.bin binary
+*.gz binary
+*.png binary
