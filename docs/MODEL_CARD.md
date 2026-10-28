@@ -125,7 +125,9 @@ low-confidence review rule and the human-review wording are the remaining safegu
 | INT8 dynamic range | 9.6 MB | 0.812 | 0.883 | 97.4% | 108 ms |
 | INT8 full integer | 10.4 MB | 0.738 | 0.738 | 84.9% | 60 ms |
 
-\*Measured on the Kaggle CPU, **not on a phone**. On-device latency has not been measured yet.
+\*Measured on the Kaggle CPU, not on a phone. On a phone (A001T, Android 16, CPU/XNNPACK), the deployed
+FP16 model ran the whole screening pipeline in **525–660 ms per image**, offline, and its outputs matched
+the training pipeline on the golden images.
 The deployment rule picks the smallest variant within 0.01 QWK and referable sensitivity of
 FP32 with ≥ 98% agreement. INT8 dynamic missed the agreement bar, and full INT8 lost too much
 accuracy.

@@ -27,7 +27,7 @@ class MigrationTest {
         "`recommendation` TEXT NOT NULL, `created_at` INTEGER NOT NULL, `synced` INTEGER NOT NULL)"
 
     @Test
-    fun migrate1To2KeepsHistory() = runBlocking {
+    fun migrate1To2KeepsHistory(): Unit = runBlocking {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val name = "migration-test.db"
         context.deleteDatabase(name)

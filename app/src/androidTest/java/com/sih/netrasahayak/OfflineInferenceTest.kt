@@ -48,7 +48,7 @@ class OfflineInferenceTest {
     }
 
     @Test
-    fun missingModelNeverProducesAResult() = runBlocking {
+    fun missingModelNeverProducesAResult(): Unit = runBlocking {
         assumeTrue("model is bundled; covered by the inference test", !modelBundled())
         val img = Bitmap.createBitmap(512, 512, Bitmap.Config.ARGB_8888).apply { eraseColor(0xFFB05020.toInt()) }
         val f = File(context.cacheDir, "any.png")
@@ -58,7 +58,7 @@ class OfflineInferenceTest {
     }
 
     @Test
-    fun goldenImageMatchesTrainingPipelineOutput() = runBlocking {
+    fun goldenImageMatchesTrainingPipelineOutput(): Unit = runBlocking {
         assumeTrue("model assets not bundled in this build", modelBundled())
         android.util.Log.i("OfflineInferenceTest", "network during test: ${networkState()}")
         val repo = LocalInferenceRepository(context)
@@ -72,6 +72,7 @@ class OfflineInferenceTest {
                 assertTrue(outcome is Outcome.Failure)
             } else {
                 val result = (outcome as Outcome.Success).data
+                android.util.Log.i("OfflineInferenceTest", "golden $n: grade ${result.drClass.severity} in ${result.processingMillis} ms (decode+quality+inference+CAM)")
                 val expected = golden.getAsJsonArray("probs").map { it.asFloat }
                 assertEquals(5, result.classScores.size)
                 assertEquals(1.0, result.classScores.sum().toDouble(), 1e-4)
@@ -88,7 +89,7 @@ class OfflineInferenceTest {
     }
 
     @Test
-    fun nonFundusImageIsRejectedNotGraded() = runBlocking {
+    fun nonFundusImageIsRejectedNotGraded(): Unit = runBlocking {
         assumeTrue(modelBundled())
         val grey = Bitmap.createBitmap(640, 480, Bitmap.Config.ARGB_8888).apply { eraseColor(0xFF808080.toInt()) }
         val f = File(context.cacheDir, "grey.png")
@@ -98,7 +99,7 @@ class OfflineInferenceTest {
     }
 
     @Test
-    fun corruptedFileIsRejected() = runBlocking {
+    fun corruptedFileIsRejected(): Unit = runBlocking {
         assumeTrue(modelBundled())
         val f = File(context.cacheDir, "corrupt.jpg").apply { writeText("not an image") }
         val outcome = LocalInferenceRepository(context).analyze(Uri.fromFile(f), patient)

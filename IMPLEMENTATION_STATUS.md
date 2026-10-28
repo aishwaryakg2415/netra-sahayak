@@ -8,18 +8,18 @@ The labels follow the definition of done in the project brief:
 - **Offline-verified**: inference was run on a device with networking off.
 - **Clinically validated**: never claimed here.
 
-Last updated: 2026-10-28.
+Last updated: 2026-10-28 (device verification added).
 
 ## Summary
 
 | Area | Status |
 |---|---|
-| Offline on-device inference (Android) | Implemented · unit-tested on the JVM · release APK builds with the trained model (no INTERNET permission) · **not yet run on a device** |
+| Offline on-device inference (Android) | Implemented · **Offline-verified on a phone** (A001T, Android 16, arm64) · release APK has no INTERNET permission |
 | Preprocessing parity (Python ↔ Kotlin) | Implemented · **Tested**: golden files, exact match (`GoldenParityTest`) |
 | Image-quality gate | Implemented · Tested (Python + Kotlin) · rejection rates measured, see `ml/results/quality_gate.json` |
 | Referral rules | Implemented · Tested (safety cases in both languages) · thresholds **provisional** |
 | Explainability (CAM = Grad-CAM for the GAP head) | Implemented · checked against GradientTape Grad-CAM on Kaggle, see `ml/results/explainability_check.json` |
-| Local persistence (Room v2) | Implemented · migration test written (`MigrationTest`) · **not yet run on a device** |
+| Local persistence (Room v2) | Implemented · **Tested on a phone**: v1 → v2 migration keeps existing history (`MigrationTest`) |
 | Training pipeline | Implemented · two Kaggle smoke runs passed end to end |
 | Model training | **Trained and evaluated** (see "Training"). FP16 model bundled in the APK |
 | Clinical validation | **Not done.** No clinical evidence exists for this model. |
@@ -48,8 +48,7 @@ Last updated: 2026-10-28.
 
 | Item | Why not run | How to run |
 |---|---|---|
-| `OfflineInferenceTest`, `MigrationTest` (instrumentation) | No device or emulator in the dev session (8 GB laptop, ~0.5 GB RAM free) | Connect a phone, then `bash tools/verify_offline.sh` |
-| On-device latency / memory | Needs a phone | The same script logs timing. `ScreeningResult.processingMillis` is stored per screening |
+| On-device memory use | Not profiled yet | Android Studio Profiler while screening |
 | GPU delegate path | Needs a phone with a supported GPU | Covered by `cpuFallbackProducesSameScores` |
 
 ## Training
@@ -71,8 +70,23 @@ EfficientNetV2-B2 was selected on validation QWK. The details and every number a
 with SHA-256 checks. Debug, release and androidTest APKs build; the release APK is 40.4 MB.
 Quantization was measured: INT8 variants were rejected (97.4% / 84.9% agreement with FP32).
 
-**Offline-verified:** **no, not yet.** It needs a phone running `tools/verify_offline.sh`.
-On-device latency and memory have not been measured.
+**Offline-verified:** **yes**, on 2026-10-28, on one phone (model A001T, Android 16, arm64-v8a).
+The phone was put in airplane mode with Wi-Fi and mobile data off. A ping failed and the test log
+recorded `network during test: offline`. The instrumentation suite then passed (`OK (7 tests)`; the
+missing-model test is skipped by design because the model is bundled):
+- **Golden images:** real inference on the three golden images matched the training pipeline's
+  probabilities within 0.03, with identical grades (2, 3, 4), and wrote heatmap files.
+- **Rejections:** a non-fundus image and a corrupted file were rejected without a grade.
+- **CPU fallback:** GPU and CPU paths gave the same scores.
+- **Migration:** the v1 → v2 database migration preserved an existing record.
+
+**On-device speed:** the whole pipeline (decode, quality gate, preprocessing, FP16 inference and
+heatmap) took **525–660 ms per image**. It ran on the CPU (XNNPACK); the GPU delegate was not used
+on this phone. That is one device only; low-end phones may be slower.
+
+**Bug found by the device test and fixed:** `RetinalImageDecoder` treated the deliberate `null`
+from a bounds-only decode as failure. Every photo would have been rejected as an invalid image.
+JVM unit tests could not see this, because they do not use Android's decoder.
 
 **Clinically validated:** **no.**
 

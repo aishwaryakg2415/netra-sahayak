@@ -18,9 +18,11 @@ import com.sih.netrasahayak.camera.ImageUtils
 object RetinalImageDecoder {
 
     fun decode(context: Context, uri: Uri): RgbImage? {
+        // With inJustDecodeBounds, decodeStream returns null BY DESIGN and only fills
+        // `bounds`; so null-check the stream, never the decode result.
         val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
-        context.contentResolver.openInputStream(uri)?.use { BitmapFactory.decodeStream(it, null, bounds) }
-            ?: return null
+        val boundsStream = context.contentResolver.openInputStream(uri) ?: return null
+        boundsStream.use { BitmapFactory.decodeStream(it, null, bounds) }
         if (bounds.outWidth <= 0 || bounds.outHeight <= 0) return null
 
         var sample = 1
