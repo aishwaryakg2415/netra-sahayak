@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netra Sahayak — App UI Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EFF5EE;
+    --surface:#FFFFFF;
+    --ink:#17231F;
+    --ink-soft:#51625B;
+    --teal:#0B4F4A;
+    --teal-soft:#E1EEEC;
+    --marigold:#E8A33D;
+    --marigold-soft:#FBEAD1;
+    --terracotta:#C1443C;
+    --terracotta-soft:#F8E0DD;
+    --green:#3F8F5F;
+    --green-soft:#E3F1E8;
+    --line:#DCE4DD;
+    --shadow: 0 24px 60px -24px rgba(11,79,74,0.35);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(11,79,74,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(232,163,61,0.14), transparent 55%),
+      var(--bg);
+    min-height:100vh;
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:48px 20px 80px;
+  }
+  .wrap{
+    width:100%;
+    max-width:1040px;
+    display:grid;
+    grid-template-columns:340px 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  @media (max-width: 820px){
+    .wrap{grid-template-columns:1fr; justify-items:center;}
+    .side{order:2; max-width:380px;}
+  }
+
+  /* ---------- Side copy ---------- */
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:14px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px;height:7px;border-radius:50%;
+    background:var(--marigold);
+    display:inline-block;
+  }
+  h1{
+    font-family:'Archivo Black',sans-serif;
+    font-size:34px;
+    line-height:1.08;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .lede{
+    font-size:15.5px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    margin:0 0 28px;
+    max-width:42ch;
+  }
+  .principles{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .principles li{
+    display:flex;gap:12px;align-items:flex-start;
+    font-size:13.5px;line-height:1.5;color:var(--ink-soft);
+  }
+  .principles .mark{
+    flex:0 0 auto;
+    width:26px;height:26px;border-radius:8px;
+    background:var(--teal-soft);
+    color:var(--teal);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;
+  }
+  .principles b{color:var(--ink); font-weight:600;}
+
+  /* ---------- Phone shell ---------- */
+  .side{position:sticky; top:40px;}
+  .phone-stage{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:22px;
+  }
+  .phone{
+    width:340px;
+    height:706px;
+    background:var(--surface);
+    border-radius:44px;
+    border:10px solid #10201D;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .notch{
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:120px; height:22px; background:#10201D;
+    border-radius:0 0 16px 16px; z-index:5;
+  }
+  .topbar{
+    padding:34px 20px 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex:0 0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:8px;
+    font-family:'Archivo Black',sans-serif;
+    font-size:14.5px;
+    color:var(--teal);
+  }
+  .brand svg{width:20px;height:20px;}
+  .offline-pill{
+    display:flex; align-items:center; gap:5px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:9.5px; letter-spacing:0.03em;
+    background:var(--green-soft); color:var(--green);
+    padding:5px 9px; border-radius:20px;
+  }
+  .offline-pill svg{width:11px;height:11px;}
+
+  .screen-viewport{flex:1; position:relative; overflow:hidden;}
+  .screen{
+    position:absolute; inset:0;
+    padding:6px 22px 22px;
+    display:flex; flex-direction:column;
+    opacity:0; transform:translateX(16px);
+    pointer-events:none;
+    transition:opacity .38s ease, transform .38s ease;
+  }
+  .screen.active{opacity:1; transform:translateX(0); pointer-events:auto;}
+
+  .step-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--ink-soft); margin-bottom:6px;
+  }
+  .screen h2{
+    font-family:'Archivo Black',sans-serif;
+    font-size:22px; margin:0 0 8px; letter-spacing:-0.01em;
+  }
+  .screen p.sub{
+    font-size:13.5px; color:var(--ink-soft); line-height:1.5; margin:0 0 20px;
+  }
+
+  /* Screen 1: capture */
+  .capture-frame{
+    flex:1;
+    border:2px dashed #C7D6D1;
+    border-radius:20px;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(180deg,#FBFDFB,#F3F8F3);
+    margin-bottom:18px;
+    position:relative;
+  }
+  .capture-frame svg{width:88px;height:88px;color:#B9C9C4;}
+  .capture-ring{
+    position:absolute; width:150px; height:150px; border-radius:50%;
+    border:2px solid var(--teal); opacity:0.28;
+  }
+  .big-btn{
+    width:100%; padding:16px; border:none; border-radius:16px;
+    background:var(--teal); color:#fff;
+    font-family:'Inter',sans-serif; font-weight:700; font-size:15px;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    cursor:pointer;
+  }
+  .big-btn svg{width:19px;height:19px;}
+  .big-btn:focus-visible{outline:3px solid var(--marigold); outline-offset:2px;}
+  .hint{
+    text-align:center; font-size:11.5px; color:var(--ink-soft); margin-top:10px;
+  }
+
+  /* Screen 2: analyzing */
+  .analyze-wrap{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px;}
+  .spinner{
+    width:64px; height:64px; border-radius:50%;
+    border:5px solid var(--teal-soft); border-top-color:var(--teal);
+    animation:spin 1s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .analyze-wrap p{margin:0; text-align:center; font-size:13.5px; color:var(--ink-soft); max-width:22ch;}
+  .analyze-wrap .headline{font-family:'Archivo Black',sans-serif; font-size:16px; color:var(--ink);}
+
+  /* Screen 3: result */
+  .eye-card{
+    background:linear-gradient(180deg,#0E2B28,#0B4F4A);
+    border-radius:18px; padding:18px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px; position:relative; overflow:hidden;
+  }
+  .eye-card svg{width:100%; height:auto; position:relative; z-index:2;}
+  .glow-ring{
+    position:absolute; width:64px; height:64px; border-radius:50%;
+    border:3px solid var(--marigold);
+    box-shadow:0 0 0 6px rgba(232,163,61,0.18), 0 0 18px 4px rgba(232,163,61,0.45);
+    z-index:3;
+    animation:pulse 2.2s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce){ .glow-ring{animation:none;} .spinner{animation-duration:1.6s;} }
+  @keyframes pulse{
+    0%,100%{transform:scale(1); opacity:1;}
+    50%{transform:scale(1.08); opacity:0.75;}
+  }
+  .verdict{
+    border-radius:14px; padding:13px 14px; margin-bottom:12px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .verdict .dot{width:10px;height:10px;border-radius:50%; flex:0 0 auto;}
+  .verdict .label{font-family:'Archivo Black',sans-serif; font-size:15px; line-height:1.2;}
+  .verdict .desc{font-size:11.5px; color:var(--ink-soft); margin-top:2px;}
+  .verdict.refer{background:var(--terracotta-soft);}
+  .verdict.refer .dot{background:var(--terracotta);}
+  .verdict.refer .label{color:var(--terracotta);}
+  .verdict.healthy{background:var(--green-soft);}
+  .verdict.healthy .dot{background:var(--green);}
+  .verdict.healthy .label{color:var(--green);}
+
+  .explain-note{
+    font-size:12px; color:var(--ink-soft); line-height:1.5; margin-bottom:16px;
+    background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:10px 12px;
+  }
+  .explain-note b{color:var(--ink);}
+  .btn-row{display:flex; flex-direction:column; gap:9px; margin-top:auto;}
+  .ghost-btn{
+    width:100%; padding:13px; border-radius:14px; background:transparent;
+    border:1.5px solid var(--line); color:var(--ink);
+    font-family:'Inter',sans-serif; font-weight:600; font-size:13.5px; cursor:pointer;
+  }
+  .swap-link{
+    background:none; border:none; color:var(--teal); font-family:'Inter',sans-serif;
+    font-size:11.5px; font-weight:600; text-decoration:underline; cursor:pointer; padding:0;
+    align-self:center; margin-bottom:12px;
+  }
+
+  /* Screen 4: referral slip */
+  .slip{
+    background:var(--surface); border:1.5px dashed #C7D6D1; border-radius:16px;
+    padding:16px; flex:1; display:flex; flex-direction:column; gap:11px;
+  }
+  .slip-row{display:flex; justify-content:space-between; gap:10px; font-size:12px;}
+  .slip-row .k{color:var(--ink-soft);}
+  .slip-row .v{font-family:'IBM Plex Mono',monospace; font-weight:500; text-align:right;}
+  .slip-thumb{
+    background:linear-gradient(180deg,#0E2B28,#0B4F4A); border-radius:10px;
+    padding:10px; display:flex; align-items:center; justify-content:center; position:relative;
+  }
+  .slip-thumb svg{width:70px;}
+  .slip-thumb .glow-ring{width:30px;height:30px;}
+  .divider{border-top:1px dashed var(--line); margin:2px 0;}
+  .facility{
+    background:var(--marigold-soft); border-radius:10px; padding:10px 11px;
+  }
+  .facility .k{font-size:10px; text-transform:uppercase; letter-spacing:0.06em; color:#8A6420; font-family:'IBM Plex Mono',monospace;}
+  .facility .v2{font-size:13px; font-weight:600; color:var(--ink); margin-top:2px;}
+  .sync-note{
+    display:flex; align-items:center; gap:7px; font-size:10.5px; color:var(--ink-soft);
+    margin-top:auto;
+  }
+  .sync-note svg{width:13px;height:13px; flex:0 0 auto;}
+
+  /* ---------- Step nav ---------- */
+  .steps{
+    display:flex; align-items:center; justify-content:center; gap:22px;
+  }
+  .steps button{
+    width:38px; height:38px; border-radius:50%; border:1.5px solid var(--line);
+    background:var(--surface); color:var(--ink); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .steps button:disabled{opacity:0.35; cursor:default;}
+  .steps button svg{width:16px;height:16px;}
+  .steps button:focus-visible{outline:3px solid var(--marigold); outline-offset:2px;}
+  .dots{display:flex; gap:8px;}
+  .dots span{
+    width:7px; height:7px; border-radius:50%; background:var(--line);
+    transition:background .2s, width .2s;
+  }
+  .dots span.on{background:var(--teal); width:20px; border-radius:5px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="side">
+    <div class="eyebrow">Netra Sahayak &mdash; app flow</div>
+    <h1>Built for the person holding the camera, not the person reading the paper.</h1>
+    <p class="lede">Three screens, one job each. No menus, no jargon, no login screen to get lost in &mdash; a health worker with five minutes of training should be able to run this on the first try, in bright daylight, with no signal.</p>
+    <ul class="principles">
+      <li><span class="mark">1</span><span><b>One action per screen.</b> Capture, wait, read &mdash; never two decisions at once.</span></li>
+      <li><span class="mark">2</span><span><b>The highlight is the interface.</b> Trust comes from showing the exact spot the model flagged, not a confidence score.</span></li>
+      <li><span class="mark">3</span><span><b>Offline is the default state</b>, always visible, never something to configure.</span></li>
+      <li><span class="mark">4</span><span><b>Plain language, not a diagnosis code.</b> "Refer to a doctor" or "Looks healthy" &mdash; nothing to interpret.</span></li>
+    </ul>
+  </div>
+
+  <div class="side" style="position:static;">
+  <div class="phone-stage">
+    <div class="phone">
+      <div class="notch"></div>
+
+      <!-- SCREEN 1 -->
+      <section class="screen active" data-n="1">
+        <div class="topbar">
+          <div class="brand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            Netra Sahayak
+          </div>
+          <div class="offline-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0119 12.55M5 12.55a10.94 10.94 0 015.17-2.39M10.71 5.05A16 16 0 0122.58 9M1.42 9a15.91 15.91 0 014.7-2.88M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+            Offline ready
+          </div>
+        </div>
+        <div class="step-tag">Step 1 of 3 &middot; Capture</div>
+        <h2>New screening</h2>
+        <p class="sub">Line the camera up with the patient's eye and hold steady.</p>
+        <div class="capture-frame">
+          <div class="capture-ring"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <button class="big-btn" onclick="go(2)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          Capture photo
+        </button>
+        <div class="hint">Works with any low-cost handheld fundus camera</div>
+      </section>
+
+      <!-- SCREEN 2 -->
+      <section class="screen" data-n="2">
+        <div class="topbar">
+          <div class="brand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            Netra Sahayak
+          </div>
+          <div class="offline-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0119 12.55M5 12.55a10.94 10.94 0 015.17-2.39M10.71 5.05A16 16 0 0122.58 9M1.42 9a15.91 15.91 0 014.7-2.88M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+            Offline ready
+          </div>
+        </div>
+        <div class="step-tag">Step 2 of 3 &middot; Checking</div>
+        <div class="analyze-wrap">
+          <div class="spinner"></div>
+          <div class="headline">Checking the photo</div>
+          <p>About 10 seconds. Running on this device &mdash; no internet needed.</p>
+        </div>
+      </section>
+
+      <!-- SCREEN 3 -->
+      <section class="screen" data-n="3">
+        <div class="topbar">
+          <div class="brand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+            Netra Sahayak
+          </div>
+          <div class="offline-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M1 1l22 22M16.72 11.06A10.94 10.94 0 0119 12.55M5 12.55a10.94 10.94 0 015.17-2.39M10.71 5.05A16 16 0 0122.58 9M1.42 9a15.91 15.91 0 014.7-2.88M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+            Offline ready
+          </div>
+        </div>
+        <div class="step-tag">Step 3 of 3 &middot; Result</div>
+        <div class="eye-card">
+          <div class="glow-ring" id="ringMain" style="left:60%; top:34%;"></div>
+          <svg viewBox="0 0 200 130" fill="none">
+            <ellipse cx="100" cy="65" rx="92" ry="58" fill="#E8A33D" opacity="0.14"/>
+            <circle cx="100" cy="65" r="46" fill="#F3D9A6"/>
+            <circle cx="100" cy="65" r="46" fill="none" stroke="#0B4F4A" stroke-width="1" opacity="0.3"/>
+            <path d="M60 40 Q80 65 60 92" stroke="#C1443C" stroke-width="1.4" fill="none" opacity="0.55"/>
+            <path d="M132 42 Q116 65 136 88" stroke="#C1443C" stroke-width="1.4" fill="none" opacity="0.55"/>
+            <path d="M100 22 Q92 65 100 108" stroke="#C1443C" stroke-width="1.2" fill="none" opacity="0.4"/>
+            <circle cx="100" cy="65" r="16" fill="#3A2E1E"/>
+            <circle cx="122" cy="46" r="4" fill="#C1443C" opacity="0.8"/>
+          </svg>
+        </div>
+        <div class="verdict refer" id="verdictBox">
+          <div class="dot"></div>
+          <div>
+            <div class="label" id="verdictLabel">Refer to a doctor</div>
+            <div class="desc" id="verdictDesc">Signs of diabetic retinopathy flagged</div>
+          </div>
+        </div>
+        <div class="explain-note">The <b>glowing area</b> on the image is exactly what the model flagged &mdash; show this to the patient or the doctor as the reason, not just the result.</div>
+        <button class="swap-link" onclick="toggleVerdict()">See what a healthy result looks like</button>
+        <div class="btn-row">
+          <button class="big-btn" onclick="go(1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            Screen another patient
+          </button>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="steps">
+      <button id="prevBtn" onclick="step(-1)" aria-label="Previous screen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="dots">
+        <span data-d="1" class="on"></span><span data-d="2"></span><span data-d="3"></span>
+      </div>
+      <button id="nextBtn" onclick="step(1)" aria-label="Next screen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+<script>
+  let current = 1;
+  const total = 3;
+
+  function go(n){
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.querySelector('.screen[data-n="'+n+'"]').classList.add('active');
+    document.querySelectorAll('.dots span').forEach(d => d.classList.remove('on'));
+    document.querySelector('.dots span[data-d="'+n+'"]').classList.add('on');
+    current = n;
+    document.getElementById('prevBtn').disabled = (n === 1);
+    document.getElementById('nextBtn').disabled = (n === total);
+  }
+  function step(delta){
+    const n = Math.min(total, Math.max(1, current + delta));
+    go(n);
+  }
+
+  let healthy = false;
+  function toggleVerdict(){
+    healthy = !healthy;
+    const box = document.getElementById('verdictBox');
+    const label = document.getElementById('verdictLabel');
+    const desc = document.getElementById('verdictDesc');
+    const link = document.querySelector('.swap-link');
+    const ring = document.getElementById('ringMain');
+    if(healthy){
+      box.classList.remove('refer'); box.classList.add('healthy');
+      label.textContent = 'Looks healthy';
+      desc.textContent = 'No signs of retinopathy found';
+      link.textContent = 'See what a flagged result looks like';
+      ring.style.opacity = '0';
+    } else {
+      box.classList.remove('healthy'); box.classList.add('refer');
+      label.textContent = 'Refer to a doctor';
+      desc.textContent = 'Signs of diabetic retinopathy flagged';
+      link.textContent = 'See what a healthy result looks like';
+      ring.style.opacity = '1';
+    }
+  }
+
+  document.getElementById('prevBtn').disabled = true;
+</script>
+</body>
+</html>

@@ -44,6 +44,7 @@ flowchart LR
 | `ml/` | Python: datasets, training, evaluation, calibration, export, tests ([ml/README.md](ml/README.md)) |
 | `docs/` | [Model card](docs/MODEL_CARD.md), [datasets & provenance](docs/DATASETS_AND_PROVENANCE.md), [deployment](docs/DEPLOYMENT.md) |
 | `IMPLEMENTATION_STATUS.md` | What is implemented, tested, trained, evaluated and verified — and what is not |
+| `netra-app-ui-mockup.html` | Original static UI prototype ([its README](docs/UI_MOCKUP_README.md)) |
 
 The original FastAPI path (sections 4–7, 11) still exists as an optional **debug-only** mode
 (`INFERENCE_MODE = "remote"`).
