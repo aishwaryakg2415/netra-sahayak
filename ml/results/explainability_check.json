@@ -1,0 +1,19 @@
+{
+  "pearson_r": [
+    0.9999934719130872,
+    0.9999885801230922,
+    0.9999979313734955,
+    0.999997070732879,
+    0.999996630980883,
+    0.9999876634409126,
+    0.9999963205395364,
+    0.9999985805113853,
+    0.9999806277402706,
+    0.9999974335480756,
+    0.9999995053230483,
+    0.999998097713002
+  ],
+  "mean": 0.9999943261616391,
+  "min": 0.9999806277402706,
+  "explanation": "CAM computed from the deployed LiteRT model's feature output and head weights, compared with GradientTape Grad-CAM on the Keras FP32 model."
+}

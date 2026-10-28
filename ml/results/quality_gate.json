@@ -1,0 +1,69 @@
+{
+  "thresholds": {
+    "min_side_px": 256,
+    "retina_fraction_min": 0.3077568054199219,
+    "corner_dark_min": 0.9906025774991292,
+    "red_ratio_min": 0.9945094003318273,
+    "brightness_min": 29.684177030897427,
+    "brightness_max": 189.84862461541528,
+    "saturated_max": 0.7334200461557835,
+    "sharpness_min": 5.232299661226276
+  },
+  "by_split": {
+    "dropped_near_duplicate": {
+      "n": 292,
+      "ACCEPTED_FOR_SCREENING": 276,
+      "RETAKE_IMAGE": 13,
+      "UNSUPPORTED_IMAGE": 3
+    },
+    "excluded_no_retina": {
+      "n": 22,
+      "ACCEPTED_FOR_SCREENING": 0,
+      "RETAKE_IMAGE": 0,
+      "UNSUPPORTED_IMAGE": 22
+    },
+    "test_ddr": {
+      "n": 3759,
+      "ACCEPTED_FOR_SCREENING": 3640,
+      "RETAKE_IMAGE": 81,
+      "UNSUPPORTED_IMAGE": 38
+    },
+    "test_idrid": {
+      "n": 455,
+      "ACCEPTED_FOR_SCREENING": 455,
+      "RETAKE_IMAGE": 0,
+      "UNSUPPORTED_IMAGE": 0
+    },
+    "test_internal": {
+      "n": 4760,
+      "ACCEPTED_FOR_SCREENING": 4603,
+      "RETAKE_IMAGE": 91,
+      "UNSUPPORTED_IMAGE": 66
+    },
+    "test_messidor2": {
+      "n": 1744,
+      "ACCEPTED_FOR_SCREENING": 1736,
+      "RETAKE_IMAGE": 8,
+      "UNSUPPORTED_IMAGE": 0
+    },
+    "train": {
+      "n": 37759,
+      "ACCEPTED_FOR_SCREENING": 36631,
+      "RETAKE_IMAGE": 670,
+      "UNSUPPORTED_IMAGE": 458
+    },
+    "ungradable_ddr": {
+      "n": 1143,
+      "ACCEPTED_FOR_SCREENING": 829,
+      "RETAKE_IMAGE": 140,
+      "UNSUPPORTED_IMAGE": 174
+    },
+    "val": {
+      "n": 4726,
+      "ACCEPTED_FOR_SCREENING": 4592,
+      "RETAKE_IMAGE": 86,
+      "UNSUPPORTED_IMAGE": 48
+    }
+  },
+  "note": "Thresholds = 0.5th/99.5th percentiles of curated training images. Rejection rates on 'ungradable_*' rows estimate sensitivity to ungradable images."
+}

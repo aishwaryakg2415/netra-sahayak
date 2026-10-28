@@ -1,0 +1,154 @@
+[16:41:42] free disk for cache: 1126.2 GB; CPUs: 4
+[16:41:45] dataset roots: {
+ "aptos2019": "/kaggle/input/competitions/aptos2019-blindness-detection",
+ "messidor2_images": "/kaggle/input/datasets/mariaherrerot/messidor2preprocess",
+ "idrid": "/kaggle/input/datasets/mariaherrerot/idrid-dataset",
+ "messidor2_grades": "/kaggle/input/datasets/google-brain/messidor2-dr-grades",
+ "eyepacs": "/kaggle/input/datasets/tanlikesmath/diabetic-retinopathy-resized",
+ "ddr": "/kaggle/input/datasets/samriddhibagchi/ddr-dataset-credits-to-authors/DDR-dataset"
+}
+[16:41:51]   aptos2019: 3662 images, labels [1805, 370, 999, 193, 295, 0]
+[16:41:51]   eyepacs: 35126 images, labels [25810, 2443, 5292, 873, 708, 0]
+[16:41:51]   ddr: 13673 images, labels [6266, 630, 4477, 236, 913, 1151]
+[16:41:51]   idrid: 455 images, labels [129, 22, 156, 84, 64, 0]
+[16:41:51]   messidor2: 1744 images, labels [1017, 270, 347, 75, 35, 0]
+[16:41:51] caching preprocessed 384px images as png
+[16:42:04]   cached 0/54660 (13s)
+[16:59:50]   cached 5000/54660 (1079s)
+[17:20:41]   cached 10000/54660 (2330s)
+[17:40:56]   cached 15000/54660 (3545s)
+[17:53:46]   cached 20000/54660 (4315s)
+[17:59:15]   cached 25000/54660 (4644s)
+[18:04:41]   cached 30000/54660 (4970s)
+[18:10:06]   cached 35000/54660 (5295s)
+[18:15:32]   cached 40000/54660 (5621s)
+[18:20:57]   cached 45000/54660 (5945s)
+[18:26:20]   cached 50000/54660 (6269s)
+[18:33:42]   cache done in 6711s
+[18:34:15] leakage control: {'near_duplicate_pairs': 2452, 'train_images_dropped': 292, 'pairs_between_evaluation_sets': 308}
+[18:34:16] quality thresholds: {'min_side_px': 256, 'retina_fraction_min': 0.3077568054199219, 'corner_dark_min': 0.9906025774991292, 'red_ratio_min': 0.9945094003318273, 'brightness_min': 29.684177030897427, 'brightness_max': 189.84862461541528, 'saturated_max': 0.7334200461557835, 'sharpness_min': 5.232299661226276}
+[18:34:16] quality gate by split: {
+ "dropped_near_duplicate": {
+  "n": 292,
+  "ACCEPTED_FOR_SCREENING": 276,
+  "RETAKE_IMAGE": 13,
+  "UNSUPPORTED_IMAGE": 3
+ },
+ "excluded_no_retina": {
+  "n": 22,
+  "ACCEPTED_FOR_SCREENING": 0,
+  "RETAKE_IMAGE": 0,
+  "UNSUPPORTED_IMAGE": 22
+ },
+ "test_ddr": {
+  "n": 3759,
+  "ACCEPTED_FOR_SCREENING": 3640,
+  "RETAKE_IMAGE": 81,
+  "UNSUPPORTED_IMAGE": 38
+ },
+ "test_idrid": {
+  "n": 455,
+  "ACCEPTED_FOR_SCREENING": 455,
+  "RETAKE_IMAGE": 0,
+  "UNSUPPORTED_IMAGE": 0
+ },
+ "test_internal": {
+  "n": 4760,
+  "ACCEPTED_FOR_SCREENING": 4603,
+  "RETAKE_IMAGE": 91,
+  "UNSUPPORTED_IMAGE": 66
+ },
+ "test_messidor2": {
+  "n": 1744,
+  "ACCEPTED_FOR_SCREENING": 1736,
+  "RETAKE_IMAGE": 8,
+  "UNSUPPORTED_IMAGE": 0
+ },
+ "train": {
+  "n": 37759,
+  "ACCEPTED_FOR_SCREENING": 36631,
+  "RETAKE_IMAGE": 670,
+  "UNSUPPORTED_IMAGE": 458
+ },
+ "ungradable_ddr": {
+  "n": 1143,
+  "ACCEPTED_FOR_SCREENING": 829,
+  "RETAKE_IMAGE": 140,
+  "UNSUPPORTED_IMAGE": 174
+ },
+ "val": {
+  "n": 4726,
+  "ACCEPTED_FOR_SCREENING": 4592,
+  "RETAKE_IMAGE": 86,
+  "UNSUPPORTED_IMAGE": 48
+ }
+}
+[18:34:16] train 37759 [25430, 2581, 7471, 966, 1311] | val 4726 [3184, 320, 936, 123, 163]
+[18:34:45] TensorFlow 2.20.0; GPUs: [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU'), PhysicalDevice(name='/physical_device:GPU:1', device_type='GPU')]
+[18:34:51] [effnetv2b0_ce] stage 1 (head only)
+[18:39:29]   epoch 1: loss=1.1925 val_qwk=0.5609 val_acc=0.7361 *best*
+[18:39:29] [effnetv2b0_ce] stage 2 (full fine-tune, 10 epochs, 1179 steps/epoch)
+[18:46:19]   epoch 1: loss=0.9775 val_qwk=0.7283 val_acc=0.7340 *best*
+[18:49:36]   epoch 2: loss=0.8304 val_qwk=0.7897 val_acc=0.8199 *best*
+[18:52:52]   epoch 3: loss=0.7703 val_qwk=0.7780 val_acc=0.7973
+[18:56:08]   epoch 4: loss=0.7142 val_qwk=0.8129 val_acc=0.8087 *best*
+[18:59:19]   epoch 5: loss=0.6668 val_qwk=0.8107 val_acc=0.8127
+[19:02:36]   epoch 6: loss=0.6148 val_qwk=0.8249 val_acc=0.8142 *best*
+[19:05:51]   epoch 7: loss=0.5658 val_qwk=0.8268 val_acc=0.8242 *best*
+[19:09:03]   epoch 8: loss=0.5180 val_qwk=0.8189 val_acc=0.8115
+[19:12:15]   epoch 9: loss=0.4874 val_qwk=0.8225 val_acc=0.8127
+[19:15:29]   epoch 10: loss=0.4659 val_qwk=0.8269 val_acc=0.8185 *best*
+[19:15:33] [mobilenetv3l_ce] stage 1 (head only)
+[19:20:04]   epoch 1: loss=1.2242 val_qwk=0.6135 val_acc=0.7497 *best*
+[19:20:04] [mobilenetv3l_ce] stage 2 (full fine-tune, 10 epochs, 1179 steps/epoch)
+[19:26:17]   epoch 1: loss=0.9595 val_qwk=0.7038 val_acc=0.7916 *best*
+[19:29:25]   epoch 2: loss=0.8189 val_qwk=0.6855 val_acc=0.7842
+[19:32:33]   epoch 3: loss=0.7559 val_qwk=0.7706 val_acc=0.8047 *best*
+[19:35:44]   epoch 4: loss=0.7035 val_qwk=0.7828 val_acc=0.8180 *best*
+[19:38:54]   epoch 5: loss=0.6542 val_qwk=0.8036 val_acc=0.8094 *best*
+[19:42:03]   epoch 6: loss=0.6003 val_qwk=0.8076 val_acc=0.8223 *best*
+[19:45:12]   epoch 7: loss=0.5428 val_qwk=0.8343 val_acc=0.8290 *best*
+[19:48:22]   epoch 8: loss=0.4879 val_qwk=0.8366 val_acc=0.8259 *best*
+[19:51:32]   epoch 9: loss=0.4434 val_qwk=0.8316 val_acc=0.8237
+[19:54:37]   epoch 10: loss=0.4175 val_qwk=0.8298 val_acc=0.8206
+[19:54:41] [effnetv2b0_focal] stage 1 (head only)
+[19:58:51]   epoch 1: loss=0.6768 val_qwk=0.5915 val_acc=0.7412 *best*
+[19:58:51] [effnetv2b0_focal] stage 2 (full fine-tune, 10 epochs, 1179 steps/epoch)
+[20:04:51]   epoch 1: loss=0.5138 val_qwk=0.6930 val_acc=0.6959 *best*
+[20:08:04]   epoch 2: loss=0.4143 val_qwk=0.7786 val_acc=0.8047 *best*
+[20:11:18]   epoch 3: loss=0.3738 val_qwk=0.7863 val_acc=0.7882 *best*
+[20:14:32]   epoch 4: loss=0.3358 val_qwk=0.8067 val_acc=0.7990 *best*
+[20:17:45]   epoch 5: loss=0.3081 val_qwk=0.8167 val_acc=0.8197 *best*
+[20:21:00]   epoch 6: loss=0.2765 val_qwk=0.8140 val_acc=0.8068
+[20:24:14]   epoch 7: loss=0.2474 val_qwk=0.8300 val_acc=0.8248 *best*
+[20:27:23]   epoch 8: loss=0.2198 val_qwk=0.8253 val_acc=0.8132
+[20:30:35]   epoch 9: loss=0.2034 val_qwk=0.8265 val_acc=0.8138
+[20:33:47]   epoch 10: loss=0.1928 val_qwk=0.8298 val_acc=0.8191
+[20:33:53] [effnetv2b2_ce] stage 1 (head only)
+[20:38:51]   epoch 1: loss=1.1949 val_qwk=0.5918 val_acc=0.7393 *best*
+[20:38:51] [effnetv2b2_ce] stage 2 (full fine-tune, 8 epochs, 1573 steps/epoch)
+[20:47:17]   epoch 1: loss=0.9731 val_qwk=0.7598 val_acc=0.7852 *best*
+[20:51:26]   epoch 2: loss=0.8248 val_qwk=0.7913 val_acc=0.8102 *best*
+[20:55:35]   epoch 3: loss=0.7645 val_qwk=0.7976 val_acc=0.8144 *best*
+[20:59:44]   epoch 4: loss=0.6992 val_qwk=0.8104 val_acc=0.8049 *best*
+[21:03:52]   epoch 5: loss=0.6446 val_qwk=0.8304 val_acc=0.8197 *best*
+[21:08:01]   epoch 6: loss=0.5942 val_qwk=0.8369 val_acc=0.8144 *best*
+[21:12:07]   epoch 7: loss=0.5570 val_qwk=0.8320 val_acc=0.8185
+[21:16:14]   epoch 8: loss=0.5288 val_qwk=0.8332 val_acc=0.8206
+[21:18:27] effnetv2b0_ce: val QWK 0.8274, val acc 0.8185, ECE 0.0214->0.0214, T=1.000
+[21:20:22] mobilenetv3l_ce: val QWK 0.8358, val acc 0.8246, ECE 0.0315->0.0315, T=1.000
+[21:21:46] effnetv2b0_focal: val QWK 0.8306, val acc 0.8250, ECE 0.1782->0.0516, T=0.566
+[21:24:10] effnetv2b2_ce: val QWK 0.8376, val acc 0.8146, ECE 0.0175->0.0175, T=1.000
+[21:24:10] selected effnetv2b2_ce by validation QWK (test sets were not used for selection)
+[21:24:43]   export fp32: 34.70 MB
+[21:24:58]   export fp16: 17.42 MB
+[21:25:14]   export int8_dynamic: 9.64 MB
+[21:28:46]   export int8_full: 10.37 MB
+[21:31:48]   fp32: 34.7 MB, val-subset QWK 0.8131, agree 1.0000, 58 ms
+[21:34:47]   fp16: 17.4 MB, val-subset QWK 0.8131, agree 1.0000, 58 ms
+[21:40:02]   int8_dynamic: 9.6 MB, val-subset QWK 0.8122, agree 0.9740, 108 ms
+[21:43:07]   int8_full: 10.4 MB, val-subset QWK 0.7376, agree 0.8490, 60 ms
+[21:43:07] deployment variant: fp16 (smallest within 0.01 QWK / referable sensitivity of FP32, >=98% agreement)
+[21:43:27] CAM vs Grad-CAM Pearson r over 12 images: mean 1.0000, min 1.0000
+[21:43:54] pytest: 27 passed, 1 skipped, 2 warnings in 18.02s
+[21:43:54] done in 5.04 h

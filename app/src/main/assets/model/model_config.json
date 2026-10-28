@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "model_version": "effnetv2b2_ce-fp16-20261027",
+  "architecture": "effnetv2b2",
+  "training_loss": "ce",
+  "quantization": "fp16",
+  "files": {
+    "model": {
+      "name": "netra_dr.tflite",
+      "sha256": "630e82383231769b191cdefe17b5a9e8cfed70feed7b655b2dddc7de097bc809"
+    },
+    "cam_weights": {
+      "name": "cam_weights.bin",
+      "sha256": "c479850ceac7b91d2c37d24cd106f7c622b75155317e9aef4235aa60dc1fa7bb",
+      "shape": [
+        1408,
+        5
+      ],
+      "dtype": "float32-le",
+      "layout": "row-major [channel][class]"
+    }
+  },
+  "input": {
+    "signature": "serving_default",
+    "name": "image",
+    "shape": [
+      1,
+      384,
+      384,
+      3
+    ],
+    "dtype": "float32",
+    "range": [
+      0,
+      255
+    ],
+    "channel_order": "RGB"
+  },
+  "outputs": {
+    "logits": [
+      1,
+      5
+    ],
+    "features": [
+      1,
+      12,
+      12,
+      1408
+    ]
+  },
+  "preprocessing": {
+    "work_max_side": 1024,
+    "mask_threshold": 20,
+    "bbox_min_fraction": 0.02,
+    "out_size": 384,
+    "reference": "ml/netra_ml/preprocess.py"
+  },
+  "classes": [
+    "No DR",
+    "Mild",
+    "Moderate",
+    "Severe",
+    "Proliferative"
+  ],
+  "calibration": {
+    "method": "temperature_scaling",
+    "temperature": 1.0,
+    "fitted_on": "val"
+  },
+  "decision": {
+    "referable_min_grade": 2,
+    "referable_threshold": 0.16365427679938852,
+    "referable_target_sensitivity_on_val": 0.9,
+    "urgent_threshold": 0.19806651917044693,
+    "urgent_target_sensitivity_on_val": 0.9,
+    "review_min_confidence": 0.5,
+    "status": "PROVISIONAL - not reviewed by an ophthalmologist"
+  },
+  "quality_thresholds": {
+    "min_side_px": 256,
+    "retina_fraction_min": 0.3077568054199219,
+    "corner_dark_min": 0.9906025774991292,
+    "red_ratio_min": 0.9945094003318273,
+    "brightness_min": 29.684177030897427,
+    "brightness_max": 189.84862461541528,
+    "saturated_max": 0.7334200461557835,
+    "sharpness_min": 5.232299661226276
+  },
+  "evaluation_summary": {
+    "val": {
+      "n": 4726,
+      "qwk": 0.8375618080231104
+    },
+    "test_internal": {
+      "n": 4760,
+      "qwk": 0.83665857035024,
+      "accuracy": 0.8258403361344537,
+      "referable_sensitivity": 0.9051094890510949,
+      "referable_specificity": 0.8908420754182025
+    },
+    "test_internal_gate_accepted": {
+      "n": 4603,
+      "qwk": 0.8419408160063588,
+      "accuracy": 0.8264175537692809,
+      "referable_sensitivity": 0.9061976549413735,
+      "referable_specificity": 0.897037254326782
+    },
+    "test_ddr": {
+      "n": 3759,
+      "qwk": 0.8758355655795391,
+      "accuracy": 0.8467677573822825,
+      "referable_sensitivity": 0.8710059171597633,
+      "referable_specificity": 0.9555340744320928
+    },
+    "test_ddr_gate_accepted": {
+      "n": 3640,
+      "qwk": 0.8815114505741042,
+      "accuracy": 0.8519230769230769,
+      "referable_sensitivity": 0.8713561470215463,
+      "referable_specificity": 0.95635305528613
+    },
+    "test_idrid": {
+      "n": 455,
+      "qwk": 0.8514667965075746,
+      "accuracy": 0.610989010989011,
+      "referable_sensitivity": 0.9539473684210527,
+      "referable_specificity": 0.8079470198675497
+    },
+    "test_idrid_gate_accepted": {
+      "n": 455,
+      "qwk": 0.8514667965075746,
+      "accuracy": 0.610989010989011,
+      "referable_sensitivity": 0.9539473684210527,
+      "referable_specificity": 0.8079470198675497
+    },
+    "test_messidor2": {
+      "n": 1744,
+      "qwk": 0.7991089197155776,
+      "accuracy": 0.7540137614678899,
+      "referable_sensitivity": 0.912472647702407,
+      "referable_specificity": 0.8142968142968143
+    },
+    "test_messidor2_gate_accepted": {
+      "n": 1736,
+      "qwk": 0.7996114898110918,
+      "accuracy": 0.755184331797235,
+      "referable_sensitivity": 0.9118942731277533,
+      "referable_specificity": 0.8135725429017161
+    }
+  }
+}

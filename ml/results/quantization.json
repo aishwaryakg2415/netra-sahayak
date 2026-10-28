@@ -1,0 +1,58 @@
+{
+  "variants": {
+    "fp32": {
+      "size_mb": 34.701964,
+      "sha256": "84b1be0dcf0b464587ffec99db370c236319f6630f0386eb68de7ff1d0c59f84",
+      "val_subset_n": 1000,
+      "val_subset_qwk": 0.8131033066338057,
+      "val_subset_referable_sensitivity": 0.8958333333333334,
+      "val_subset_referable_specificity": 0.8723684210526316,
+      "x86_cpu_latency_ms_mean": 57.79896054573968,
+      "note": "latency measured on the Kaggle x86 CPU with 4 threads, NOT on an Android phone",
+      "argmax_agreement_vs_fp32": 1.0,
+      "max_abs_prob_diff_vs_fp32": 0.0,
+      "messidor2_qwk": 0.7991089197155776
+    },
+    "fp16": {
+      "size_mb": 17.423416,
+      "sha256": "630e82383231769b191cdefe17b5a9e8cfed70feed7b655b2dddc7de097bc809",
+      "val_subset_n": 1000,
+      "val_subset_qwk": 0.8131033066338057,
+      "val_subset_referable_sensitivity": 0.8958333333333334,
+      "val_subset_referable_specificity": 0.8723684210526316,
+      "x86_cpu_latency_ms_mean": 57.71907947029703,
+      "note": "latency measured on the Kaggle x86 CPU with 4 threads, NOT on an Android phone",
+      "argmax_agreement_vs_fp32": 1.0,
+      "max_abs_prob_diff_vs_fp32": 0.008460092983702872,
+      "messidor2_qwk": 0.7994725331274926
+    },
+    "int8_dynamic": {
+      "size_mb": 9.641528,
+      "sha256": "b0c49eb28156f9532c1483903497c40d4b12279c65644744e82a6eb20a49f535",
+      "val_subset_n": 1000,
+      "val_subset_qwk": 0.8122103893992358,
+      "val_subset_referable_sensitivity": 0.8833333333333333,
+      "val_subset_referable_specificity": 0.8842105263157894,
+      "x86_cpu_latency_ms_mean": 107.52852711657351,
+      "note": "latency measured on the Kaggle x86 CPU with 4 threads, NOT on an Android phone",
+      "argmax_agreement_vs_fp32": 0.974,
+      "max_abs_prob_diff_vs_fp32": 0.26551123844159147,
+      "messidor2_qwk": 0.8158758060275685
+    },
+    "int8_full": {
+      "size_mb": 10.370072,
+      "sha256": "1ac17b8cffaebd83dad59e1161d5f0dc5572a214e2ae1cf82acc3d56c1036033",
+      "val_subset_n": 1000,
+      "val_subset_qwk": 0.7376470081419895,
+      "val_subset_referable_sensitivity": 0.7375,
+      "val_subset_referable_specificity": 0.9315789473684211,
+      "x86_cpu_latency_ms_mean": 60.42074764317564,
+      "note": "latency measured on the Kaggle x86 CPU with 4 threads, NOT on an Android phone",
+      "argmax_agreement_vs_fp32": 0.849,
+      "max_abs_prob_diff_vs_fp32": 0.941980679619583,
+      "messidor2_qwk": 0.7911077308254969
+    }
+  },
+  "selected": "fp16",
+  "rule": "smallest variant with val-subset QWK and referable sensitivity within 0.01 of FP32 and >= 98% argmax agreement with FP32"
+}

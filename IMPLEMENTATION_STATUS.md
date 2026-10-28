@@ -8,20 +8,20 @@ The labels follow the definition of done in the project brief:
 - **Offline-verified**: inference was run on a device with networking off.
 - **Clinically validated**: never claimed here.
 
-Last updated: 2026-10-27.
+Last updated: 2026-10-28.
 
 ## Summary
 
 | Area | Status |
 |---|---|
-| Offline on-device inference (Android) | Implemented · unit-tested on the JVM · APK builds with the model bundled · **not yet run on a device** |
+| Offline on-device inference (Android) | Implemented · unit-tested on the JVM · release APK builds with the trained model (no INTERNET permission) · **not yet run on a device** |
 | Preprocessing parity (Python ↔ Kotlin) | Implemented · **Tested**: golden files, exact match (`GoldenParityTest`) |
 | Image-quality gate | Implemented · Tested (Python + Kotlin) · rejection rates measured, see `ml/results/quality_gate.json` |
 | Referral rules | Implemented · Tested (safety cases in both languages) · thresholds **provisional** |
 | Explainability (CAM = Grad-CAM for the GAP head) | Implemented · checked against GradientTape Grad-CAM on Kaggle, see `ml/results/explainability_check.json` |
 | Local persistence (Room v2) | Implemented · migration test written (`MigrationTest`) · **not yet run on a device** |
 | Training pipeline | Implemented · two Kaggle smoke runs passed end to end |
-| Model training | See "Training" below |
+| Model training | **Trained and evaluated** (see "Training"). FP16 model bundled in the APK |
 | Clinical validation | **Not done.** No clinical evidence exists for this model. |
 
 ## Done and tested
@@ -54,8 +54,33 @@ Last updated: 2026-10-27.
 
 ## Training
 
-_Filled in from the real Kaggle run (`ml/results/`). Until that run finishes, no trained
-model exists and the app reports "AI model not installed" instead of producing results._
+**Trained:** yes. One Kaggle T4 run on 2026-10-27 took 5.0 h and compared 4 candidates.
+EfficientNetV2-B2 was selected on validation QWK. The details and every number are in
+[docs/MODEL_CARD.md](docs/MODEL_CARD.md); the raw evidence is in `ml/results/`.
+
+**Evaluated** on data never used for training or selection:
+
+| Test set | n | QWK | Referable sens. / spec. |
+|---|---|---|---|
+| Internal held-out | 4,760 | 0.837 | 0.905 / 0.891 |
+| DDR official test | 3,759 | 0.876 | 0.871 / 0.956 |
+| IDRiD (external) | 455 | 0.851 | 0.954 / 0.808 |
+| Messidor-2 (external, adjudicated) | 1,744 | 0.799 | 0.912 / 0.814 |
+
+**Deployable:** yes. FP16 LiteRT, 17.4 MB, is bundled in `app/src/main/assets/model/`
+with SHA-256 checks. Debug, release and androidTest APKs build; the release APK is 40.4 MB.
+Quantization was measured: INT8 variants were rejected (97.4% / 84.9% agreement with FP32).
+
+**Offline-verified:** **no, not yet.** It needs a phone running `tools/verify_offline.sh`.
+On-device latency and memory have not been measured.
+
+**Clinically validated:** **no.**
+
+Safety findings from the evaluation:
+- The quality gate accepts **72.5% of DDR's ungradable images**. It is not a reliable
+  gradability check (see the model card).
+- Severe/PDR predicted as No DR: 9/291 on the internal test (3.1%), 1/110 on Messidor-2.
+- Mild DR sensitivity is low (0.33–0.44).
 
 ## Known limitations and open items
 
